@@ -1,13 +1,15 @@
 import React from "react";
-import { MyPage } from "../components/types";
+import { MyPage } from "../util/types";
 import styles from '../styles/pages/ImagePage.module.css'
+
+import Grid from "../components/Grid";
 
 
 const ImagePage: MyPage = () => {
   return (
     <>
       <section className={styles.container} >
-        image
+        <Grid />
       </section>
     </>
   );

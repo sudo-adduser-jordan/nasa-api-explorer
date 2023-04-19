@@ -1,4 +1,4 @@
-import { MyPage } from "../components/types";
+import { MyPage } from "../util/types";
 import React from "react";
 
 import styles from '../styles/pages/AboutPage.module.css'

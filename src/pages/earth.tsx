@@ -1,5 +1,5 @@
 import React from "react";
-import { MyPage } from "../components/types";
+import { MyPage } from "../util/types";
 import styles from '../styles/pages/EarthPage.module.css'
 
 

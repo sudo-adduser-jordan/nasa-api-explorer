@@ -1,13 +1,14 @@
 import React from "react";
-import { MyPage } from "../components/types";
+import { MyPage } from "../util/types";
 import styles from '../styles/pages/VideoPage.module.css'
 
+import Grid from "../components/Grid";
 
 const VideoPage: MyPage = () => {
   return (
     <>
       <section className={styles.container} >
-        video
+        <Grid />
       </section>
     </>
   );

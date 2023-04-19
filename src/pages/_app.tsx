@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-import { MyAppProps } from "../components/types";
+import { MyAppProps } from "../util/types";
 import { Layouts } from "../components/Layout";
 
 function MyApp({ Component, pageProps }: MyAppProps) {

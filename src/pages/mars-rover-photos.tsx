@@ -1,19 +1,19 @@
 import React from "react";
 import { MyPage } from "../components/types";
-import styles from '../styles/pages/HomePage.module.css'
+import styles from '../styles/pages/MarsPage.module.css'
 
 
-const HomePage: MyPage = () => {
+const MarsPage: MyPage = () => {
   return (
     <>
       <section className={styles.container} >
-        home
+        mars
       </section>
     </>
   );
 };
 
 
-export default HomePage;
+export default MarsPage;
 
-HomePage.Layout = "Main";
+MarsPage.Layout = "Main";

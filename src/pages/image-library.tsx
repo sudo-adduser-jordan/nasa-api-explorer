@@ -1,19 +1,19 @@
 import React from "react";
 import { MyPage } from "../components/types";
-import styles from '../styles/pages/HomePage.module.css'
+import styles from '../styles/pages/ImagePage.module.css'
 
 
-const HomePage: MyPage = () => {
+const ImagePage: MyPage = () => {
   return (
     <>
       <section className={styles.container} >
-        home
+        image
       </section>
     </>
   );
 };
 
 
-export default HomePage;
+export default ImagePage;
 
-HomePage.Layout = "Main";
+ImagePage.Layout = "Main";

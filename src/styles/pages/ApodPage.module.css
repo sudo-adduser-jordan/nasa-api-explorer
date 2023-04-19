@@ -1,0 +1,8 @@
+.container {
+    background-color: tomato;
+    width: 85vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

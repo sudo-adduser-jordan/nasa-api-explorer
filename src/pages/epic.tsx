@@ -1,19 +1,19 @@
 import React from "react";
 import { MyPage } from "../components/types";
-import styles from '../styles/pages/HomePage.module.css'
+import styles from '../styles/pages/EpicPage.module.css'
 
 
-const HomePage: MyPage = () => {
+const EpicPage: MyPage = () => {
   return (
     <>
       <section className={styles.container} >
-        home
+        epic
       </section>
     </>
   );
 };
 
 
-export default HomePage;
+export default EpicPage;
 
-HomePage.Layout = "Main";
+EpicPage.Layout = "Main";

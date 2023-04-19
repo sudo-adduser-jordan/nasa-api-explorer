@@ -1,19 +1,19 @@
 import React from "react";
 import { MyPage } from "../components/types";
-import styles from '../styles/pages/HomePage.module.css'
+import styles from '../styles/pages/EarthPage.module.css'
 
 
-const HomePage: MyPage = () => {
+const EarthPage: MyPage = () => {
   return (
     <>
       <section className={styles.container} >
-        home
+        earth
       </section>
     </>
   );
 };
 
 
-export default HomePage;
+export default EarthPage;
 
-HomePage.Layout = "Main";
+EarthPage.Layout = "Main";

@@ -48,21 +48,7 @@ export default function Grid() {
                     <Card />
 
                 </div>    
-                            
-                <div className={styles.grid}>
-                    <Card />
-                    <Card />
-                    <Card />
 
-                    <Card />
-                    <Card />
-                    <Card />
-
-                    <Card />
-                    <Card />
-                    <Card />
-
-                </div>
         </section>
       </>
     )

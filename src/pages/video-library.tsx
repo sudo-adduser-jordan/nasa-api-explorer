@@ -1,3 +1,4 @@
+import Search from '@/components/Search';
 import Layout from '../components/Layout'
 import Sidebar from '../components/Sidebar'
 
@@ -7,7 +8,7 @@ const VideoPage = () => {
   return (
     <>
       <section className={styles.container} >
-        videos
+        <Search />
       </section>
     </>
   );

@@ -1,6 +1,7 @@
+import { GetStaticProps, InferGetServerSidePropsType } from "next";
 import Sidebar from '../components/Sidebar'
 import Layout from '../components/Layout'
-import { GetStaticProps, InferGetServerSidePropsType } from "next";
+import Search from '../components/Search'
 
 import styles from '../styles/pages/ImagePage.module.css'
 
@@ -49,22 +50,10 @@ const ImagePage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> 
   );
 };
 
-const Search = () => {
-  return(
-    <>
-    <section className={styles.search}>
-      <div className={styles.entry}>entry</div>
-      <div className={styles.icon}>icon</div>
-    </section>
-    </>
-  )
-}
-
-
 const Grid = ({ url, explanation }: Grid) => {
     return (
       <>
-        <Search />x
+        <Search />
         <section className={styles.gridContainer}>
           <div className={styles.grid}>
             <Card url={url} explanation={explanation} />

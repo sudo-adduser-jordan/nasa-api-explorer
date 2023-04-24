@@ -1,0 +1,29 @@
+.search {
+    /* background-color: lightcoral; */
+    margin-top: 2%;
+    height: 2.5rem;
+    width: 95%;
+    display: flex;
+    border: solid 1px;
+    border-color: white;
+    border-radius: 10px;
+    color: white;
+    /* margin: 1%; */
+}
+
+.entry {
+    /* background-color: lightcoral; */
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    border-right: solid 1px;
+}
+
+.icon {
+    /* background-color: antiquewhite; */
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

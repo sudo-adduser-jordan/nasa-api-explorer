@@ -5,7 +5,7 @@ import styles from '../styles/pages/IndexPage.module.css'
 const Index = () => {
   return (
     <section className={styles.container}>
-        home
+        Home
     </section>
   )
 }

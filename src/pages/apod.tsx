@@ -40,8 +40,8 @@ const ApodPage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> )
 
       </section>
     </>
-  );
-};
+  )
+}
 
 ApodPage.getLayout = function getLayout(page: React.ReactElement) {
   return (

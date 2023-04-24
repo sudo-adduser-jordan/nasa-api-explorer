@@ -1,4 +1,5 @@
 import { GetStaticProps, InferGetServerSidePropsType } from "next";
+
 import Sidebar from '../components/Sidebar'
 import Layout from '../components/Layout'
 import Search from '../components/Search'

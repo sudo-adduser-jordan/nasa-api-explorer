@@ -9,8 +9,8 @@ const EarthPage = () => {
         earth
       </section>
     </>
-  );
-};
+  )
+}
 
 EarthPage.getLayout = function getLayout(page: React.ReactElement) {
   return (

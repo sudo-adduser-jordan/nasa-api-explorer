@@ -6,11 +6,11 @@ const AboutPage = () => {
   return (
     <>
       <section className={styles.container} >
-        about
+        <div>About</div>
       </section>
     </>
-  );
-};
+  )
+}
 
 AboutPage.getLayout = function getLayout(page: React.ReactElement) {
   return (

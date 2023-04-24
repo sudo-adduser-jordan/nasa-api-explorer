@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import styles from '../styles/components/Nav.module.css'
+import styles from '../styles/components/Sidebar.module.css'
 
 export default function Nav() {
     return (
@@ -8,7 +8,7 @@ export default function Nav() {
             <nav className={styles.nav}>
                 Title
                 <Link href='/'><div className={styles.item}>Home</div></Link>
-                <Link href='/about'><div className={styles.item}>Api</div></Link>
+                <Link href='/about'><div className={styles.item}>About</div></Link>
                 <Link href='/apod'><div className={styles.item}>APOD</div></Link>
                 <Link href='/image-library'><div className={styles.item}>Image Library</div></Link>
                 <Link href='/video-library'><div className={styles.item}>Video Library</div></Link>

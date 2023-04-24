@@ -1,23 +1,28 @@
 .container {
-    background-color: tomato;
+    /* background-color: tomato; */
     width: 85vw;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .image {
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 75%;
-    height: 100%;
+    height: 65%;
     margin: 1rem;
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .description {
-    background-color: blueviolet;
+    background-color: mediumslateblue;
     width: 95%;
-    height: 50%;
+    height: 35%;
     margin: 1rem;
 }

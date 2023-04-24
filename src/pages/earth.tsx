@@ -1,9 +1,8 @@
-import React from "react";
-import { MyPage } from "../util/types";
+import Layout from '../components/Layout'
+import Sidebar from '../components/Sidebar'
 import styles from '../styles/pages/EarthPage.module.css'
 
-
-const EarthPage: MyPage = () => {
+const EarthPage = () => {
   return (
     <>
       <section className={styles.container} >
@@ -13,7 +12,13 @@ const EarthPage: MyPage = () => {
   );
 };
 
+EarthPage.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  )
+}
 
 export default EarthPage;
-
-EarthPage.Layout = "Main";

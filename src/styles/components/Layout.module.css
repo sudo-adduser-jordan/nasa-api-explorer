@@ -1,5 +1,5 @@
-.container {
-    background-color: aqua;
+.main {
+    background-color: black;
     display: flex;
     flex-direction: row;
 }

@@ -1,20 +1,25 @@
-import React from "react";
-import { MyPage } from "../util/types";
+import Layout from '../components/Layout'
+import Sidebar from '../components/Sidebar'
+
 import styles from '../styles/pages/MarsPage.module.css'
 
-import Grid from "../components/Grid";
-
-const MarsPage: MyPage = () => {
+const MarsPage = () => {
   return (
     <>
       <section className={styles.container} >
-        <Grid />
+        Mars
       </section>
     </>
   );
 };
 
+MarsPage.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  )
+}
 
 export default MarsPage;
-
-MarsPage.Layout = "Main";

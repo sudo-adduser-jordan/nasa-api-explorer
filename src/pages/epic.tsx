@@ -1,9 +1,8 @@
-import React from "react";
-import { MyPage } from "../util/types";
+import Layout from '../components/Layout'
+import Sidebar from '../components/Sidebar'
 import styles from '../styles/pages/EpicPage.module.css'
 
-
-const EpicPage: MyPage = () => {
+const EpicPage = () => {
   return (
     <>
       <section className={styles.container} >
@@ -13,7 +12,13 @@ const EpicPage: MyPage = () => {
   );
 };
 
+EpicPage.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  )
+}
 
 export default EpicPage;
-
-EpicPage.Layout = "Main";

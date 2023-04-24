@@ -1,20 +1,25 @@
-import React from "react";
-import { MyPage } from "../util/types";
+import Layout from '../components/Layout'
+import Sidebar from '../components/Sidebar'
+
 import styles from '../styles/pages/VideoPage.module.css'
 
-import Grid from "../components/Grid";
-
-const VideoPage: MyPage = () => {
+const VideoPage = () => {
   return (
     <>
       <section className={styles.container} >
-        <Grid />
+        videos
       </section>
     </>
   );
 };
 
+VideoPage.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  )
+}
 
 export default VideoPage;
-
-VideoPage.Layout = "Main";

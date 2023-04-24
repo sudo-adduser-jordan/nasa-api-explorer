@@ -1,32 +1,41 @@
-import { MyPage } from "../util/types";
-import React from "react";
+import { GetStaticProps, InferGetServerSidePropsType } from "next";
 
+import Layout from '../components/Layout'
+import Sidebar from '../components/Sidebar'
 import styles from '../styles/pages/ApodPage.module.css'
 
-// export const getStaticProps = async () => {
+type Data = {
+  copyright: string
+  date: string
+  explanation: string
+  hdurl: string
+  media_type: string
+  service_version: string
+  title: string
+  url: string
+}
 
-//   const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY');
-//   const data = await response.json();
+export const getStaticProps: GetStaticProps<{ data: Data }> = async () => {
+  const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY ')
+  const data: Data = await res.json()
+  return {
+    props: {
+      data
+    }
+  }
+}
 
-//   return {
-//     props: {
-//       apod: data
-//     }
-//   }
-// }
-
-
-const ApodPage: MyPage = (props) => {
+const ApodPage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> ) => {
   return (
     <>
       <section className={styles.container} >
 
         <div className={styles.image}>
-          image
+          <img src={data.url} alt="" />
         </div>
 
         <div className={styles.description}>
-          description
+          {data.explanation}
         </div>
 
       </section>
@@ -34,6 +43,13 @@ const ApodPage: MyPage = (props) => {
   );
 };
 
-export default ApodPage;
+ApodPage.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  )
+}
 
-ApodPage.Layout = "Main";
+export default ApodPage;

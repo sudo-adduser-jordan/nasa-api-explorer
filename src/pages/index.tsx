@@ -1,21 +1,22 @@
-import React from "react";
-import { MyPage } from "../util/types";
-import styles from '../styles/pages/HomePage.module.css'
+import Layout from '../components/Layout'
+import Sidebar from '../components/Sidebar'
+import styles from '../styles/pages/IndexPage.module.css'
 
-import Grid from "../components/Grid";
-
-
-const HomePage: MyPage = () => {
+const Index = () => {
   return (
-    <>
-      <section className={styles.container} >
+    <section className={styles.container}>
         home
-      </section>
-    </>
-  );
-};
+    </section>
+  )
+}
 
+Index.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <Layout>
+      <Sidebar />
+      {page}
+    </Layout>
+  )
+}
 
-export default HomePage;
-
-HomePage.Layout = "Main";
+export default Index

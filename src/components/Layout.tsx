@@ -1,7 +1,15 @@
-import MainLayout from "./MainLayout";
+import styles from '../styles/components/Layout.module.css'
 
-export const Layouts = {
-  Main: MainLayout
-};
+type LayoutProps = {
+  children: React.ReactNode
+}
 
-export type LayoutKeys = keyof typeof Layouts;
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <>
+      <main className={styles.main}>
+        {children}
+      </main>
+    </>
+  )
+}

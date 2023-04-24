@@ -16,7 +16,7 @@ type Data = {
 }
 
 export const getStaticProps: GetStaticProps<{ data: Data }> = async () => {
-  const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY ')
+  const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
   const data: Data = await res.json()
   return {
     props: {

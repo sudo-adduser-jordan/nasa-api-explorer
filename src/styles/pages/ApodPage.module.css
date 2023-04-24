@@ -3,6 +3,21 @@
     width: 85vw;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.image {
+    background-color: aqua;
+    width: 75%;
+    height: 100%;
+    margin: 1rem;
+}
+
+.description {
+    background-color: blueviolet;
+    width: 95%;
+    height: 50%;
+    margin: 1rem;
 }

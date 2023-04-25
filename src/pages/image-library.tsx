@@ -6,19 +6,27 @@ import Search from '../components/Search'
 
 import styles from '../styles/pages/ImagePage.module.css'
 
-interface Data {
-  version: string
-  href: string // request link 	"http://images-api.nasa.gov/search?nasa_id=1&page=2"
-  items: [
-    [
-    href: string,
-    description: string
+type Data = {
+  collection: {
+    items: [
+      data: {
+        href: string,
+        description: string
+        //album: string
+        //location: string 
+        //title: string
+        //date: string
+        //media_type: string
+      },
     ],
-  ]
-  metadata:
-    total_hits: int
-  links: string // will only return 100 items of total_hits {nasa_id&page={n}}
+    metadata: {
+      total_hits: number
+    }
+  }
 }
+
+
+
 
 type Grid = {
     href: string
@@ -30,15 +38,25 @@ type Card = {
     description: string
 }
 
-export const getStaticProps: GetStaticProps<{ data: Data }> = async () => {
+export const getStaticProps = async () => {
 
   const res = await fetch('https://images-api.nasa.gov/search?nasa_id=1')
   const json = await res.json()
+  // console.log(json)
+  // console.log(JSON.stringify(json, null, 2))
 
-  console.log(json)
-  const data: Data = JSON.parse(json)
-  console.log(data)
+  // extract data from json req
+  const data = null
 
+
+
+
+
+
+
+
+
+  
   return {
     props: {
       data
@@ -51,8 +69,8 @@ const ImagePage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> 
     <>
       <section className={styles.container} >
         <Grid 
-          href={data.href} 
-          description={data.description} 
+          href='x'
+          description='x'
         />
 
       </section>

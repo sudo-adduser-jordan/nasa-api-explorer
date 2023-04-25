@@ -6,30 +6,39 @@ import Search from '../components/Search'
 
 import styles from '../styles/pages/ImagePage.module.css'
 
-type Data = {
-  copyright: string
-  date: string
-  explanation: string
-  hdurl: string
-  media_type: string
-  service_version: string
-  title: string
-  url: string
+interface Data {
+  version: string
+  href: string // request link 	"http://images-api.nasa.gov/search?nasa_id=1&page=2"
+  items: [
+    [
+    href: string,
+    description: string
+    ],
+  ]
+  metadata:
+    total_hits: int
+  links: string // will only return 100 items of total_hits {nasa_id&page={n}}
 }
 
 type Grid = {
-    url: string
-    explanation: string
+    href: string
+    description: string
 }
 
 type Card = {
-    url: string
-    explanation: string
+    href: string
+    description: string
 }
 
 export const getStaticProps: GetStaticProps<{ data: Data }> = async () => {
-  const res = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY ')
-  const data: Data = await res.json()
+
+  const res = await fetch('https://images-api.nasa.gov/search?nasa_id=1')
+  const json = await res.json()
+
+  console.log(json)
+  const data: Data = JSON.parse(json)
+  console.log(data)
+
   return {
     props: {
       data
@@ -42,8 +51,8 @@ const ImagePage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> 
     <>
       <section className={styles.container} >
         <Grid 
-          url={data.url} 
-          explanation={data.explanation} 
+          href={data.href} 
+          description={data.description} 
         />
 
       </section>
@@ -51,38 +60,38 @@ const ImagePage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> 
   );
 };
 
-const Grid = ({ url, explanation }: Grid) => {
+const Grid = ({ href, description }: Grid) => {
     return (
       <>
         <Search />
         <section className={styles.gridContainer}>
           <div className={styles.grid}>
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
-            <Card url={url} explanation={explanation} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
+            <Card href={href} description={description} />
           </div>    
         </section>
       </>
     )
 }
 
-const Card = ({ url, explanation }: Card) => {
+const Card = ({ href, description }: Card) => {
   return (
     <>
       <div className={styles.card}>
 
           <div className={styles.image}>
-            <img src={url} alt='' />
+            <img src={href} alt='' />
           </div>
 
           <div className={styles.description}>
-            {explanation}
+            {description}
           </div>
 
       </div>

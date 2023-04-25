@@ -42,7 +42,7 @@
 }
 
 .description {
-    /* background-color: mediumslateblue; */
+    background-color: mediumslateblue;
     width: 100%;
     height: 4rem;
     overflow-y: hidden;

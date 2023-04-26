@@ -6,31 +6,54 @@ import Search from '../components/Search'
 
 import styles from '../styles/pages/ImagePage.module.css'
 
-type Data = {
-  collection: {
-    items: [
-      data: {
-        href: string,
-        description: string
-        //album: string
-        //location: string 
-        //title: string
-        //date: string
-        //media_type: string
-      },
-    ],
-    metadata: {
-      total_hits: number
-    }
-  }
+// json to typescript converter
+export interface Root {
+  collection: Collection
 }
 
+export interface Collection {
+  version: string
+  href: string
+  items: Item[]
+  metadata: Metadata
+  links: Link2[]
+}
 
+export interface Item {
+  href: string
+  data: Daum[]
+  links: Link[]
+}
 
+export interface Daum {
+  center: string
+  title: string
+  keywords?: string[]
+  location?: string
+  nasa_id: string
+  date_created: string
+  media_type: string
+  description_508?: string
+  description?: string
+  album?: string[]
+  photographer?: string
+  secondary_creator?: string
+}
 
-type Grid = {
-    href: string
-    description: string
+export interface Link {
+  href: string
+  rel: string
+  render: string
+}
+
+export interface Metadata {
+  total_hits: number
+}
+
+export interface Link2 {
+  rel: string
+  prompt: string
+  href: string
 }
 
 type Card = {
@@ -38,66 +61,58 @@ type Card = {
     description: string
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
 
-  const res = await fetch('https://images-api.nasa.gov/search?nasa_id=1')
-  const json = await res.json()
-  // console.log(json)
-  // console.log(JSON.stringify(json, null, 2))
+  const res = await fetch('https://images-api.nasa.gov/search?nasa_id=1&media_type=image')
+  const root: Root = await res.json()
+  console.log(root)
 
-  // extract data from json req
-  const data = null
-
-
-
-
-
-
-
-
-
-  
   return {
     props: {
-      data
+      root
     }
   }
 }
 
-const ImagePage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> ) => {
+const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> ) => {
+
+  // init array
+  const cards = []
+
+  // loop n times, push object to array
+  for (let i = 0; i < 20; i++) {
+    cards.push(
+        {
+          key: 1, 
+          href: root.collection.items[i].links[0].href, 
+          description: root.collection.items[i].data[0].title
+        },
+      );
+  }
+
+  const cardComponent = cards.map(card => (
+    <Card 
+      key={card.key} 
+      href={card.href} 
+      description={card.description} 
+    />
+  ))
+
   return (
     <>
-      <section className={styles.container} >
-        <Grid 
-          href='x'
-          description='x'
-        />
+      <section className={styles.container}>
+        <Search />
+        <div className={styles.gridContainer}>
 
+          <div className={styles.grid}>
+            {cardComponent}
+          </div>   
+
+        </div>
       </section>
     </>
   );
 };
-
-const Grid = ({ href, description }: Grid) => {
-    return (
-      <>
-        <Search />
-        <section className={styles.gridContainer}>
-          <div className={styles.grid}>
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-            <Card href={href} description={description} />
-          </div>    
-        </section>
-      </>
-    )
-}
 
 const Card = ({ href, description }: Card) => {
   return (

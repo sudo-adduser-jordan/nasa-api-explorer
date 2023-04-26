@@ -7,7 +7,7 @@
     display: flex;
     border: solid 1px;
     border-color: white;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     color: white;
     /* margin: 1%; */
 }
@@ -19,6 +19,7 @@
     align-items: center;
     padding-left: 2rem;
     border-right: solid 1px;
+    color: white;
 }
 
 .icon {

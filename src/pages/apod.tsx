@@ -5,14 +5,8 @@ import Sidebar from '../components/Sidebar'
 import styles from '../styles/pages/ApodPage.module.css'
 
 type Data = {
-  copyright: string
-  date: string
   explanation: string
   hdurl: string
-  media_type: string
-  service_version: string
-  title: string
-  url: string
 }
 
 export const getStaticProps: GetStaticProps<{ data: Data }> = async () => {
@@ -31,7 +25,7 @@ const ApodPage = ({ data }: InferGetServerSidePropsType<typeof getStaticProps> )
       <section className={styles.container} >
 
         <div className={styles.image}>
-          <img src={data.url} alt="" />
+          <img src={data.hdurl} alt="" />
         </div>
 
         <div className={styles.description}>

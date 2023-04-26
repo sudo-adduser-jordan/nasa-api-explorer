@@ -1,4 +1,5 @@
 import { GetStaticProps, InferGetServerSidePropsType } from "next";
+import React, { useState } from "react";
 
 import Sidebar from '../components/Sidebar'
 import Layout from '../components/Layout'
@@ -56,16 +57,28 @@ export interface Link2 {
   href: string
 }
 
+type Cards = {
+  key: number,
+  href: string,
+  description: string 
+}
+
 type Card = {
     href: string
     description: string
 }
 
+
+// fetch image data
 export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
 
-  const res = await fetch('https://images-api.nasa.gov/search?q=blackhole&media_type=image')
+  let searchInput = "ship"
+  // let searchInput = "blackhole"
+
+  let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=image`
+
+  const res = await fetch(searchString)
   const root: Root = await res.json()
-  console.log(root)
 
   return {
     props: {
@@ -74,46 +87,87 @@ export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
   }
 }
 
+// page
 const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> ) => {
 
-  // init array
-  const cards = []
+  // const [cards, setCards] = React.useState([]);
 
-  let total = root.collection.metadata.total_hits
+  // const updatedCardsArray = [...cards, newCards];
 
-  if (total > 100) {
-    total = 100
-  }
+  // setCards(updatedCardsArray);  
 
-  // loop n times, push object to array
+  const cards: Cards[] = []
+
+  const loadImages = () => {  
+  let total = root.collection.items.length
+
   for (let i = 0; i < total; i++) {
     cards.push(
         {
-          key: 1, 
+          key: i, 
           href: root.collection.items[i].links[0].href, 
           description: root.collection.items[i].data[0].title
         },
       );
+  }}
+  loadImages()
+
+  const showLoadButton = () => {
+    let total = root.collection.metadata.total_hits
+    if (total >= 100) {
+      return (
+        <button 
+        className={styles.load}
+        onClick={() => {fetchMoreImages()}}
+        >
+          Load More
+        </button>
+      )
+    }
   }
 
-  // map cards to card component
-  const cardComponent = cards.map(card => (
-    <Card 
-      key={card.key} 
-      href={card.href} 
-      description={card.description} 
-    />
-  ))
+  const fetchMoreImages = async () => {
+    let count = 1
+
+    let searchInput = "ship"
+    let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=image&page=${count}`
+  
+    const res = await fetch(searchString)
+    const root: Root = await res.json()
+    
+    const total = root.collection.items.length
+
+    for (let i = 0; i < 100; i++) {
+      // console.log(root.collection.items[i].links[0].href)
+      cards.push(
+          {
+            key: i, 
+            href: root.collection.items[i].links[0].href, 
+            description: root.collection.items[i].data[0].title
+          },
+        )
+    }
+  }
 
   return (
     <>
       <section className={styles.container}>
-        <Search />
+        <Search input={""} />
         <div className={styles.gridContainer}>
 
           <div className={styles.grid}>
-            {cardComponent}
+
+            {cards.map(card => (
+              <Card 
+                key={card.key} 
+                href={card.href} 
+                description={card.description} 
+              />
+            ))}
+
           </div>   
+
+          {showLoadButton()}
 
         </div>
       </section>
@@ -121,6 +175,7 @@ const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> 
   );
 };
 
+// card
 const Card = ({ href, description }: Card) => {
   return (
     <>
@@ -139,6 +194,7 @@ const Card = ({ href, description }: Card) => {
   )
 }
 
+// layout
 ImagePage.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <Layout>

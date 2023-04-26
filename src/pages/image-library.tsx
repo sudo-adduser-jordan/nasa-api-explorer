@@ -63,7 +63,7 @@ type Card = {
 
 export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
 
-  const res = await fetch('https://images-api.nasa.gov/search?nasa_id=1&media_type=image')
+  const res = await fetch('https://images-api.nasa.gov/search?q=blackhole&media_type=image')
   const root: Root = await res.json()
   console.log(root)
 
@@ -79,8 +79,14 @@ const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> 
   // init array
   const cards = []
 
+  let total = root.collection.metadata.total_hits
+
+  if (total > 100) {
+    total = 100
+  }
+
   // loop n times, push object to array
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < total; i++) {
     cards.push(
         {
           key: 1, 
@@ -90,6 +96,7 @@ const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> 
       );
   }
 
+  // map cards to card component
   const cardComponent = cards.map(card => (
     <Card 
       key={card.key} 

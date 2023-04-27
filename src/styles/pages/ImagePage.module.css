@@ -49,3 +49,14 @@
     overflow-y: hidden;
 }
 
+.buttonContainer {
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.load {
+    /* background-color: lightcoral; */
+}
+

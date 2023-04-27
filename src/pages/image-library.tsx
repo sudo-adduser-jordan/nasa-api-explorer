@@ -116,12 +116,14 @@ const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> 
     let total = root.collection.metadata.total_hits
     if (total >= 100) {
       return (
+        <div className={styles.buttonContainer}>
         <button 
-        className={styles.load}
-        onClick={() => {fetchMoreImages()}}
-        >
-          Load More
-        </button>
+          className={styles.load}
+          onClick={() => {fetchMoreImages()}}
+          >
+            Load More
+          </button>
+        </div>
       )
     }
   }

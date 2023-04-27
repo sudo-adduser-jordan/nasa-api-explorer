@@ -5,7 +5,7 @@ import styles from '../styles/pages/IndexPage.module.css'
 const Index = () => {
   return (
     <section className={styles.container}>
-        Home
+        This website is under construction.
     </section>
   )
 }

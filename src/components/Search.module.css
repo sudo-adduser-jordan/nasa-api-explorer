@@ -1,5 +1,6 @@
 .search {
     /* background-color: lightcoral; */
+    position: sticky;
     margin-top: 2%;
     margin-bottom: 2%;
     height: 2.5rem;

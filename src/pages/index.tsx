@@ -1,22 +1,16 @@
-import Layout from '../components/Layout'
-import Sidebar from '../components/Sidebar'
-import styles from '../styles/pages/IndexPage.module.css'
+import Layout from '../components/Layout';
+import styles from '../styles/pages/HomePage.module.css';
 
-const Index = () => {
-  return (
-    <section className={styles.container}>
-        This website is under construction.
-    </section>
-  )
-}
+const HomePage = () => {
+    return (
+        <section className={styles.container}>
+            This website is under construction.
+        </section>
+    );
+};
 
-Index.getLayout = function getLayout(page: React.ReactElement) {
-  return (
-    <Layout>
-      <Sidebar />
-      {page}
-    </Layout>
-  )
-}
+HomePage.getLayout = function getLayout(page: React.ReactElement) {
+    return <Layout>{page}</Layout>;
+};
 
-export default Index
+export default HomePage;

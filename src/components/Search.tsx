@@ -1,32 +1,28 @@
-import styles from '../styles/components/Search.module.css'
-import { ChangeEvent, useState } from "react";
+import styles from './Search.module.css';
+import { ChangeEvent, useState } from 'react';
 
 type Input = {
-  input: string
-}
-
+    input: string;
+};
 
 export default function Search(props: Input) {
-    return(
-      <>
-      <form className={styles.search}>
+    return (
+        <>
+            <form className={styles.search}>
+                <input
+                    type='text'
+                    // onChange={}
+                    // value={}
+                    className={styles.entry}
+                />
 
-        <input 
-          type="text" 
-          // onChange={}
-          // value={}
-          className={styles.entry} 
-          />
-
-        <button 
-          className={styles.icon}
-          // onClick={} 
-        >
-          Search
-        </button>
-        
-      </form>
-      </>
-    )
+                <button
+                    className={styles.icon}
+                    // onClick={}
+                >
+                    Search
+                </button>
+            </form>
+        </>
+    );
 }
-

@@ -1,0 +1,13 @@
+.main {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 800px) {
+    .main {
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+    }
+}

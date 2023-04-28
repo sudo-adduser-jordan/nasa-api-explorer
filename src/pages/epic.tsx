@@ -1,24 +1,16 @@
-import Layout from '../components/Layout'
-import Sidebar from '../components/Sidebar'
-import styles from '../styles/pages/EpicPage.module.css'
+import Layout from '../components/Layout';
+import styles from '../styles/pages/EpicPage.module.css';
 
 const EpicPage = () => {
-  return (
-    <>
-      <section className={styles.container} >
-        epic
-      </section>
-    </>
-  );
+    return (
+        <>
+            <section className={styles.container}>epic</section>
+        </>
+    );
 };
 
 EpicPage.getLayout = function getLayout(page: React.ReactElement) {
-  return (
-    <Layout>
-      <Sidebar />
-      {page}
-    </Layout>
-  )
-}
+    return <Layout>{page}</Layout>;
+};
 
 export default EpicPage;

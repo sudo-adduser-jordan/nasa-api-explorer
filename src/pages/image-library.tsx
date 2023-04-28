@@ -7,6 +7,9 @@ import Search from '../components/Search'
 
 import styles from '../styles/pages/ImagePage.module.css'
 
+let pageCount = 2
+let componentKey = 100
+
 // json to typescript converter
 export interface Root {
   collection: Collection
@@ -75,6 +78,7 @@ export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
   let searchInput = "ship"
   // let searchInput = "blackhole"
 
+  // starts at page 1
   let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=image`
 
   const res = await fetch(searchString)
@@ -90,27 +94,35 @@ export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
 // page
 const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> ) => {
 
-  // const [cards, setCards] = React.useState([]);
+  // *valid*
+  // const [cards, setCards] = React.useState<Array<{key: number, href: string, description: string}>>([]);
+  // const [cards, setCards] = React.useState<Cards[]>([]);
+  // const cards: Cards[] = []
 
-  // const updatedCardsArray = [...cards, newCards];
+  const [cards, setCards] = React.useState<
+    Array<{
+      key: number, 
+      href: string, 
+      description: string
+    }>
+    >([]);
 
-  // setCards(updatedCardsArray);  
 
-  const cards: Cards[] = []
+  const addCards = () => {  
+    
+    let total = root.collection.items.length
 
-  const loadImages = () => {  
-  let total = root.collection.items.length
-
-  for (let i = 0; i < total; i++) {
-    cards.push(
+    for (let i = 0; i < total; i++) {
+      cards.push(
         {
           key: i, 
           href: root.collection.items[i].links[0].href, 
           description: root.collection.items[i].data[0].title
         },
-      );
-  }}
-  loadImages()
+      )
+    };
+  }
+  addCards()
 
   const showLoadButton = () => {
     let total = root.collection.metadata.total_hits
@@ -119,7 +131,7 @@ const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> 
         <div className={styles.buttonContainer}>
         <button 
           className={styles.load}
-          onClick={() => {fetchMoreImages()}}
+          onClick={loadMoreCards}
           >
             Load More
           </button>
@@ -128,27 +140,42 @@ const ImagePage = ({ root }: InferGetServerSidePropsType<typeof getStaticProps> 
     }
   }
 
-  const fetchMoreImages = async () => {
-    let count = 1
+
+  const loadMoreCards = async () => {
 
     let searchInput = "ship"
-    let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=image&page=${count}`
+    let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=image&page=${pageCount}`
   
     const res = await fetch(searchString)
     const root: Root = await res.json()
     
     const total = root.collection.items.length
 
-    for (let i = 0; i < 100; i++) {
-      // console.log(root.collection.items[i].links[0].href)
-      cards.push(
-          {
-            key: i, 
-            href: root.collection.items[i].links[0].href, 
-            description: root.collection.items[i].data[0].title
-          },
-        )
+    if (total === 100) {
+      pageCount++
+      console.log("pageCount: " + pageCount)
     }
+
+    const arr: Cards[] = []
+    
+    for (let i = 0; i < total; i++) {
+      console.log("componentKey" + componentKey)
+      arr.push(
+        {
+          key: componentKey, 
+          href: root.collection.items[i].links[0].href, 
+          description: root.collection.items[i].data[0].title
+        },
+      )
+        componentKey++
+      }
+
+      console.log(arr)
+      // add new array to end of existing array
+      setCards(prev => [
+        ...prev.concat(arr) 
+      ]);
+
   }
 
   return (

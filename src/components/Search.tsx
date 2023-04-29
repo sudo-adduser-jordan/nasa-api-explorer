@@ -1,28 +1,21 @@
 import styles from './Search.module.css';
-import { ChangeEvent, useState } from 'react';
 
-type Input = {
-    input: string;
-};
-
-export default function Search(props: Input) {
+const Search = ({ handleSubmit }: any) => {
     return (
         <>
-            <form className={styles.search}>
+            <form className={styles.search} onSubmit={handleSubmit}>
                 <input
-                    type='text'
-                    // onChange={}
-                    // value={}
                     className={styles.entry}
+                    name='searchInput'
+                    defaultValue='space'
                 />
 
-                <button
-                    className={styles.icon}
-                    // onClick={}
-                >
+                <button className={styles.icon} type='submit'>
                     Search
                 </button>
             </form>
         </>
     );
-}
+};
+
+export default Search;

@@ -1,13 +1,15 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
-import React, { useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 
 import Layout from '../components/Layout';
 import Search from '../components/Search';
 
 import styles from '../styles/pages/ImagePage.module.css';
 
-let pageCount = 2;
+// global variables
+let pageCount = 1;
 let componentKey = 100;
+let total = 0;
 
 // json to typescript converter
 export interface Root {
@@ -59,64 +61,73 @@ export interface Link2 {
     href: string;
 }
 
-type Cards = {
-    key: number;
-    href: string;
-    description: string;
-};
-
 type Card = {
     href: string;
     description: string;
 };
 
-// fetch image data
-export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
-    let searchInput = 'ship';
-    // let searchInput = "blackhole"
+type SearchInput = {
+    searchInput: string;
+};
 
-    // starts at page 1
-    let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=image`;
-
-    const res = await fetch(searchString);
+const getCards = async () => {
+    const res = await fetch(
+        'https://images-api.nasa.gov/search?q=ship&media_type=image'
+    );
     const root: Root = await res.json();
+    total = root.collection.metadata.total_hits;
+    // console.log(total);
 
-    return {
-        props: {
-            root,
-        },
-    };
+    const array: Card[] = [];
+    for (let i = 0; i < root.collection.items.length; i++) {
+        array.push({
+            href: root.collection.items[i].links[0].href,
+            description: root.collection.items[i].data[0].title,
+        });
+    }
+    return array;
 };
 
 // page
-const ImagePage = ({
-    root,
-}: InferGetServerSidePropsType<typeof getStaticProps>) => {
-    // const [cards, setCards] = React.useState<
-    //     Array<{
-    //         key: number;
-    //         href: string;
-    //         description: string;
-    //     }>
-    // >([]);
-    const [cards, setCards] = React.useState<Cards[]>([]);
+const ImagePage = (array: Card[]) => {
+    const [cards, setCards] = useState<Card[]>([]);
+    let input: FormDataEntryValue | null = '';
 
-    const addCards = () => {
-        let total = root.collection.items.length;
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        input = formData.get('searchInput');
+        searchForCards();
+    };
 
-        for (let i = 0; i < total; i++) {
-            cards.push({
-                key: i,
+    const searchForCards = async () => {
+        let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=image`;
+
+        const res = await fetch(searchString);
+        const root: Root = await res.json();
+        total = root.collection.metadata.total_hits;
+
+        if (root.collection.items.length === 100) {
+            pageCount += 1;
+        }
+
+        const array: Card[] = [];
+
+        for (let i = 0; i < root.collection.items.length; i++) {
+            array.push({
                 href: root.collection.items[i].links[0].href,
                 description: root.collection.items[i].data[0].title,
             });
         }
+        console.log('searchForCards');
+        console.log('pageCount: ' + pageCount);
+        console.log(array);
+        setCards(array);
     };
-    addCards();
 
     const showLoadButton = () => {
-        let total = root.collection.metadata.total_hits;
-        if (total >= 100) {
+        if (total > 100) {
             return (
                 <div className={styles.buttonContainer}>
                     <button className={styles.load} onClick={loadMoreCards}>
@@ -128,45 +139,39 @@ const ImagePage = ({
     };
 
     const loadMoreCards = async () => {
-        let searchInput = 'ship';
-        let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=image&page=${pageCount}`;
+        let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=image&page=${pageCount}`;
 
         const res = await fetch(searchString);
         const root: Root = await res.json();
 
-        const total = root.collection.items.length;
-
-        if (total === 100) {
+        if (root.collection.items.length === 100) {
             pageCount++;
-            console.log('pageCount: ' + pageCount);
         }
 
-        const arr: Cards[] = [];
+        const array: Card[] = [];
 
-        for (let i = 0; i < total; i++) {
-            console.log('componentKey' + componentKey);
-            arr.push({
-                key: componentKey,
+        for (let i = 0; i < root.collection.items.length; i++) {
+            array.push({
                 href: root.collection.items[i].links[0].href,
                 description: root.collection.items[i].data[0].title,
             });
-            componentKey++;
         }
-
-        console.log(arr);
-        // add new array to end of existing array
-        setCards((prev) => [...prev.concat(arr)]);
+        console.log('loadMoreCards');
+        console.log('pageCount: ' + pageCount);
+        console.log(array);
+        setCards(cards.concat(array));
     };
 
     return (
         <>
             <section className={styles.container}>
-                <Search input={''} />
+                <Search handleSubmit={handleSubmit} />
                 <div className={styles.gridContainer}>
                     <div className={styles.grid}>
-                        {cards.map((card) => (
+                        {cards.map((card, i) => (
+                            // <Card key={i} href={card.href} description={i} />
                             <Card
-                                key={card.key}
+                                key={i}
                                 href={card.href}
                                 description={card.description}
                             />

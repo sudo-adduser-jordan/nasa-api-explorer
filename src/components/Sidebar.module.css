@@ -10,7 +10,6 @@
 
 .container2 {
     background-color: grey;
-    width: 15vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -55,9 +54,8 @@
 @media (max-width: 800px) {
     .container {
         position: fixed;
-        right: -100%;
+        left: -100%;
         width: 35%;
-        z-index: 9;
     }
     .sidebar {
         height: 80%;

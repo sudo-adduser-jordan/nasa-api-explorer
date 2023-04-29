@@ -7,7 +7,7 @@ const Search = ({ handleSubmit }: any) => {
                 <input
                     className={styles.entry}
                     name='searchInput'
-                    defaultValue='space'
+                    defaultValue='black hole'
                 />
 
                 <button className={styles.icon} type='submit'>

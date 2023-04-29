@@ -1,5 +1,5 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
-import React, { SetStateAction, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Layout from '../components/Layout';
 import Search from '../components/Search';
@@ -7,8 +7,9 @@ import Search from '../components/Search';
 import styles from '../styles/pages/ImagePage.module.css';
 
 // global variables
-let pageCount = 1;
+let input: FormDataEntryValue | null = '';
 let componentKey = 100;
+let pageCount = 1;
 let total = 0;
 
 // json to typescript converter
@@ -70,13 +71,12 @@ type SearchInput = {
     searchInput: string;
 };
 
-const getCards = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
     const res = await fetch(
-        'https://images-api.nasa.gov/search?q=ship&media_type=image'
+        'https://images-api.nasa.gov/search?q=black hole&media_type=image'
     );
     const root: Root = await res.json();
     total = root.collection.metadata.total_hits;
-    // console.log(total);
 
     const array: Card[] = [];
     for (let i = 0; i < root.collection.items.length; i++) {
@@ -85,13 +85,19 @@ const getCards = async () => {
             description: root.collection.items[i].data[0].title,
         });
     }
-    return array;
+
+    return {
+        props: {
+            array,
+        },
+    };
 };
 
 // page
-const ImagePage = (array: Card[]) => {
-    const [cards, setCards] = useState<Card[]>([]);
-    let input: FormDataEntryValue | null = '';
+const ImagePage = ({
+    array,
+}: InferGetServerSidePropsType<typeof getStaticProps>) => {
+    const [cards, setCards] = useState<Card[]>(array);
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -126,23 +132,12 @@ const ImagePage = (array: Card[]) => {
         setCards(array);
     };
 
-    const showLoadButton = () => {
-        if (total > 100) {
-            return (
-                <div className={styles.buttonContainer}>
-                    <button className={styles.load} onClick={loadMoreCards}>
-                        Load More
-                    </button>
-                </div>
-            );
-        }
-    };
-
     const loadMoreCards = async () => {
         let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=image&page=${pageCount}`;
 
         const res = await fetch(searchString);
         const root: Root = await res.json();
+        total = root.collection.metadata.total_hits;
 
         if (root.collection.items.length === 100) {
             pageCount++;
@@ -162,6 +157,27 @@ const ImagePage = (array: Card[]) => {
         setCards(cards.concat(array));
     };
 
+    const [showButton, setShowButton] = useState(true);
+    useEffect(() => {
+        setShowButton(true);
+    }, []);
+
+    const loadButton = () => {
+        if (total > 100) {
+            setShowButton(true);
+            // return (
+            //     <div className={styles.buttonContainer}>
+            //         <button className={styles.load} onClick={loadMoreCards}>
+            //             Load More
+            //         </button>
+            //     </div>
+            // );
+            // }
+        } else {
+            setShowButton(false);
+        }
+    };
+
     return (
         <>
             <section className={styles.container}>
@@ -178,7 +194,17 @@ const ImagePage = (array: Card[]) => {
                         ))}
                     </div>
 
-                    {showLoadButton()}
+                    {/* {loadButton()} */}
+                    {showButton && (
+                        <div className={styles.buttonContainer}>
+                            <button
+                                className={styles.load}
+                                onClick={loadMoreCards}
+                            >
+                                Load More
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
         </>

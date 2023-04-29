@@ -16,7 +16,7 @@
     flex-direction: column;
     color: white;
     border-right: solid 1px white;
-    position: absolute;
+    position: fixed;
     left: 0;
     width: 35%;
     z-index: 9;
@@ -56,7 +56,6 @@
     .container {
         position: fixed;
         right: -100%;
-        /* right: 0; */
         width: 35%;
         z-index: 9;
     }

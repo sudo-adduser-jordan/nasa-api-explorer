@@ -1,4 +1,3 @@
-import { MouseEventHandler } from 'react';
 import styles from './Topbar.module.css';
 
 export default function Topbar({ onToggle }: any) {

@@ -1,0 +1,17 @@
+.container {
+    display: none;
+    z-index: 9;
+}
+
+@media (max-width: 800px) {
+    .container {
+        width: 100%;
+        height: 10%;
+        color: blue;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: aqua;
+    }
+}

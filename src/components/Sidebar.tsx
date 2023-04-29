@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './Sidebar.module.css';
 
-export default function Nav() {
-    const [isActive, setIsActive] = useState('');
+export default function Sidebar({ sidebar }: any) {
+    const [isActive, setIsActive] = useState('tab1');
 
     const handleTab1 = () => {
         setIsActive('tab1');
@@ -32,8 +32,17 @@ export default function Nav() {
 
     return (
         <>
-            <section className={styles.container}>
-                <nav className={styles.nav}>
+            {/* <section className={styles.container}> */}
+            <section
+                className={
+                    sidebar === false
+                        ? `${styles.container}`
+                        : `${styles.container2}`
+                }
+            >
+                <div className={styles.title}>NASA Api Explorer</div>
+
+                <nav className={styles.sidebar}>
                     <Link href='/'>
                         <div
                             className={

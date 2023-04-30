@@ -64,11 +64,8 @@ export interface Link2 {
 
 type Card = {
     href: string;
-    description: string;
-};
-
-type SearchInput = {
-    searchInput: string;
+    date: string;
+    title: string;
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -82,7 +79,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     for (let i = 0; i < root.collection.items.length; i++) {
         array.push({
             href: root.collection.items[i].links[0].href,
-            description: root.collection.items[i].data[0].title,
+            date: root.collection.items[i].data[0].date_created,
+            title: root.collection.items[i].data[0].title,
         });
     }
 
@@ -123,18 +121,18 @@ const ImagePage = ({
         for (let i = 0; i < root.collection.items.length; i++) {
             array.push({
                 href: root.collection.items[i].links[0].href,
-                description: root.collection.items[i].data[0].title,
+                date: root.collection.items[i].data[0].date_created,
+                title: root.collection.items[i].data[0].title,
             });
         }
         console.log('searchForCards');
-        console.log('pageCount: ' + pageCount);
+        console.log(searchString);
         console.log(array);
         setCards(array);
     };
 
     const loadMoreCards = async () => {
         let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=image&page=${pageCount}`;
-
         const res = await fetch(searchString);
         const root: Root = await res.json();
         total = root.collection.metadata.total_hits;
@@ -148,33 +146,31 @@ const ImagePage = ({
         for (let i = 0; i < root.collection.items.length; i++) {
             array.push({
                 href: root.collection.items[i].links[0].href,
-                description: root.collection.items[i].data[0].title,
+                date: root.collection.items[i].data[0].date_created,
+                title: root.collection.items[i].data[0].title,
             });
         }
         console.log('loadMoreCards');
-        console.log('pageCount: ' + pageCount);
+        console.log(searchString);
         console.log(array);
         setCards(cards.concat(array));
     };
 
-    const [showButton, setShowButton] = useState(true);
+    // #TODO button doesnt render on first load but will redner after search
+    const [showButton, setShowButton] = useState(false);
     useEffect(() => {
         setShowButton(true);
     }, []);
 
     const loadButton = () => {
         if (total > 100) {
-            setShowButton(true);
-            // return (
-            //     <div className={styles.buttonContainer}>
-            //         <button className={styles.load} onClick={loadMoreCards}>
-            //             Load More
-            //         </button>
-            //     </div>
-            // );
-            // }
-        } else {
-            setShowButton(false);
+            return (
+                <div className={styles.buttonContainer}>
+                    <button className={styles.load} onClick={loadMoreCards}>
+                        Load More
+                    </button>
+                </div>
+            );
         }
     };
 
@@ -185,26 +181,16 @@ const ImagePage = ({
                 <div className={styles.gridContainer}>
                     <div className={styles.grid}>
                         {cards.map((card, i) => (
-                            // <Card key={i} href={card.href} description={i} />
                             <Card
                                 key={i}
                                 href={card.href}
-                                description={card.description}
+                                date={card.date}
+                                title={card.title}
                             />
                         ))}
                     </div>
-
                     {/* {loadButton()} */}
-                    {showButton && (
-                        <div className={styles.buttonContainer}>
-                            <button
-                                className={styles.load}
-                                onClick={loadMoreCards}
-                            >
-                                Load More
-                            </button>
-                        </div>
-                    )}
+                    {showButton && loadButton()}
                 </div>
             </section>
         </>
@@ -212,15 +198,16 @@ const ImagePage = ({
 };
 
 // card
-const Card = ({ href, description }: Card) => {
+const Card = ({ href, date, title }: Card) => {
     return (
         <>
             <div className={styles.card}>
                 <div className={styles.image}>
                     <img src={href} alt='' />
                 </div>
-
-                <div className={styles.description}>{description}</div>
+                <div className={styles.date}>{date}</div>
+                <div className={styles.title}>{title}</div>
+                <div className={styles.details}>details</div>
             </div>
         </>
     );

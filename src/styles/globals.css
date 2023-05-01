@@ -5,6 +5,10 @@
     font-family: 'JetBrains Mono';
 }
 
+html,
+body {
+    background-color: black;
+}
 a {
     color: inherit;
     text-decoration: none;

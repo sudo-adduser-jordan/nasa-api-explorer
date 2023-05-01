@@ -1,6 +1,6 @@
 .container {
     background-color: lightblue;
-    width: 85vw;
+    width: 100vw;
 
     height: 100vh;
     display: flex;
@@ -11,5 +11,6 @@
 @media (max-width: 800px) {
     .container {
         margin-top: 10vh;
+        width: 100%;
     }
 }

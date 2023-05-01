@@ -26,11 +26,16 @@ const ApodPage = ({
     return (
         <>
             <section className={styles.container}>
+                <title className={styles.title}>
+                    Astronomy Picture of the Day
+                </title>
+                {/* <div className={styles.apodContainer}> */}
                 <div className={styles.image}>
                     <img src={data.hdurl} alt='' />
                 </div>
 
                 <div className={styles.description}>{data.explanation}</div>
+                {/* </div> */}
             </section>
         </>
     );

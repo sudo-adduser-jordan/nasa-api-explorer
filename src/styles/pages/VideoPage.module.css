@@ -1,6 +1,7 @@
 .container {
     background-color: lightgreen;
-    width: 100%;
+    width: 85vw;
+
     /* width: 85vw; */
     height: 100vh;
     display: flex;

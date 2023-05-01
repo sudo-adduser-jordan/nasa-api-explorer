@@ -9,6 +9,15 @@
     align-items: center;
 }
 
+.title {
+    background-color: lightcoral;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .gridContainer {
     background-color: red;
     height: 100%;
@@ -57,11 +66,12 @@
     margin-top: 1rem;
 }
 
-.title {
+.cardTitle {
     background-color: mediumslateblue;
     width: 100%;
     height: 4rem;
     margin-top: 1rem;
+    word-break: break-all;
 }
 
 .details {
@@ -83,7 +93,7 @@
 
 @media (max-width: 800px) {
     .container {
-        margin-top: 15vh;
+        margin-top: 10vh;
         width: 100%;
         height: 100%;
     }

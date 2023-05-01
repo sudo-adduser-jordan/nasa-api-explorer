@@ -1,10 +1,17 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Layout from '../components/Layout';
 import Search from '../components/Search';
 
 import styles from '../styles/pages/VideoPage.module.css';
+import Link from 'next/link';
+
+// global variables
+let input: FormDataEntryValue | null = '';
+let componentKey = 100;
+let pageCount = 1;
+let total = 0;
 
 // json to typescript converter
 export interface Root {
@@ -63,121 +70,159 @@ type Cards = {
 };
 
 type Card = {
+    // key: number;
     href: string;
+    date: string;
     title: string;
 };
 
-// fetch image data
-export const getStaticProps: GetStaticProps<{ root: Root }> = async () => {
-    let searchInput = 'ship';
-    // let searchInput = "blackhole"
+const defaultEndpoint =
+    'https://images-api.nasa.gov/search?q=black hole&media_type=video';
 
-    let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=video`;
-
-    const res = await fetch(searchString);
+export const getStaticProps: GetStaticProps = async (context) => {
+    const res = await fetch(defaultEndpoint);
     const root: Root = await res.json();
+
+    const array: Card[] = [];
+    for (let i = 0; i < root.collection.items.length; i++) {
+        array.push({
+            href: root.collection.items[i].links[0].href,
+            date: root.collection.items[i].data[0].date_created,
+            title: root.collection.items[i].data[0].title,
+        });
+    }
 
     return {
         props: {
-            root,
+            array,
         },
     };
 };
 
-// page
 const VideoPage = ({
-    root,
+    array,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
-    // const [cards, setCards] = React.useState([]);
+    const [cards, setCards] = useState<Card[]>(array);
 
-    // const updatedCardsArray = [...cards, newCards];
-
-    // setCards(updatedCardsArray);
-
-    const cards: Cards[] = [];
-
-    const loadImages = () => {
-        let total = root.collection.items.length;
-
-        for (let i = 0; i < total; i++) {
-            cards.push({
-                key: i,
-                href: root.collection.items[i].links[0].href,
-                title: root.collection.items[i].data[0].title,
-            });
-        }
-    };
-    loadImages();
-
-    const showLoadButton = () => {
-        let total = root.collection.metadata.total_hits;
-        if (total >= 100) {
-            return (
-                <button
-                    className={styles.load}
-                    onClick={() => {
-                        fetchMoreImages();
-                    }}
-                >
-                    Load More
-                </button>
-            );
-        }
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        input = formData.get('searchInput');
+        searchForCards();
     };
 
-    const fetchMoreImages = async () => {
-        let count = 1;
-
-        let searchInput = 'ship';
-        let searchString = `https://images-api.nasa.gov/search?q=${searchInput}&media_type=video&page=${count}`;
+    const searchForCards = async () => {
+        let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=video`;
 
         const res = await fetch(searchString);
         const root: Root = await res.json();
+        total = root.collection.metadata.total_hits;
 
-        const total = root.collection.items.length;
+        if (root.collection.items.length === 100) {
+            pageCount += 1;
+        }
 
-        for (let i = 0; i < 100; i++) {
-            // console.log(root.collection.items[i].links[0].href)
-            cards.push({
-                key: i,
+        const array: Card[] = [];
+
+        for (let i = 0; i < root.collection.items.length; i++) {
+            array.push({
                 href: root.collection.items[i].links[0].href,
+                date: root.collection.items[i].data[0].date_created,
                 title: root.collection.items[i].data[0].title,
             });
+        }
+        console.log('searchForCards');
+        console.log(searchString);
+        console.log(array);
+        setCards(array);
+    };
+
+    const loadMoreCards = async () => {
+        let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=video&page=${pageCount}`;
+        const res = await fetch(searchString);
+        const root: Root = await res.json();
+        total = root.collection.metadata.total_hits;
+
+        if (root.collection.items.length === 100) {
+            pageCount++;
+        }
+
+        const array: Card[] = [];
+
+        for (let i = 0; i < root.collection.items.length; i++) {
+            array.push({
+                href: root.collection.items[i].links[0].href,
+                date: root.collection.items[i].data[0].date_created,
+                title: root.collection.items[i].data[0].title,
+            });
+        }
+        console.log('loadMoreCards');
+        console.log(searchString);
+        console.log(array);
+        setCards(cards.concat(array));
+    };
+
+    // #TODO button doesnt render on first load but will redner after search
+    const [showButton, setShowButton] = useState(false);
+    useEffect(() => {
+        setShowButton(true);
+    }, []);
+
+    const loadButton = () => {
+        if (total > 100) {
+            return (
+                <div className={styles.buttonContainer}>
+                    <button className={styles.load} onClick={loadMoreCards}>
+                        Load More
+                    </button>
+                </div>
+            );
         }
     };
 
     return (
         <>
-            <section className={styles.container}>
-                <Search input={''} />
+            <main className={styles.container}>
+                <div className={styles.title}>NASA Video Library</div>
+                <Search handleSubmit={handleSubmit} />
                 <div className={styles.gridContainer}>
                     <div className={styles.grid}>
-                        {cards.map((card) => (
-                            <Card
-                                key={card.key}
-                                href={card.href}
-                                title={card.title}
-                            />
-                        ))}
+                        {cards.map((card, i) => {
+                            return (
+                                <Card
+                                    key={i}
+                                    href={card.href}
+                                    date={card.date}
+                                    title={card.title}
+                                />
+                            );
+                        })}
                     </div>
-
-                    {showLoadButton()}
+                    {/* {loadButton()} */}
+                    {showButton && loadButton()}
                 </div>
-            </section>
+            </main>
         </>
     );
 };
 
 // card
-const Card = ({ href, title }: Card) => {
+const Card = ({ href, date, title }: Card) => {
     return (
         <>
             <div className={styles.card}>
                 <div className={styles.image}>
                     <img src={href} alt='' />
                 </div>
-
-                <div className={styles.description}>Title</div>
+                <div className={styles.date}>{date}</div>
+                <div className={styles.cardTitle}>{title}</div>
+                <Link
+                    className={styles.details}
+                    href={`/video-library/${title}`}
+                >
+                    Details
+                </Link>
             </div>
         </>
     );
@@ -189,3 +234,11 @@ VideoPage.getLayout = function getLayout(page: React.ReactElement) {
 };
 
 export default VideoPage;
+
+//    {cards.map((card) => (
+//         <Card
+//             key={card.key}
+//             href={card.href}
+//             title={card.title}
+//         />
+//     ))

@@ -177,6 +177,7 @@ const ImagePage = ({
     return (
         <>
             <section className={styles.container}>
+                <div className={styles.title}>NASA Image Library</div>
                 <Search handleSubmit={handleSubmit} />
                 <div className={styles.gridContainer}>
                     <div className={styles.grid}>
@@ -206,7 +207,7 @@ const Card = ({ href, date, title }: Card) => {
                     <img src={href} alt='' />
                 </div>
                 <div className={styles.date}>{date}</div>
-                <div className={styles.title}>{title}</div>
+                <div className={styles.cardTitle}>{title}</div>
                 <div className={styles.details}>details</div>
             </div>
         </>

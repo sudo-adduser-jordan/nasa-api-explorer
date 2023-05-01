@@ -6,6 +6,8 @@ import Search from '../components/Search';
 
 import styles from '../styles/pages/ImagePage.module.css';
 
+import Link from 'next/link';
+
 // global variables
 let input: FormDataEntryValue | null = '';
 let componentKey = 100;
@@ -208,7 +210,12 @@ const Card = ({ href, date, title }: Card) => {
                 </div>
                 <div className={styles.date}>{date}</div>
                 <div className={styles.cardTitle}>{title}</div>
-                <div className={styles.details}>details</div>
+                <Link
+                    className={styles.details}
+                    href={`/image-library/${title}`}
+                >
+                    Details
+                </Link>
             </div>
         </>
     );

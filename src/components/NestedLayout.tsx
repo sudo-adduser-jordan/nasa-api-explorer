@@ -21,8 +21,8 @@ export default function NestedLayout({ children }: LayoutProps) {
     };
     return (
         <>
-            <main>
-                <div className={styles.container}>Mars Rover Images</div>{' '}
+            <main className={styles.container}>
+                <div className={styles.title}>Mars Rover Images</div>{' '}
                 <nav className={styles.nav}>
                     <Link href={'/mars-rover-images/curiousity'}>
                         <div

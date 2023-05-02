@@ -10,11 +10,14 @@
 }
 
 .title {
-    width: 100%;
+    /* background-color: blue; */
+    width: 50%;
     margin-top: 1rem;
+    padding-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: solid white 1px;
 }
 
 .nav {
@@ -49,5 +52,9 @@
 @media (max-width: 800px) {
     .container {
         margin-top: 12.5vh;
+    }
+    .title {
+        margin-top: 0.5rem;
+        width: 75%;
     }
 }

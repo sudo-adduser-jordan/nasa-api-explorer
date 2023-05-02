@@ -1,6 +1,7 @@
 .container {
     /* background-color: blue; */
-    width: 100%;
+    width: 85%;
+
     color: white;
     display: flex;
     flex-direction: column;
@@ -52,6 +53,7 @@
 @media (max-width: 800px) {
     .container {
         margin-top: 12.5vh;
+        width: 100%;
     }
     .title {
         margin-top: 0.5rem;

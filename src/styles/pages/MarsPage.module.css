@@ -1,6 +1,7 @@
 .container {
     background-color: lightslategrey;
-    width: 85vw;
+    width: 85%;
+
     height: 100%;
     color: white;
     display: flex;

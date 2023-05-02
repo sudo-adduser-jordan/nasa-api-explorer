@@ -1,6 +1,7 @@
 .container {
     background-color: mediumpurple;
-    width: 100%;
+    width: 85%;
+
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -10,5 +11,6 @@
 @media (max-width: 800px) {
     .container {
         margin-top: 10vh;
+        width: 100%;
     }
 }

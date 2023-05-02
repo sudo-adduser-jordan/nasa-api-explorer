@@ -1,13 +1,14 @@
-import styles from './NestedLayout.module.css';
-import Link from 'next/link';
 import React, { useState } from 'react';
+import Link from 'next/link';
+
+import styles from './NestedLayout.module.css';
 
 type LayoutProps = {
     children: React.ReactNode;
 };
 
 export default function NestedLayout({ children }: LayoutProps) {
-    const [isActive, setIsActive] = useState('tab1');
+    const [isActive, setIsActive] = useState('tab2');
 
     const handleTab1 = () => {
         setIsActive('tab1');
@@ -42,7 +43,7 @@ export default function NestedLayout({ children }: LayoutProps) {
                                     ? `${styles.item2}`
                                     : `${styles.item}`
                             }
-                            onClick={handleTab1}
+                            onClick={handleTab2}
                         >
                             Spirit
                         </div>
@@ -54,7 +55,7 @@ export default function NestedLayout({ children }: LayoutProps) {
                                     ? `${styles.item2}`
                                     : `${styles.item}`
                             }
-                            onClick={handleTab1}
+                            onClick={handleTab3}
                         >
                             Opportunity
                         </div>

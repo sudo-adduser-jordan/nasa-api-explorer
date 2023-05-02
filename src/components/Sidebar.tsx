@@ -127,7 +127,7 @@ export default function Sidebar({ sidebar }: any) {
                             EPIC
                         </div>
                     </Link>
-                    <Link href='/mars-rover-photos'>
+                    <Link href='/mars-rover-images'>
                         <div
                             className={
                                 isActive === 'tab8'

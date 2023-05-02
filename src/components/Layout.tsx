@@ -10,6 +10,7 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
     const [sidebar, setSidebar] = useState(false);
 
+    //check if true works
     const showSidebar = () => {
         setSidebar(!sidebar);
     };

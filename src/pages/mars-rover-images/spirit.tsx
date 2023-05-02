@@ -6,7 +6,7 @@ import styles from './Spirit.module.css';
 const SpiritPage = () => {
     return (
         <>
-            <section className={styles.container}>Curiousity</section>
+            <section className={styles.container}>Spirit</section>
         </>
     );
 };

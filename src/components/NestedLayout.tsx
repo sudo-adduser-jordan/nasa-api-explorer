@@ -44,7 +44,7 @@ export default function NestedLayout({ children }: LayoutProps) {
                             }
                             onClick={handleTab1}
                         >
-                            Spirt
+                            Spirit
                         </div>
                     </Link>
                     <Link href={'/mars-rover-images/opportunity'}>

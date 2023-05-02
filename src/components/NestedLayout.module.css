@@ -4,12 +4,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* border-bottom: solid white 1px; */
 }
 
 .nav {
     color: white;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    /* border-bottom: solid white 1px; */
+}
+
+@media (max-width: 800px) {
+    .container {
+        margin-top: 12.5vh;
+    }
 }

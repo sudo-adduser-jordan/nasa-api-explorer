@@ -5,7 +5,7 @@ import styles from './Opportunity.module.css';
 const OpportunityPage = () => {
     return (
         <>
-            <section className={styles.container}>Curiousity</section>
+            <section className={styles.container}>Opportunity</section>
         </>
     );
 };

@@ -44,7 +44,7 @@ export default function Sidebar({ sidebar }: any) {
 
                 <nav className={styles.sidebar}>
                     <Link href='/'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab1'
                                     ? `${styles.item2}`
@@ -53,10 +53,10 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab1}
                         >
                             Home
-                        </div>
+                        </h5>
                     </Link>
                     <Link href='/about'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab2'
                                     ? `${styles.item2}`
@@ -65,10 +65,10 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab2}
                         >
                             About
-                        </div>
+                        </h5>
                     </Link>
                     <Link href='/apod'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab3'
                                     ? `${styles.item2}`
@@ -77,10 +77,10 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab3}
                         >
                             APOD
-                        </div>
+                        </h5>
                     </Link>
                     <Link href='/image-library'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab4'
                                     ? `${styles.item2}`
@@ -89,10 +89,10 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab4}
                         >
                             Image Library
-                        </div>
+                        </h5>
                     </Link>
                     <Link href='/video-library'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab5'
                                     ? `${styles.item2}`
@@ -101,10 +101,10 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab5}
                         >
                             Video Library
-                        </div>
+                        </h5>
                     </Link>
                     <Link href='/earth'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab6'
                                     ? `${styles.item2}`
@@ -113,10 +113,10 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab6}
                         >
                             Earth
-                        </div>
+                        </h5>
                     </Link>
                     <Link href='/epic'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab7'
                                     ? `${styles.item2}`
@@ -125,10 +125,10 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab7}
                         >
                             EPIC
-                        </div>
+                        </h5>
                     </Link>
                     <Link href='/mars-rover-images/spirit'>
-                        <div
+                        <h5
                             className={
                                 isActive === 'tab8'
                                     ? `${styles.item2}`
@@ -137,7 +137,7 @@ export default function Sidebar({ sidebar }: any) {
                             onClick={handleTab8}
                         >
                             Mars Rover Photos
-                        </div>
+                        </h5>
                     </Link>
                 </nav>
             </section>

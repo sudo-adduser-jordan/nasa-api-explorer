@@ -1,5 +1,6 @@
 .container {
-    background-color: brown;
+    /* background-color: brown; */
+    color: white;
     width: 85%;
 
     height: 100vh;
@@ -9,25 +10,29 @@
     text-align: center;
 }
 
+.temp {
+    color: red;
+}
+
 .heading {
     /* background-color: aqua; */
     width: 100%;
-    margin: 1rem;
+    padding: 1rem;
 }
 
 .about {
     /* background-color: lightblue; */
     width: 100%;
-    margin: 1rem;
+    padding: 1rem;
 }
 .details {
     /* background-color: lightcyan; */
     width: 100%;
-    margin: 1rem;
+    padding: 1rem;
 }
 .tech {
     /* background-color: lightsalmon; */
-    margin: 1rem;
+    padding: 1rem;
     width: 100%;
 }
 

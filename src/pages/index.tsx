@@ -4,14 +4,10 @@ import styles from '../styles/pages/HomePage.module.css';
 const HomePage = () => {
     return (
         <section className={styles.container}>
-            This website is under construction.
-            <div className={styles.heading}>
-                <h1>Explore NASAs Imagery and Data</h1>
-                <h3>
-                    A free and open source project, built with public APIs
-                    provided by api.nasa.gov
-                </h3>
+            <div className={styles.temp}>
+                This website is under construction.
             </div>
+            <div className={styles.heading}></div>
             <div className={styles.about}>
                 <h1>About this website</h1>
                 <h3>

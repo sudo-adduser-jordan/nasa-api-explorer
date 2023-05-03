@@ -1,5 +1,6 @@
 .container {
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    color: white;
     width: 85%;
     text-align: center;
     height: 100vh;

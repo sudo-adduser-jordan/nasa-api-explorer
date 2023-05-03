@@ -4,7 +4,10 @@ import styles from '../styles/pages/HomePage.module.css';
 const HomePage = () => {
     return (
         <section className={styles.container}>
-            This website is under construction.
+            <div>This website is under construction.</div>
+            <div>About this website</div>
+            <div>Technical Details</div>
+            <div>Technologies</div>
         </section>
     );
 };

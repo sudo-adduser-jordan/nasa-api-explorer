@@ -6,6 +6,10 @@ const EpicPage = () => {
         <>
             <section className={styles.container}>
                 <div>Epic</div>
+                <div className={styles.grid}>
+                    <div className={styles.imageCard}>Image Container</div>
+                    <div className={styles.dataCard}>Data Container</div>
+                </div>
             </section>
         </>
     );

@@ -4,8 +4,14 @@
 
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+}
+
+.cardContainer {
+    border: solid white 1px;
+    height: 80%;
+    width: 80%;
 }
 
 @media (max-width: 800px) {

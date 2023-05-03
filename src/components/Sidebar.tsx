@@ -26,9 +26,6 @@ export default function Sidebar({ sidebar }: any) {
     const handleTab7 = () => {
         setIsActive('tab7');
     };
-    const handleTab8 = () => {
-        setIsActive('tab8');
-    };
 
     return (
         <>
@@ -103,7 +100,7 @@ export default function Sidebar({ sidebar }: any) {
                             Video Library
                         </div>
                     </Link>
-                    <Link href='/earth'>
+                    <Link href='/epic'>
                         <div
                             className={
                                 isActive === 'tab6'
@@ -112,10 +109,10 @@ export default function Sidebar({ sidebar }: any) {
                             }
                             onClick={handleTab6}
                         >
-                            Earth
+                            EPIC
                         </div>
                     </Link>
-                    <Link href='/epic'>
+                    <Link href='/mars-rover-images/spirit'>
                         <div
                             className={
                                 isActive === 'tab7'
@@ -123,18 +120,6 @@ export default function Sidebar({ sidebar }: any) {
                                     : `${styles.item}`
                             }
                             onClick={handleTab7}
-                        >
-                            EPIC
-                        </div>
-                    </Link>
-                    <Link href='/mars-rover-images/spirit'>
-                        <div
-                            className={
-                                isActive === 'tab8'
-                                    ? `${styles.item2}`
-                                    : `${styles.item}`
-                            }
-                            onClick={handleTab8}
                         >
                             Mars Rover Photos
                         </div>

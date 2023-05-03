@@ -1,14 +1,32 @@
 .container {
     background-color: lightblue;
     width: 85%;
-
+    text-align: center;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     /* align-items: center; */
 }
+.explanation {
+    margin: 1rem;
+}
+.apod {
+    margin: 1rem;
+}
+.image {
+    margin: 1rem;
+}
+.video {
+    margin: 1rem;
+}
 
+.epic {
+    margin: 1rem;
+}
+.mars {
+    margin: 1rem;
+}
 @media (max-width: 800px) {
     .container {
         margin-top: 10vh;

@@ -33,13 +33,6 @@ const AboutPage = () => {
                     <h1>Video Library</h1>{' '}
                     <h4>Search NASAs official video database.</h4>
                 </div>
-                <div className={styles.earth}>
-                    <h1>Earth</h1>
-                    <h4>
-                        Landsat imagery is provided to the public as a joint
-                        project between NASA and USGS.
-                    </h4>
-                </div>
                 <div className={styles.epic}>
                     <h1>EPIC</h1>
                     <h4>

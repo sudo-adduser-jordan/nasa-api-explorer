@@ -6,32 +6,29 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .heading {
     /* background-color: aqua; */
     width: 100%;
-    margin-top: 1rem;
+    margin: 1rem;
 }
 
 .about {
     /* background-color: lightblue; */
     width: 100%;
-    margin-top: 1rem;
+    margin: 1rem;
 }
 .details {
-    width: 100%;
-    margin-top: 1rem;
-
     /* background-color: lightcyan; */
+    width: 100%;
+    margin: 1rem;
 }
 .tech {
-    margin-top: 1rem;
-
-    width: 100%;
-
     /* background-color: lightsalmon; */
+    margin: 1rem;
+    width: 100%;
 }
 
 @media (max-width: 800px) {

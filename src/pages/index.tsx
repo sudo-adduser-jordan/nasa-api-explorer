@@ -11,7 +11,6 @@ const HomePage = () => {
                     A free and open source project, built with public APIs
                     provided by api.nasa.gov
                 </h3>
-                <button>Explore</button>
             </div>
             <div className={styles.about}>
                 <h1>About this website</h1>
@@ -31,7 +30,7 @@ const HomePage = () => {
             </div>
             <div className={styles.tech}>
                 <h1>Technologies</h1>
-                <div>Node.js React Next.js Typescript Vercel Jetbrains </div>
+                <h3>Node.js React Next.js Typescript Vercel Jetbrains </h3>
             </div>
         </section>
     );

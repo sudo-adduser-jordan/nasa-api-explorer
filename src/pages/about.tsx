@@ -17,7 +17,7 @@ const AboutPage = () => {
                     </h4>
                 </div>
                 <div className={styles.apod}>
-                    <h1>Astronomy Picture of the Day</h1>{' '}
+                    <h1>Astronomy Picture of the Day</h1>
                     <h4>
                         Discover the cosmos! Each day a different image or
                         photograph of our fascinating universe is featured,
@@ -27,11 +27,11 @@ const AboutPage = () => {
                 </div>
                 <div className={styles.image}>
                     <h1>Image Library</h1>{' '}
-                    <h4>Search NASA's official image database.</h4>
+                    <h4>Search NASAs official image database.</h4>
                 </div>
                 <div className={styles.video}>
                     <h1>Video Library</h1>{' '}
-                    <h4>Search NASA's official video database.</h4>
+                    <h4>Search NASAs official video database.</h4>
                 </div>
                 <div className={styles.earth}>
                     <h1>Earth</h1>
@@ -44,7 +44,7 @@ const AboutPage = () => {
                     <h1>EPIC</h1>
                     <h4>
                         The EPIC API provides information on the daily imagery
-                        collected by DSCOVR's Earth Polychromatic Imaging Camera
+                        collected by DSCOVRs Earth Polychromatic Imaging Camera
                         (EPIC) instrument. Uniquely positioned at the Earth-Sun
                         Lagrange point, EPIC provides full disc imagery of the
                         Earth and captures unique perspectives of certain
@@ -56,7 +56,7 @@ const AboutPage = () => {
                 <div className={styles.mars}>
                     <h1>Mars Rover Photos</h1>{' '}
                     <h4>
-                        View the most recent image data gathered by NASA's
+                        View the most recent image data gathered by NASAs
                         Curiosity, Opportunity, and Spirit rovers on Mars.
                     </h4>
                 </div>

@@ -6,7 +6,7 @@ const HomePage = () => {
         <section className={styles.container}>
             This website is under construction.
             <div className={styles.heading}>
-                <h1>Explore NASA's Imagery and Data</h1>
+                <h1>Explore NASAs Imagery and Data</h1>
                 <h3>
                     A free and open source project, built with public APIs
                     provided by api.nasa.gov
@@ -17,7 +17,7 @@ const HomePage = () => {
                 <h1>About this website</h1>
                 <h3>
                     This website was created as a hobby project to provide a
-                    front-end visiualition of the data provided by NASA's public
+                    front-end visiualition of the data provided by NASAs public
                     API catalog.
                 </h3>
             </div>

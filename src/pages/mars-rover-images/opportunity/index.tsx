@@ -7,8 +7,7 @@ import NestedLayout from '../../../components/NestedLayout/NestedLayout';
 
 import styles from './Opportunity.module.css';
 
-const roverManifest =
-    'https://api.nasa.gov/mars-photos/api/v1/manifests/opportunity?api_key=DEMO_KEY';
+const roverManifest = `https://api.nasa.gov/mars-photos/api/v1/manifests/opportunity?api_key=${process.env.DATABASE_KEY}`;
 
 async function getManifest() {
     const res = await fetch(roverManifest);
@@ -18,7 +17,7 @@ async function getManifest() {
 
 async function getFirstPage(max_sol: number) {
     const res = await fetch(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=DEMO_KEY&sol=${max_sol}`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=${process.env.DATABASE_KEY}&sol=${max_sol}`
     );
     const data: Root = await res.json();
 

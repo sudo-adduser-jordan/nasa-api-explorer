@@ -1,64 +1,54 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import { useEffect, useState } from 'react';
 
+import { Root, Card } from './type';
 import Layout from '../../../components/Layout/Layout';
 import NestedLayout from '../../../components/NestedLayout/NestedLayout';
+
 import styles from './Opportunity.module.css';
 
-export interface Root {
-    latest_photos: LatestPhoto[];
+const roverManifest =
+    'https://api.nasa.gov/mars-photos/api/v1/manifests/opportunity?api_key=DEMO_KEY';
+
+async function getManifest() {
+    const res = await fetch(roverManifest);
+    const data: Root = await res.json();
+    return data;
 }
 
-export interface LatestPhoto {
-    id: number;
-    sol: number;
-    camera: Camera;
-    img_src: string;
-    earth_date: string;
-    rover: Rover;
-}
-
-export interface Camera {
-    id: number;
-    name: string;
-    rover_id: number;
-    full_name: string;
-}
-
-export interface Rover {
-    id: number;
-    name: string;
-    landing_date: string;
-    launch_date: string;
-    status: string;
-}
-
-type Card = {
-    href: string;
-    date: string;
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+async function getFirstPage(max_sol: number) {
     const res = await fetch(
-        'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/latest_photos?api_key=DEMO_KEY'
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=DEMO_KEY&sol=${max_sol}`
     );
-    const root: Root = await res.json();
+    const data: Root = await res.json();
 
     const array: Card[] = [];
-    for (let i = 0; i < root.latest_photos.length; i++) {
+    for (let i = 0; i < data.photos.length; i++) {
         array.push({
-            href: root.latest_photos[i].img_src,
-            date: root.latest_photos[i].earth_date,
+            href: data.photos[i].img_src,
+            date: data.photos[i].earth_date,
         });
     }
 
+    return array;
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+    const manifest = await getManifest();
+    const max_sol = manifest.photo_manifest.max_sol;
+    const status = manifest.photo_manifest.status;
+    const array = await getFirstPage(max_sol);
+
     return {
         props: {
+            status,
             array,
         },
     };
 };
+
 const OpportunityPage = ({
+    status,
     array,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const [cards, setCards] = useState<Card[]>(array);
@@ -68,6 +58,7 @@ const OpportunityPage = ({
             <section className={styles.container}>
                 <div className={styles.gridContainer}>
                     <div className={styles.title}>Most Recent Images</div>
+                    <div className={styles.status}>{status}</div>
                     <div className={styles.grid}>
                         {cards.map((card, i) => (
                             <Card key={i} href={card.href} date={card.date} />

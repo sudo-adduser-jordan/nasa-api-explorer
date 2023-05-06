@@ -1,10 +1,9 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import { useEffect, useState } from 'react';
 
-import Layout from '../../components/Layout';
-import NestedLayout from '../../components/NestedLayout';
-
-import styles from './Spirit.module.css';
+import Layout from '../../../components/Layout/Layout';
+import NestedLayout from '../../../components/NestedLayout/NestedLayout';
+import styles from './Curiousity.module.css';
 
 export interface Root {
     latest_photos: LatestPhoto[];
@@ -41,7 +40,7 @@ type Card = {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const res = await fetch(
-        'https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/latest_photos?api_key=DEMO_KEY'
+        'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=DEMO_KEY'
     );
     const root: Root = await res.json();
 
@@ -60,7 +59,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     };
 };
 
-const SpiritPage = ({
+const CuriousityPage = ({
     array,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const [cards, setCards] = useState<Card[]>(array);
@@ -94,7 +93,7 @@ const Card = ({ href, date }: Card) => {
     );
 };
 
-SpiritPage.getLayout = function getLayout(page: React.ReactElement) {
+CuriousityPage.getLayout = function getLayout(page: React.ReactElement) {
     return (
         <Layout>
             <NestedLayout>{page}</NestedLayout>
@@ -102,4 +101,4 @@ SpiritPage.getLayout = function getLayout(page: React.ReactElement) {
     );
 };
 
-export default SpiritPage;
+export default CuriousityPage;

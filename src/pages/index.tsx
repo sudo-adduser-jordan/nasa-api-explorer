@@ -1,7 +1,7 @@
-import Layout from '../components/Layout';
-import styles from '../styles/pages/HomePage.module.css';
+import Layout from '../components/Layout/Layout';
+import styles from './IndexPage.module.css';
 
-const HomePage = () => {
+const IndexPage = () => {
     return (
         <section className={styles.container}>
             <div className={styles.temp}>
@@ -32,8 +32,8 @@ const HomePage = () => {
     );
 };
 
-HomePage.getLayout = function getLayout(page: React.ReactElement) {
+IndexPage.getLayout = function getLayout(page: React.ReactElement) {
     return <Layout>{page}</Layout>;
 };
 
-export default HomePage;
+export default IndexPage;

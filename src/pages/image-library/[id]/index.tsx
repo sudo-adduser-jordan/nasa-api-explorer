@@ -1,11 +1,10 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 
-import Layout from '../../../components/Layout';
+import Layout from '../../../components/Layout/Layout';
 
 import styles from '../../../styles/pages/ImagePage.module.css';
 import Link from 'next/link';
 
-// json to typescript converter
 export interface Root {
     collection: Collection;
 }
@@ -70,14 +69,12 @@ const ImagePage = ({}) => {
     return (
         <>
             <main className={styles.container}>
-                {/* TITLE */}
                 <div className={styles.title}>NASA Image Library</div>
             </main>
         </>
     );
 };
 
-// card
 const Card = ({ href, title }: Card) => {
     return (
         <>

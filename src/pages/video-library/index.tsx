@@ -1,80 +1,17 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import React, { useEffect, useState } from 'react';
 
-import Layout from '../components/Layout';
-import Search from '../components/Search';
+import { Root, Card } from './type';
+import Layout from '../../components/Layout/Layout';
+import Search from '../../components/Search/Search';
 
-import styles from '../styles/pages/VideoPage.module.css';
+import styles from './VideoPage.module.css';
 import Link from 'next/link';
 
-// global variables
 let input: FormDataEntryValue | null = '';
 let componentKey = 100;
 let pageCount = 1;
 let total = 0;
-
-// json to typescript converter
-export interface Root {
-    collection: Collection;
-}
-
-export interface Collection {
-    version: string;
-    href: string;
-    items: Item[];
-    metadata: Metadata;
-    links: Link2[];
-}
-
-export interface Item {
-    href: string;
-    data: Daum[];
-    links: Link[];
-}
-
-export interface Daum {
-    center: string;
-    title: string;
-    keywords?: string[];
-    location?: string;
-    nasa_id: string;
-    date_created: string;
-    media_type: string;
-    description_508?: string;
-    description?: string;
-    album?: string[];
-    photographer?: string;
-    secondary_creator?: string;
-}
-
-export interface Link {
-    href: string;
-    rel: string;
-    render: string;
-}
-
-export interface Metadata {
-    total_hits: number;
-}
-
-export interface Link2 {
-    rel: string;
-    prompt: string;
-    href: string;
-}
-
-type Cards = {
-    key: number;
-    href: string;
-    title: string;
-};
-
-type Card = {
-    // key: number;
-    href: string;
-    date: string;
-    title: string;
-};
 
 const defaultEndpoint =
     'https://images-api.nasa.gov/search?q=black hole&media_type=video';
@@ -207,7 +144,6 @@ const VideoPage = ({
     );
 };
 
-// card
 const Card = ({ href, date, title }: Card) => {
     return (
         <>
@@ -228,17 +164,8 @@ const Card = ({ href, date, title }: Card) => {
     );
 };
 
-// layout
 VideoPage.getLayout = function getLayout(page: React.ReactElement) {
     return <Layout>{page}</Layout>;
 };
 
 export default VideoPage;
-
-//    {cards.map((card) => (
-//         <Card
-//             key={card.key}
-//             href={card.href}
-//             title={card.title}
-//         />
-//     ))

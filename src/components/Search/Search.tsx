@@ -1,6 +1,11 @@
+import React from 'react';
 import styles from './Search.module.css';
 
-const Search = ({ handleSubmit }: any) => {
+export default function Search({
+    handleSubmit,
+}: {
+    handleSubmit: (event: any) => void;
+}) {
     return (
         <>
             <form className={styles.search} onSubmit={handleSubmit}>
@@ -16,6 +21,4 @@ const Search = ({ handleSubmit }: any) => {
             </form>
         </>
     );
-};
-
-export default Search;
+}

@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 
-import Layout from '../../../components/Layout';
+import Layout from '../../../components/Layout/Layout';
 
 import styles from '../../../styles/pages/VideoPage.module.css';
 import Link from 'next/link';

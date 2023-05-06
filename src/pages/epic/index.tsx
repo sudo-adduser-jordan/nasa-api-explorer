@@ -1,5 +1,5 @@
-import Layout from '../components/Layout';
-import styles from '../styles/pages/EpicPage.module.css';
+import Layout from '../../components/Layout/Layout';
+import styles from './EpicPage.module.css';
 
 const EpicPage = () => {
     return (

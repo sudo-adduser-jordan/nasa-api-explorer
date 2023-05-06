@@ -1,6 +1,6 @@
 import styles from './Layout.module.css';
-import Topbar from '../components/Topbar';
-import Sidebar from '../components/Sidebar';
+import Topbar from '../Topbar/Topbar';
+import Sidebar from '../Sidebar/Sidebar';
 import { useState } from 'react';
 
 type LayoutProps = {
@@ -10,7 +10,6 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
     const [sidebar, setSidebar] = useState(false);
 
-    //check if true works
     const showSidebar = () => {
         setSidebar(!sidebar);
     };
@@ -21,7 +20,7 @@ export default function Layout({ children }: LayoutProps) {
 
     return (
         <>
-            <Topbar onToggle={showSidebar} />
+            <Topbar showSidebar={showSidebar} />
             <main className={styles.main} onClick={closeSidebar}>
                 <Sidebar sidebar={sidebar} />
                 {children}

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
+
 import styles from './Sidebar.module.css';
 
-export default function Sidebar({ sidebar }: any) {
+export default function Sidebar({ sidebar }: { sidebar: boolean }) {
     const [isActive, setIsActive] = useState('tab1');
 
     const handleTab1 = () => {
@@ -29,7 +30,6 @@ export default function Sidebar({ sidebar }: any) {
 
     return (
         <>
-            {/* <section className={styles.container}> */}
             <section
                 className={
                     sidebar === false

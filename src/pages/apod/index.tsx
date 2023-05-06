@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 
-import Layout from '../components/Layout';
-import styles from '../styles/pages/ApodPage.module.css';
+import Layout from '../../components/Layout/Layout';
+import styles from './ApodPage.module.css';
 
 type Data = {
     explanation: string;

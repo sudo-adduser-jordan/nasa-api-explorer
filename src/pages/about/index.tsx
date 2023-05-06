@@ -1,5 +1,5 @@
-import Layout from '../components/Layout';
-import styles from '../styles/pages/AboutPage.module.css';
+import Layout from '../../components/Layout/Layout';
+import styles from './AboutPage.module.css';
 
 const AboutPage = () => {
     return (

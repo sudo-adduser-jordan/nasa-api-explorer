@@ -8,10 +8,11 @@ import Search from '../../components/Search/Search';
 
 import styles from './ImagePage.module.css';
 
+const defaultEndpoint =
+    'https://images-api.nasa.gov/search?q=black hole&media_type=image';
+
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch(
-        'https://images-api.nasa.gov/search?q=black hole&media_type=image'
-    );
+    const res = await fetch(defaultEndpoint);
     const root: Root = await res.json();
 
     const array: Card[] = [];
@@ -23,25 +24,25 @@ export const getStaticProps: GetStaticProps = async () => {
         });
     }
 
-    let nextPage = '';
+    let hasNextPage = '';
     if (root.collection.links != undefined) {
-        nextPage = root.collection.links[0].href;
+        hasNextPage = root.collection.links[0].href;
     }
 
     return {
         props: {
-            nextPage,
+            hasNextPage,
             array,
         },
     };
 };
 
 const ImagePage = ({
-    nextPage,
+    hasNextPage,
     array,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const [cards, setCards] = useState<Card[]>(array);
-    const [page, setPage] = useState(nextPage);
+    const [page, setPage] = useState(hasNextPage);
     const [showButton, setShowButton] = useState(false);
 
     useEffect(() => {

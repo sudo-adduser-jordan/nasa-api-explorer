@@ -8,15 +8,10 @@ import Search from '../../components/Search/Search';
 import styles from './VideoPage.module.css';
 import Link from 'next/link';
 
-let input: FormDataEntryValue | null = '';
-let componentKey = 100;
-let pageCount = 1;
-let total = 0;
-
 const defaultEndpoint =
     'https://images-api.nasa.gov/search?q=black hole&media_type=video';
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(defaultEndpoint);
     const root: Root = await res.json();
 
@@ -29,39 +24,54 @@ export const getStaticProps: GetStaticProps = async (context) => {
         });
     }
 
+    let hasNextPage = '';
+    if (root.collection.links != undefined) {
+        hasNextPage = root.collection.links[0].href;
+    }
+
     return {
         props: {
+            hasNextPage,
             array,
         },
     };
 };
 
 const VideoPage = ({
+    hasNextPage,
     array,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const [cards, setCards] = useState<Card[]>(array);
+    const [page, setPage] = useState(hasNextPage);
+    const [showButton, setShowButton] = useState(false);
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-        const form = e.target;
+    useEffect(() => {
+        if (page != '') {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    }, [page]);
+
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
+        const form = event.target;
         const formData = new FormData(form);
-        input = formData.get('searchInput');
-        searchForCards();
+        searchForCards(formData.get('searchInput'));
     };
 
-    const searchForCards = async () => {
+    const searchForCards = async (input: FormDataEntryValue | null) => {
         let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=video`;
 
         const res = await fetch(searchString);
         const root: Root = await res.json();
-        total = root.collection.metadata.total_hits;
 
-        if (root.collection.items.length === 100) {
-            pageCount += 1;
+        setPage('');
+        if (root.collection.links != undefined) {
+            setPage(root.collection.links[0].href);
         }
 
         const array: Card[] = [];
-
         for (let i = 0; i < root.collection.items.length; i++) {
             array.push({
                 href: root.collection.items[i].links[0].href,
@@ -69,6 +79,7 @@ const VideoPage = ({
                 title: root.collection.items[i].data[0].title,
             });
         }
+
         console.log('searchForCards');
         console.log(searchString);
         console.log(array);
@@ -76,17 +87,15 @@ const VideoPage = ({
     };
 
     const loadMoreCards = async () => {
-        let searchString = `https://images-api.nasa.gov/search?q=${input}&media_type=video&page=${pageCount}`;
-        const res = await fetch(searchString);
+        const res = await fetch(page);
         const root: Root = await res.json();
-        total = root.collection.metadata.total_hits;
 
-        if (root.collection.items.length === 100) {
-            pageCount++;
+        setPage('');
+        if (root.collection.links.length > 1) {
+            setPage(root.collection.links[1].href);
         }
 
         const array: Card[] = [];
-
         for (let i = 0; i < root.collection.items.length; i++) {
             array.push({
                 href: root.collection.items[i].links[0].href,
@@ -94,28 +103,11 @@ const VideoPage = ({
                 title: root.collection.items[i].data[0].title,
             });
         }
+
         console.log('loadMoreCards');
-        console.log(searchString);
+        console.log(page);
         console.log(array);
         setCards(cards.concat(array));
-    };
-
-    // #TODO button doesnt render on first load but will redner after search
-    const [showButton, setShowButton] = useState(false);
-    useEffect(() => {
-        setShowButton(true);
-    }, []);
-
-    const loadButton = () => {
-        if (total > 100) {
-            return (
-                <div className={styles.buttonContainer}>
-                    <button className={styles.load} onClick={loadMoreCards}>
-                        Load More
-                    </button>
-                </div>
-            );
-        }
     };
 
     return (
@@ -136,8 +128,16 @@ const VideoPage = ({
                             );
                         })}
                     </div>
-                    {/* {loadButton()} */}
-                    {showButton && loadButton()}
+                    {showButton && (
+                        <div className={styles.buttonContainer}>
+                            <button
+                                className={styles.load}
+                                onClick={loadMoreCards}
+                            >
+                                Load More
+                            </button>
+                        </div>
+                    )}
                 </div>
             </main>
         </>

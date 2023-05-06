@@ -52,7 +52,3 @@ export type Card = {
     date: string;
     title: string;
 };
-
-export type Input = {
-    string: FormDataEntryValue | null;
-};

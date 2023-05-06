@@ -43,7 +43,6 @@ const ImagePage = ({
     const [cards, setCards] = useState<Card[]>(array);
     const [page, setPage] = useState(nextPage);
     const [showButton, setShowButton] = useState(false);
-    const [input, setInput] = useState<FormDataEntryValue | null>('black hole');
 
     useEffect(() => {
         if (page != '') {
@@ -90,10 +89,9 @@ const ImagePage = ({
         const res = await fetch(page);
         const root: Root = await res.json();
 
+        setPage('');
         if (root.collection.links.length > 1) {
             setPage(root.collection.links[1].href);
-        } else {
-            setPage('');
         }
 
         const array: Card[] = [];

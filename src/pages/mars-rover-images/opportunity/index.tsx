@@ -57,7 +57,10 @@ const OpportunityPage = ({
             <section className={styles.container}>
                 <div className={styles.gridContainer}>
                     <div className={styles.title}>Most Recent Images</div>
-                    <div className={styles.status}>{status}</div>
+                    <div className={styles.status}>
+                        Mission Status: {status}
+                    </div>
+
                     <div className={styles.grid}>
                         {cards.map((card, i) => (
                             <Card key={i} href={card.href} date={card.date} />

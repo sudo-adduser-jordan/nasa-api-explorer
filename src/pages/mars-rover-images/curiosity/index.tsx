@@ -5,9 +5,9 @@ import { Root, Card } from './type';
 import Layout from '../../../components/Layout/Layout';
 import NestedLayout from '../../../components/NestedLayout/NestedLayout';
 
-import styles from './Curiousity.module.css';
+import styles from './Curiosity.module.css';
 
-const roverManifest = `https://api.nasa.gov/mars-photos/api/v1/manifests/curiousity?api_key=${process.env.DATABASE_KEY}`;
+const roverManifest = `https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?api_key=${process.env.DATABASE_KEY}`;
 
 async function getManifest() {
     const res = await fetch(roverManifest);
@@ -17,7 +17,7 @@ async function getManifest() {
 
 async function getFirstPage(max_sol: number) {
     const res = await fetch(
-        `https://api.nasa.gov/mars-photos/api/v1/rovers/curiousity/photos?api_key=${process.env.DATABASE_KEY}&sol=${max_sol}`
+        `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${process.env.DATABASE_KEY}&sol=${max_sol}`
     );
     const data: Root = await res.json();
 
@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-const CuriousityPage = ({
+const CuriosityPage = ({
     status,
     array,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
@@ -57,7 +57,9 @@ const CuriousityPage = ({
             <section className={styles.container}>
                 <div className={styles.gridContainer}>
                     <div className={styles.title}>Most Recent Images</div>
-                    <div className={styles.status}>{status}</div>
+                    <div className={styles.status}>
+                        Mission Status: {status}
+                    </div>
                     <div className={styles.grid}>
                         {cards.map((card, i) => (
                             <Card key={i} href={card.href} date={card.date} />
@@ -82,7 +84,7 @@ const Card = ({ href, date }: Card) => {
     );
 };
 
-CuriousityPage.getLayout = function getLayout(page: React.ReactElement) {
+CuriosityPage.getLayout = function getLayout(page: React.ReactElement) {
     return (
         <Layout>
             <NestedLayout>{page}</NestedLayout>
@@ -90,4 +92,4 @@ CuriousityPage.getLayout = function getLayout(page: React.ReactElement) {
     );
 };
 
-export default CuriousityPage;
+export default CuriosityPage;

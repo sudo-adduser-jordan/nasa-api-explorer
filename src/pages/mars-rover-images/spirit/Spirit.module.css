@@ -10,6 +10,11 @@
     align-items: center;
 }
 
+.status {
+    color: black;
+    text-align: center;
+}
+
 .title {
     /* background-color: lightcoral; */
     width: 100%;

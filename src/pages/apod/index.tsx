@@ -8,9 +8,9 @@ type Data = {
     hdurl: string;
 };
 
-export const getStaticProps: GetStaticProps<{ data: Data }> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(
-        'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
+        `https://api.nasa.gov/planetary/apod?api_key=${process.env.DATABASE_KEY}`
     );
     const data: Data = await res.json();
     return {

@@ -1,17 +1,16 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { Root, Card } from './type';
 import Layout from '../../../components/Layout/Layout';
 import NestedLayout from '../../../components/NestedLayout/NestedLayout';
-
 import styles from './Curiosity.module.css';
-
-const roverManifest = `https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?api_key=${process.env.DATABASE_KEY}`;
+import { ManifestRoot, PhotoRoot, Card } from './type';
 
 async function getManifest() {
-    const res = await fetch(roverManifest);
-    const data: Root = await res.json();
+    const res = await fetch(
+        `https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?api_key=${process.env.DATABASE_KEY}`
+    );
+    const data: ManifestRoot = await res.json();
     return data;
 }
 
@@ -19,12 +18,13 @@ async function getFirstPage(max_sol: number) {
     const res = await fetch(
         `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${process.env.DATABASE_KEY}&sol=${max_sol}`
     );
-    const data: Root = await res.json();
+    const data: PhotoRoot = await res.json();
 
     const array: Card[] = [];
     for (let i = 0; i < data.photos.length; i++) {
         array.push({
             href: data.photos[i].img_src,
+            sol: data.photos[i].sol,
             date: data.photos[i].earth_date,
         });
     }
@@ -62,7 +62,12 @@ const CuriosityPage = ({
                     </div>
                     <div className={styles.grid}>
                         {cards.map((card, i) => (
-                            <Card key={i} href={card.href} date={card.date} />
+                            <Card
+                                key={i}
+                                href={card.href}
+                                sol={card.sol}
+                                date={card.date}
+                            />
                         ))}
                     </div>
                 </div>
@@ -71,13 +76,14 @@ const CuriosityPage = ({
     );
 };
 
-const Card = ({ href, date }: Card) => {
+const Card = ({ href, sol, date }: Card) => {
     return (
         <>
             <div className={styles.card}>
                 <div className={styles.image}>
                     <img src={href} alt='' />
                 </div>
+                <div className={styles.sol}>{sol}</div>
                 <div className={styles.date}>{date}</div>
             </div>
         </>

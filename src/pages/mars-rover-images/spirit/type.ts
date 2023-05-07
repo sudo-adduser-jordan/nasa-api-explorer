@@ -1,5 +1,5 @@
 // photos
-export interface Root {
+export interface PhotoRoot {
     photos: Photo[];
 }
 
@@ -28,7 +28,7 @@ export interface Rover {
 }
 
 // photo_manifest
-export interface Root {
+export interface ManifestRoot {
     photo_manifest: PhotoManifest;
 }
 
@@ -52,5 +52,6 @@ export interface Photo {
 
 export type Card = {
     href: string;
+    sol: number;
     date: string;
 };

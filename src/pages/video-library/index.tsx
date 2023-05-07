@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
     for (let i = 0; i < root.collection.items.length; i++) {
         array.push({
             href: root.collection.items[i].links[0].href,
-            date: root.collection.items[i].data[0].date_created,
+            date: root.collection.items[i].data[0].date_created.slice(0, 10),
             title: root.collection.items[i].data[0].title,
         });
     }
@@ -75,7 +75,10 @@ const VideoPage = ({
         for (let i = 0; i < root.collection.items.length; i++) {
             array.push({
                 href: root.collection.items[i].links[0].href,
-                date: root.collection.items[i].data[0].date_created,
+                date: root.collection.items[i].data[0].date_created.slice(
+                    0,
+                    10
+                ),
                 title: root.collection.items[i].data[0].title,
             });
         }
@@ -99,7 +102,10 @@ const VideoPage = ({
         for (let i = 0; i < root.collection.items.length; i++) {
             array.push({
                 href: root.collection.items[i].links[0].href,
-                date: root.collection.items[i].data[0].date_created,
+                date: root.collection.items[i].data[0].date_created.slice(
+                    0,
+                    10
+                ),
                 title: root.collection.items[i].data[0].title,
             });
         }

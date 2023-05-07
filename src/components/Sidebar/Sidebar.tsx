@@ -21,10 +21,21 @@ export default function Sidebar({ sidebar }: { sidebar: boolean }) {
     };
 
     const handleText = (path: string) => {
-        if (path === '') {
-            return 'Home';
-        } else {
-            return path;
+        switch (path) {
+            case '':
+                return 'Home';
+            case 'about':
+                return 'About';
+            case 'apod':
+                return 'APOD';
+            case 'image-library':
+                return 'Image Library';
+            case 'video-library':
+                return 'Video Library';
+            case 'epic':
+                return 'EPIC';
+            case 'mars-rover-images/spirit':
+                return 'Mars Rover Images';
         }
     };
 

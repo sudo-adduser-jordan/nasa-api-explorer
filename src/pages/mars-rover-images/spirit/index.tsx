@@ -1,17 +1,16 @@
 import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import { useEffect, useState } from 'react';
 
-import { Root, Card } from './type';
 import Layout from '../../../components/Layout/Layout';
 import NestedLayout from '../../../components/NestedLayout/NestedLayout';
-
 import styles from './Spirit.module.css';
-
-const roverManifest = `https://api.nasa.gov/mars-photos/api/v1/manifests/spirit?api_key=${process.env.DATABASE_KEY}`;
+import { PhotoRoot, ManifestRoot, Card } from './type';
 
 async function getManifest() {
-    const res = await fetch(roverManifest);
-    const data: Root = await res.json();
+    const res = await fetch(
+        `https://api.nasa.gov/mars-photos/api/v1/manifests/spirit?api_key=${process.env.DATABASE_KEY}`
+    );
+    const data: ManifestRoot = await res.json();
     return data;
 }
 
@@ -19,12 +18,14 @@ async function getFirstPage(max_sol: number) {
     const res = await fetch(
         `https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?api_key=${process.env.DATABASE_KEY}&sol=${max_sol}`
     );
-    const data: Root = await res.json();
+    const data: PhotoRoot = await res.json();
+    console.log(data);
 
     const array: Card[] = [];
     for (let i = 0; i < data.photos.length; i++) {
         array.push({
             href: data.photos[i].img_src,
+            sol: data.photos[i].sol,
             date: data.photos[i].earth_date,
         });
     }
@@ -41,6 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             status,
+            max_sol,
             array,
         },
     };
@@ -48,9 +50,24 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const SpiritPage = ({
     status,
+    max_sol,
     array,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const [cards, setCards] = useState<Card[]>(array);
+    const [sol, setSol] = useState(max_sol);
+    const [count, setCount] = useState(20);
+
+    const [showButton, setShowButton] = useState(false);
+
+    useEffect(() => {
+        if (sol != 0) {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    }, [cards]);
+
+    const loadMoreCards = async () => {};
 
     return (
         <>
@@ -63,22 +80,39 @@ const SpiritPage = ({
 
                     <div className={styles.grid}>
                         {cards.map((card, i) => (
-                            <Card key={i} href={card.href} date={card.date} />
+                            <Card
+                                key={i}
+                                href={card.href}
+                                sol={card.sol}
+                                date={card.date}
+                            />
                         ))}
                     </div>
+
+                    {showButton && (
+                        <div className={styles.buttonContainer}>
+                            <button
+                                className={styles.load}
+                                onClick={loadMoreCards}
+                            >
+                                Load More
+                            </button>
+                        </div>
+                    )}
                 </div>
             </section>
         </>
     );
 };
 
-const Card = ({ href, date }: Card) => {
+const Card = ({ href, sol, date }: Card) => {
     return (
         <>
             <div className={styles.card}>
                 <div className={styles.image}>
                     <img src={href} alt='' />
                 </div>
+                <div className={styles.sol}>{sol}</div>
                 <div className={styles.date}>{date}</div>
             </div>
         </>

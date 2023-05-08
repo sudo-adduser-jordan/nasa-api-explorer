@@ -1,0 +1,48 @@
+* {
+    /* background-color: brown; */
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'JetBrains Mono';
+}
+
+html {
+    /* background-color: lightblue; */
+}
+
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+main {
+    /* background-color: purple; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    /* overflow-y: scroll; */
+}
+
+/* Jetbrains Fonts */
+/* jsDelivr */
+/* https://gist.github.com/Albert221/753d7f8955eeb6f5e50486fce048e39f */
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2')
+            format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff')
+            format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}

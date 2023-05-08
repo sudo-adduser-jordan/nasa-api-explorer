@@ -1,0 +1,57 @@
+.container {
+    /* background-color: brown; */
+    color: white;
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.temp {
+    color: red;
+}
+
+.heading {
+    /* background-color: aqua; */
+    width: 100%;
+    padding: 1rem;
+}
+
+.about {
+    /* background-color: lightblue; */
+    width: 100%;
+    padding: 1rem;
+}
+.details {
+    /* background-color: lightcyan; */
+    width: 100%;
+    padding: 1rem;
+}
+.tech {
+    /* background-color: lightsalmon; */
+    padding: 1rem;
+    width: 100%;
+}
+
+.heading h1 {
+    color: mediumslateblue;
+}
+
+.about h1 {
+    color: mediumslateblue;
+}
+.details h1 {
+    color: mediumslateblue;
+}
+.tech h1 {
+    color: mediumslateblue;
+}
+
+@media (max-width: 800px) {
+    .container {
+        margin-top: 10vh;
+        width: 100%;
+    }
+}

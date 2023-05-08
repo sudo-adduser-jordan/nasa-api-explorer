@@ -1,87 +1,111 @@
 .container {
-    /* background-color: grey; */
-    width: 15%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background-color: black;
     color: white;
-    border-right: solid 1px white;
+    /* position: fixed; */
+    left: 0%;
+    height: 100%;
+    width: 20%;
+    border-right: solid white 1px;
+    z-index: 9;
 }
 
-.container2 {
-    background-color: grey;
-    padding-top: 1rem;
+.activeContainer {
     background-color: black;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     color: white;
-    border-right: solid 1px white;
-    position: fixed;
-    left: 0;
-    width: 75%;
+
+    position: relative;
+    left: 0%;
+    height: 100%;
+    width: 20%;
+    border-right: solid white 1px;
     z-index: 9;
 }
 
 .title {
-    /* background-color: lightcoral; */
-    padding: 0.5rem;
-    border-bottom: solid 1px white;
+    /* color: mediumslateblue; */
+    /* color: tomato; */
+    height: 10vh;
+    width: 100%;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    border-bottom: solid white 1px;
 }
 
-.sidebar {
-    /* background-color: red; */
-    height: 75%;
+.nav {
+    /* background-color: green; */
+    height: 70vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    border-bottom: solid 1px white;
+    justify-content: space-around;
+    align-items: center;
     overflow-y: scroll;
 }
 
 .item {
-    /* background-color: blueviolet; */
-    display: flex;
-    align-items: center;
+    width: 95%;
     padding: 1rem;
+    color: mediumslateblue;
 }
 
-.item2 {
-    /* background-color: blueviolet; */
-    display: flex;
-    align-items: center;
-    margin: 1rem;
-    padding: 0.5rem;
+.item:hover {
+    color: tomato;
 
-    border: solid 1px white;
+    border: solid mediumslateblue 1px;
+    border-radius: 5px;
+}
+
+.activeItem {
+    /* color: mediumslateblue; */
+    width: 95%;
+    padding: 1rem;
+    border: solid tomato 1px;
+    border-radius: 5px;
 }
 
 .footer {
-    padding: 1rem;
+    /* background-color: darkcyan; */
+    height: 20vh;
+    width: 100%;
+    border-top: solid white 1px;
     display: flex;
     flex-direction: column;
-    margin-top: auto;
+    justify-content: space-around;
+    padding: 1rem;
+    /* color: mediumslateblue; */
 }
 
-.github {
-    padding-bottom: 0.5rem;
+.work:hover {
+    color: tomato;
 }
 
-.work {
-    padding-bottom: 0.5rem;
+.name:hover {
+    color: tomato;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .container {
+        /* background-color: lightgreen; */
         position: fixed;
+        width: 75%;
         left: -100%;
-        width: 35%;
+        transition: left 1s;
     }
-    .sidebar {
-        height: 100%;
-        /* border-bottom: none; */
+    .activeContainer {
+        /* background-color: lightgreen; */
+        position: fixed;
+        width: 75%;
+        left: 0;
+        transition: left 1s;
+    }
+    .nav {
+        height: 80vh;
     }
     .title {
         display: none;
+    }
+    .footer {
+        height: 20vh;
     }
 }

@@ -1,24 +1,21 @@
-import React from 'react';
-import styles from './Search.module.css';
+// 'use client';
+import styles from './search.module.css';
 
-export default function Search({
-    handleSubmit,
-}: {
-    handleSubmit: (event: any) => void;
-}) {
-    return (
-        <>
-            <form className={styles.search} onSubmit={handleSubmit}>
+export default function Search() {
+    const content = (
+        <section className={styles.container}>
+            <form className={styles.search}>
                 <input
                     className={styles.entry}
                     name='searchInput'
-                    defaultValue='black hole'
+                    defaultValue='star'
                 />
 
-                <button className={styles.icon} type='submit'>
+                <button className={styles.button} type='submit'>
                     Search
                 </button>
             </form>
-        </>
+        </section>
     );
+    return content;
 }

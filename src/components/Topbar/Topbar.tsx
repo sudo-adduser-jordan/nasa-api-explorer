@@ -1,14 +1,18 @@
-import styles from './Topbar.module.css';
-
-export default function Topbar({ showSidebar }: { showSidebar: () => void }) {
-    return (
+'use client';
+import styles from './topbar.module.css';
+export const Topbar = ({ showSidebar }: any) => {
+    const content = (
         <>
-            <section className={styles.container}>
-                <div className={styles.title}>NASA Api Explorer</div>
-                <button className={styles.toggle} onClick={showSidebar}>
-                    Toggle
-                </button>
-            </section>
+            <div className={styles.container}>
+                <div className={styles.left}>Nasa Api Explorer</div>
+                <div className={styles.middle}>x</div>
+                <div className={styles.right}>
+                    <button className={styles.button} onClick={showSidebar}>
+                        Menu
+                    </button>
+                </div>
+            </div>
         </>
     );
-}
+    return content;
+};

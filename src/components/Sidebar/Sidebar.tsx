@@ -1,24 +1,18 @@
+'use client';
 import { useState } from 'react';
+import styles from './sidebar.module.css';
 import Link from 'next/link';
 
-import styles from './Sidebar.module.css';
-
-export default function Sidebar({ sidebar }: { sidebar: boolean }) {
-    const [isActive, setIsActive] = useState('');
-
+export const Sidebar = ({ sidebar }: any) => {
+    const [active, setActive] = useState('');
     const paths = [
         '',
         'about',
         'apod',
         'image-library',
         'video-library',
-        'epic',
-        'mars-rover-images/spirit',
+        'mars-rover-photos/spirit',
     ];
-
-    const handleTab = (path: string) => {
-        setIsActive(path);
-    };
 
     const handleText = (path: string) => {
         switch (path) {
@@ -32,47 +26,59 @@ export default function Sidebar({ sidebar }: { sidebar: boolean }) {
                 return 'Image Library';
             case 'video-library':
                 return 'Video Library';
-            case 'epic':
-                return 'EPIC';
-            case 'mars-rover-images/spirit':
-                return 'Mars Rover Images';
+            case 'mars-rover-photos/spirit':
+                return 'Mars Rover Photos';
         }
     };
 
-    return (
+    const content = (
         <>
-            <section
+            <div
                 className={
-                    sidebar === false
-                        ? `${styles.container}`
-                        : `${styles.container2}`
+                    sidebar === true
+                        ? `${styles.activeContainer}`
+                        : `${styles.container}`
                 }
             >
-                <div className={styles.title}>NASA Api Explorer</div>
-                <nav className={styles.sidebar}>
-                    {paths.map((path, i) => (
-                        <Link href={`/${path}`} key={i}>
-                            <div
+                <div className={styles.title}>Nasa Api Explorer</div>
+                <div className={styles.nav}>
+                    {paths.map((path, i) => {
+                        return (
+                            <Link
+                                key={i}
+                                href={path}
+                                onClick={() => setActive(path)}
                                 className={
-                                    isActive === path
-                                        ? `${styles.item2}`
+                                    active === path
+                                        ? `${styles.activeItem}`
                                         : `${styles.item}`
                                 }
-                                onClick={() => {
-                                    handleTab(path);
-                                }}
                             >
                                 {handleText(path)}
-                            </div>
-                        </Link>
-                    ))}
-                </nav>
-                <footer className={styles.footer}>
-                    <div className={styles.github}>Github</div>
-                    <div className={styles.work}>My work</div>
-                    <h5>@sudo-adduser-jordan</h5>
-                </footer>
-            </section>
+                            </Link>
+                        );
+                    })}
+                </div>
+                <div className={styles.footer}>
+                    <Link
+                        target='_blank'
+                        href={
+                            'https://github.com/sudo-adduser-jordan/Nasa-Api-Explorer'
+                        }
+                        className={styles.work}
+                    >
+                        Github
+                    </Link>
+                    <Link
+                        target='_blank'
+                        href={'https://github.com/sudo-adduser-jordan'}
+                        className={styles.name}
+                    >
+                        @sudo-adduser-jordan
+                    </Link>
+                </div>
+            </div>
         </>
     );
-}
+    return content;
+};

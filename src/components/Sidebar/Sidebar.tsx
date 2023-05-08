@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from './sidebar.module.css';
 import Link from 'next/link';
 
-export const Sidebar = ({ sidebar }: any) => {
+const Sidebar = ({ sidebar }: any) => {
     const [active, setActive] = useState('');
     const paths = [
         '',
@@ -82,3 +82,5 @@ export const Sidebar = ({ sidebar }: any) => {
     );
     return content;
 };
+
+export default Sidebar;

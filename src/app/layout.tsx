@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { Metadata } from 'next';
-import { Sidebar } from '../components/sidebar/Sidebar';
-import { Topbar } from '../components/topbar/Topbar';
+import Sidebar from '../components/sidebar/Sidebar';
+import Topbar from '../components/topbar/Topbar';
 import './globals.css';
 
 export default function RootLayout({

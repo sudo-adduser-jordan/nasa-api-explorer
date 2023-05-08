@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Marsbar } from '@/components/marsbar/Marsbar';
+import { Marsbar } from '../../components/marsbar/Marsbar';
 import styles from './mars.module.css';
 
 export const metadata: Metadata = {

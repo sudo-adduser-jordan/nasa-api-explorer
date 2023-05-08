@@ -1,9 +1,9 @@
 // 'use client';
 import Link from 'next/link';
-import Search from '@/components/search/Search';
+import Search from '../../components/search/Search';
 import styles from './video.module.css';
 import { Root, Card } from './types';
-import getVideoProps from '@/lib/getVideoProps';
+import getVideoProps from '../../lib/getVideoProps';
 
 async function Page() {
     const data: Root = await getVideoProps();

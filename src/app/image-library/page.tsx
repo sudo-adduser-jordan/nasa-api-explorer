@@ -44,7 +44,7 @@ const Card = ({ href, date, title }: Card) => {
                     className={styles.details}
                     href={`/image-library/${title}`}
                 >
-                    Details
+                    Details &rarr;
                 </Link>
             </div>
         </>

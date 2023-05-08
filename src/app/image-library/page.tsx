@@ -4,7 +4,10 @@ import getImageProps from '../../lib/getImageProps';
 import Search from '../../components/search/Search';
 import styles from './image.module.css';
 import { Root, Card } from './types';
-
+export const metadata = {
+    title: 'Image Library',
+    description: 'Image Library Page',
+};
 async function Page() {
     const data: Root = await getImageProps();
     const items = data.collection.items;

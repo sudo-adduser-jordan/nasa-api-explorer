@@ -11,6 +11,11 @@ export interface Root {
     url: string;
 }
 
+export const metadata = {
+    title: 'APOD',
+    description: 'APOD Page',
+};
+
 async function Page() {
     const data: Root = await getApod();
     const content = (

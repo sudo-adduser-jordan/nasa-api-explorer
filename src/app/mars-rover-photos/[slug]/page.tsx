@@ -4,7 +4,33 @@ import getManifest from '../../../lib/getManifest';
 import { Card, ManifestRoot, Params, PhotoRoot } from '../types';
 
 import styles from '../mars.module.css';
+import { Metadata } from 'next';
 
+// metadata
+export async function generateMetadata({
+    params: { slug },
+}: Params): Promise<Metadata> {
+    const manifest: ManifestRoot = await getManifest(slug);
+
+    if (!slug) {
+        return {
+            title: 'Slug Not Found',
+        };
+    }
+
+    return {
+        title: slug.charAt(0).toUpperCase() + slug.slice(1),
+        description: `This is the page of ${slug}`,
+    };
+}
+
+// SSG
+export async function generateStaticParams() {
+    const paths = ['curiosity', 'spirit', 'opportunity'];
+    return paths;
+}
+
+// page
 async function Page({ params }: Params) {
     const manifest: ManifestRoot = await getManifest(params.slug);
     const max_sol = manifest.photo_manifest.max_sol;
@@ -51,6 +77,7 @@ async function Page({ params }: Params) {
     return content;
 }
 
+// local component
 const Card = ({ href, sol, date, photo_number }: Card) => {
     return (
         <>
@@ -66,4 +93,5 @@ const Card = ({ href, sol, date, photo_number }: Card) => {
     );
 };
 
+// default export
 export default Page;

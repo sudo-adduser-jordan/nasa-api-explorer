@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 export const metadata = {
-    title: 'Next.js',
-    description: 'Welcome to Next.js',
+    title: 'Nasa Api Explorer',
+    description: 'Welcome to Nasa Api Explorer',
 };
 
 export default function Page() {

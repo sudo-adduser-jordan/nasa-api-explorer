@@ -4,7 +4,10 @@ import Search from '../../components/search/Search';
 import styles from './video.module.css';
 import { Root, Card } from './types';
 import getVideoProps from '../../lib/getVideoProps';
-
+export const metadata = {
+    title: 'Video Library',
+    description: 'Video Library Page',
+};
 async function Page() {
     const data: Root = await getVideoProps();
     const items = data.collection.items;

@@ -1,8 +1,8 @@
 import styles from './about.module.css';
 
 export const metadata = {
-    title: 'Next.js',
-    description: 'Welcome to Next.js',
+    title: 'About',
+    description: 'About Page',
 };
 
 export default function Page() {

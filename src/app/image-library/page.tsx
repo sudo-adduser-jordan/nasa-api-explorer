@@ -1,7 +1,7 @@
 // 'use client';
 import Link from 'next/link';
 import getImageProps from '../../lib/getImageProps';
-import Search from '@/components/search/Search';
+import Search from '../../components/search/Search';
 import styles from './image.module.css';
 import { Root, Card } from './types';
 

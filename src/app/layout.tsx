@@ -5,11 +5,6 @@ import { Sidebar } from '@/components/sidebar/Sidebar';
 import { Topbar } from '@/components/topbar/Topbar';
 import './globals.css';
 
-export const metadata: Metadata = {
-    title: 'Next.js',
-    description: 'Welcome to Next.js',
-};
-
 export default function RootLayout({
     children,
 }: {

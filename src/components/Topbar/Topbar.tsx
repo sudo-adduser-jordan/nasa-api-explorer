@@ -1,6 +1,7 @@
 'use client';
 import styles from './topbar.module.css';
-export const Topbar = ({ showSidebar }: any) => {
+
+const Topbar = ({ showSidebar }: any) => {
     const content = (
         <>
             <div className={styles.container}>
@@ -16,3 +17,5 @@ export const Topbar = ({ showSidebar }: any) => {
     );
     return content;
 };
+
+export default Topbar;

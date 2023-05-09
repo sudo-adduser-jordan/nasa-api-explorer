@@ -4,10 +4,15 @@ async function getSearch(type: string, input: FormDataEntryValue) {
     const res = await fetch(
         `https://images-api.nasa.gov/search?q=${input}&media_type=${type}`
     );
-    if (!res.ok) throw new Error('Failed to fetch Image Properties.');
+    if (!res.ok) throw new Error('Failed to fetch Search Properties.');
     const data: Root = await res.json();
 
     const items = data.collection.items;
+
+    let nextPage = '';
+    if (data.collection.links != undefined) {
+        nextPage = data.collection.links[0].href;
+    }
 
     const array: Card[] = [];
     for (let i = 0; i < items.length; i++) {
@@ -18,7 +23,10 @@ async function getSearch(type: string, input: FormDataEntryValue) {
         });
     }
 
-    return array;
+    return {
+        nextPage,
+        array,
+    };
 }
 
 export default getSearch;

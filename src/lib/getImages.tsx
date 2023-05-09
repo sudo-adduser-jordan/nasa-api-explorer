@@ -19,7 +19,15 @@ async function getImages() {
         });
     }
 
-    return array;
+    let nextPage = '';
+    if (data.collection.links != undefined) {
+        nextPage = data.collection.links[0].href;
+    }
+
+    return {
+        nextPage,
+        array,
+    };
 }
 
 export default getImages;

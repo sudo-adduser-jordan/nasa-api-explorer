@@ -5,7 +5,7 @@ const defaultEndpoint =
 
 async function getVideos() {
     const res = await fetch(defaultEndpoint);
-    if (!res.ok) throw new Error('Failed to fetch Image Properties.');
+    if (!res.ok) throw new Error('Failed to fetch Video Properties.');
     const data: Root = await res.json();
 
     const items = data.collection.items;
@@ -18,7 +18,16 @@ async function getVideos() {
             title: items[i].data[0].title,
         });
     }
-    return array;
+
+    let nextPage = '';
+    if (data.collection.links != undefined) {
+        nextPage = data.collection.links[0].href;
+    }
+
+    return {
+        nextPage,
+        array,
+    };
 }
 
 export default getVideos;

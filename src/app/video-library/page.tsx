@@ -2,10 +2,12 @@
 import Link from 'next/link';
 import getVideos from '../../lib/getVideos';
 import getSearch from '../../lib/getSearch';
+import getMore from '../../lib/getMore';
 import Search from '../../components/search/Search';
 import styles from './video.module.css';
 import { Card } from './types';
 import { useEffect, useState } from 'react';
+import { Properties } from '@/lib/types';
 
 export const metadata = {
     title: 'Video Library',
@@ -13,21 +15,34 @@ export const metadata = {
 };
 
 function Page() {
+    const [showButton, setShowButton] = useState(false);
     const [cards, setCards] = useState<Card[]>([]);
+    const [page, setPage] = useState('');
 
     // load state with server component
     useEffect(() => {
         const getArray = async () => {
-            const array = await getVideos();
-            setCards(array);
+            const props: Properties = await getVideos();
+            setCards(props.array);
+            setPage(props.nextPage);
         };
         // call the function
         getArray().catch(console.error);
     }, []);
 
+    // load button & change on state
+    useEffect(() => {
+        if (page != '') {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    }, [page]);
+
     // get search input
     async function handleSubmit(e: any) {
         e.preventDefault();
+        setPage('');
 
         // search data
         const form = e.target;
@@ -35,8 +50,19 @@ function Page() {
         const formJson = Object.fromEntries(formData.entries());
 
         // response data
-        const array = await getSearch('video', formJson['search']);
-        setCards(array);
+        const props: Properties = await getSearch('video', formJson['search']);
+
+        // set state
+        setCards(props.array);
+        if (props.nextPage != undefined) {
+            setPage(props.nextPage);
+        }
+    }
+
+    async function loadMoreCards() {
+        // response data
+        const array = await getMore(page);
+        setCards(cards.concat(array));
     }
 
     const content = (
@@ -54,6 +80,13 @@ function Page() {
                         />
                     ))}
                 </div>
+                {showButton && (
+                    <div className={styles.buttonContainer}>
+                        <button className={styles.load} onClick={loadMoreCards}>
+                            Load More
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );
@@ -72,9 +105,9 @@ const Card = ({ href, date, title }: Card) => {
                 <div className={styles.cardTitle}>{title}</div>
                 <Link
                     className={styles.details}
-                    href={`/image-library/${title}`}
+                    href={`/video-library/${title}`}
                 >
-                    Details
+                    Details &rarr;
                 </Link>
             </div>
         </>

@@ -58,28 +58,23 @@ test.describe('Validate Routes', () => {
 // EXTERNAL LINKS
 test.describe('Validate External Links', () => {
     test('Test Github Code Link', async ({ page }) => {
+        await page.goto('http://localhost:3000/');
         const page1Promise = page.waitForEvent('popup');
         await page.getByRole('link', { name: 'Github' }).click();
         const page1 = await page1Promise;
-        const page2Promise = page.waitForEvent('popup');
-        await page.getByRole('link', { name: '@sudo-adduser-jordan' }).click();
-        const page2 = await page2Promise;
+        await expect(page1).toHaveURL(
+            'https://github.com/sudo-adduser-jordan/Nasa-Api-Explorer'
+        );
     });
-    test('Test Portfolio Link', async ({ page }) => {
-        const page1Promise = page.waitForEvent('popup');
-        await page.getByRole('link', { name: 'Github' }).click();
-        const page1 = await page1Promise;
-        const page2Promise = page.waitForEvent('popup');
-        await page.getByRole('link', { name: '@sudo-adduser-jordan' }).click();
-        const page2 = await page2Promise;
-    });
+
+    test('Test Portfolio Link', async ({ page }) => {});
+
     test('Test Github Profile Link', async ({ page }) => {
+        await page.goto('http://localhost:3000/');
         const page1Promise = page.waitForEvent('popup');
-        await page.getByRole('link', { name: 'Github' }).click();
-        const page1 = await page1Promise;
-        const page2Promise = page.waitForEvent('popup');
         await page.getByRole('link', { name: '@sudo-adduser-jordan' }).click();
-        const page2 = await page2Promise;
+        const page1 = await page1Promise;
+        await expect(page1).toHaveURL('https://github.com/sudo-adduser-jordan');
     });
 });
 

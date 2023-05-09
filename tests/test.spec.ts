@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+// ROUTES
 test.describe('Validate Routes', () => {
     test('Test Home Page', async ({ page }) => {
         await page.goto('http://localhost:3000/');
@@ -15,7 +16,9 @@ test.describe('Validate Routes', () => {
 
     test('Test Apod Page', async ({ page }) => {
         await page.goto('http://localhost:3000/');
-        await page.getByRole('link', { name: 'Apod' }).click();
+        await page
+            .getByRole('link', { name: 'Astronomy Picture of the Day ' })
+            .click();
         await expect(page).toHaveTitle(/Apod/);
         await expect(page).toHaveURL(/apod/);
     });
@@ -41,11 +44,48 @@ test.describe('Validate Routes', () => {
         await expect(page).toHaveURL(/mars-rover-photos/);
 
         await page.getByRole('link', { name: 'curiosity' }).click();
+        await expect(page).toHaveTitle(/curiosity/);
+        await expect(page).toHaveURL(/curiosity/);
+
         await page.getByRole('link', { name: 'spirit' }).click();
+        await expect(page).toHaveTitle(/spirit/);
+        await expect(page).toHaveURL(/spirit/);
+
         await page.getByRole('link', { name: 'opportunity' }).click();
+        await expect(page).toHaveTitle(/opportunity/);
+        await expect(page).toHaveURL(/opportunity/);
     });
 });
 
+// EXTERNAL LINKS
+test.describe('Validate External Links', () => {
+    test('Test Github Code Link', async ({ page }) => {
+        const page1Promise = page.waitForEvent('popup');
+        await page.getByRole('link', { name: 'Github' }).click();
+        const page1 = await page1Promise;
+        const page2Promise = page.waitForEvent('popup');
+        await page.getByRole('link', { name: '@sudo-adduser-jordan' }).click();
+        const page2 = await page2Promise;
+    });
+    test('Test Portfolio Link', async ({ page }) => {
+        const page1Promise = page.waitForEvent('popup');
+        await page.getByRole('link', { name: 'Github' }).click();
+        const page1 = await page1Promise;
+        const page2Promise = page.waitForEvent('popup');
+        await page.getByRole('link', { name: '@sudo-adduser-jordan' }).click();
+        const page2 = await page2Promise;
+    });
+    test('Test Github Profile Link', async ({ page }) => {
+        const page1Promise = page.waitForEvent('popup');
+        await page.getByRole('link', { name: 'Github' }).click();
+        const page1 = await page1Promise;
+        const page2Promise = page.waitForEvent('popup');
+        await page.getByRole('link', { name: '@sudo-adduser-jordan' }).click();
+        const page2 = await page2Promise;
+    });
+});
+
+// METADATA
 test.describe('Validate Metadata', () => {
     test('Test Apod Data', async ({ page }) => {});
 
@@ -56,6 +96,7 @@ test.describe('Validate Metadata', () => {
     test('Test Mars Rover Photos Data', async ({ page }) => {});
 });
 
+// SERVER COMPONENTS
 test.describe('Validate Server Components', () => {
     test('Test getSearch Component', async ({ page }) => {});
 
@@ -74,7 +115,31 @@ test.describe('Validate Server Components', () => {
     test('Test getRover Component', async ({ page }) => {});
 });
 
+// CLIENT COMPONENTS
 test.describe('Validate Client Components', () => {
+    // test('event should work', async ({ mount }) => {
+    //     let clicked = false;
+
+    //     // Mount a component. Returns locator pointing to the component.
+    //     const component = await mount(
+    //         <Button
+    //             title='Submit'
+    //             onClick={() => {
+    //                 clicked = true;
+    //             }}
+    //         ></Button>
+    //     );
+
+    //     // As with any Playwright test, assert locator text.
+    //     await expect(component).toContainText('Submit');
+
+    //     // Perform locator click. This will trigger the event.
+    //     await component.click();
+
+    //     // Assert that respective events have been fired.
+    //     expect(clicked).toBeTruthy();
+    // });
+
     test('Test Search Component', async ({ page }) => {});
 
     test('Test Sidebar Component', async ({ page }) => {});
@@ -84,6 +149,7 @@ test.describe('Validate Client Components', () => {
     test('Test Marsbar Component', async ({ page }) => {});
 });
 
+// PAGES
 test.describe('Validate Pages', () => {
     test('Test Apod Data', async ({ page }) => {});
 
@@ -94,6 +160,7 @@ test.describe('Validate Pages', () => {
     test('Test Mars Rover Photos Data', async ({ page }) => {});
 });
 
+// DATA
 test.describe('Validate Data', () => {
     test('Test Apod Data', async ({ page }) => {});
 

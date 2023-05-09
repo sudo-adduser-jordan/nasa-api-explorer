@@ -64,7 +64,7 @@ function Page() {
 
     const content = (
         <section className={styles.container}>
-            <div className={styles.title}>Image Library</div>
+            <div className={styles.title}>Video Library</div>
             <Search handleSubmit={handleSubmit} />
             <div className={styles.gridContainer}>
                 <div className={styles.grid}>

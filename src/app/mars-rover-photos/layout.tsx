@@ -1,3 +1,4 @@
+// 'use client';
 import { Metadata } from 'next';
 import { Marsbar } from '../../components/marsbar/Marsbar';
 import styles from './mars.module.css';

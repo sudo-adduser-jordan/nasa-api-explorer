@@ -1,13 +1,13 @@
 'use client';
 import Link from 'next/link';
-import getVideos from '../../lib/getVideos';
-import getSearch from '../../lib/getSearch';
-import getMore from '../../lib/getMore';
+import getVideos from '../../lib/video-library/getVideos';
+import getSearch from '../../lib/search/getSearch';
+import getMore from '../../lib/search/getMoreSearch';
 import Search from '../../components/search/Search';
 import styles from './video.module.css';
 import { Card } from './types';
 import { useEffect, useState } from 'react';
-import { Properties } from '@/lib/types';
+import { Properties } from '@/lib/video-library/types';
 
 function Page() {
     const [showButton, setShowButton] = useState(false);

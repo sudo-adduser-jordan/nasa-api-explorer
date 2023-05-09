@@ -1,4 +1,4 @@
-import getApod from '@/lib/getApod';
+import getApod from '@/lib/apod/getApod';
 import styles from './apod.module.css';
 
 export interface Root {

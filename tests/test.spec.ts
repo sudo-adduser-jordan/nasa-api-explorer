@@ -56,26 +56,6 @@ test.describe('Validate Metadata', () => {
     test('Test Mars Rover Photos Data', async ({ page }) => {});
 });
 
-test.describe('Validate Data', () => {
-    test('Test Apod Data', async ({ page }) => {});
-
-    test('Test Image Library Data', async ({ page }) => {});
-
-    test('Test Video Library Data', async ({ page }) => {});
-
-    test('Test Mars Rover Photos Data', async ({ page }) => {});
-});
-
-test.describe('Validate Client Components', () => {
-    test('Test Search Component', async ({ page }) => {});
-
-    test('Test Sidebar Component', async ({ page }) => {});
-
-    test('Test Topbar Component', async ({ page }) => {});
-
-    test('Test Marsbar Component', async ({ page }) => {});
-});
-
 test.describe('Validate Server Components', () => {
     test('Test getSearch Component', async ({ page }) => {});
 
@@ -92,4 +72,34 @@ test.describe('Validate Server Components', () => {
     test('Test getManifest Component', async ({ page }) => {});
 
     test('Test getRover Component', async ({ page }) => {});
+});
+
+test.describe('Validate Client Components', () => {
+    test('Test Search Component', async ({ page }) => {});
+
+    test('Test Sidebar Component', async ({ page }) => {});
+
+    test('Test Topbar Component', async ({ page }) => {});
+
+    test('Test Marsbar Component', async ({ page }) => {});
+});
+
+test.describe('Validate Pages', () => {
+    test('Test Apod Data', async ({ page }) => {});
+
+    test('Test Image Library Data', async ({ page }) => {});
+
+    test('Test Video Library Data', async ({ page }) => {});
+
+    test('Test Mars Rover Photos Data', async ({ page }) => {});
+});
+
+test.describe('Validate Data', () => {
+    test('Test Apod Data', async ({ page }) => {});
+
+    test('Test Image Library Data', async ({ page }) => {});
+
+    test('Test Video Library Data', async ({ page }) => {});
+
+    test('Test Mars Rover Photos Data', async ({ page }) => {});
 });

@@ -1,36 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
-
 import getRover from '../../../lib/mars-rover-photos/getRover';
 import getManifest from '../../../lib/mars-rover-photos/getManifest';
-import { Card, ManifestRoot, Params, PhotoRoot } from '../types';
-
+import { Card, ManifestRoot, PhotoRoot } from '../types';
 import styles from '../mars.module.css';
+import { Params } from '../types';
 import { Metadata } from 'next';
 
-// metadata
-export async function generateMetadata({
-    params: { slug },
-}: Params): Promise<Metadata> {
-    const manifest: ManifestRoot = await getManifest(slug);
-
-    if (!slug) {
-        return {
-            title: 'Slug Not Found',
-        };
-    }
-
-    return {
-        title: slug.charAt(0).toUpperCase() + slug.slice(1),
-        description: `This is the page of ${slug}`,
-    };
-}
-
-// SSG
-export async function generateStaticParams() {
-    const paths = ['curiosity', 'spirit', 'opportunity'];
-    return paths;
-}
+export const metadata: Metadata = {
+    title: 'Image Library',
+    description: 'Image Library Page',
+};
 
 // page
 function Page({ params }: Params) {
@@ -112,13 +92,13 @@ function Page({ params }: Params) {
                         />
                     ))}
                 </div>
+                {showButton && (
+                    <div className={styles.buttonContainer}>
+                        {/* <button className={styles.load} onClick={loadMoreCards}> */}
+                        <button className={styles.load}>Load More</button>
+                    </div>
+                )}
             </div>
-            {showButton && (
-                <div className={styles.buttonContainer}>
-                    {/* <button className={styles.load} onClick={loadMoreCards}> */}
-                    <button className={styles.load}>Load More</button>
-                </div>
-            )}
         </main>
     );
 

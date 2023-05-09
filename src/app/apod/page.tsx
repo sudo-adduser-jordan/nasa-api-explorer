@@ -1,5 +1,6 @@
 import getApod from '@/lib/apod/getApod';
 import styles from './apod.module.css';
+import { Metadata } from 'next';
 
 export interface Root {
     date: string;
@@ -11,9 +12,9 @@ export interface Root {
     url: string;
 }
 
-export const metadata = {
-    title: 'APOD',
-    description: 'APOD Page',
+export const metadata: Metadata = {
+    title: 'Astronomy Picture of the Day',
+    description: 'Astronomy Picture of the Day Page',
 };
 
 async function Page() {

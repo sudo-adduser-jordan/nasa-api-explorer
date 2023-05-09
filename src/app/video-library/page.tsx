@@ -8,6 +8,12 @@ import styles from './video.module.css';
 import { Card } from './types';
 import { useEffect, useState } from 'react';
 import { Properties } from '@/lib/video-library/types';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Video Library',
+    description: 'Video Library Page',
+};
 
 function Page() {
     const [showButton, setShowButton] = useState(false);

@@ -1,4 +1,5 @@
 import styles from './page.module.css';
+
 export const metadata = {
     title: 'Nasa Api Explorer',
     description: 'Welcome to Nasa Api Explorer',

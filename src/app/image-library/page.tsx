@@ -9,6 +9,14 @@ import { Card } from './types';
 import { useEffect, useState } from 'react';
 import { Properties } from '@/lib/image-library/types';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Video Library',
+    description: 'Video Library Page',
+};
+
+// function Page({ params, searchParams }: Props) {
 function Page() {
     const [showButton, setShowButton] = useState(false);
     const [cards, setCards] = useState<Card[]>([]);
@@ -16,13 +24,13 @@ function Page() {
 
     // load state with server component SSG
     useEffect(() => {
-        const getArray = async () => {
+        const loadState = async () => {
             const props: Properties = await getImages();
             setCards(props.array);
             setPage(props.nextPage);
         };
         // call the function
-        getArray().catch(console.error);
+        loadState().catch(console.error);
     }, []);
 
     // load button & change on state SSR?

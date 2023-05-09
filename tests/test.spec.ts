@@ -16,10 +16,8 @@ test.describe('Validate Routes', () => {
 
     test('Test Apod Page', async ({ page }) => {
         await page.goto('http://localhost:3000/');
-        await page
-            .getByRole('link', { name: 'Astronomy Picture of the Day ' })
-            .click();
-        await expect(page).toHaveTitle(/Apod/);
+        await page.getByRole('link', { name: 'APOD' }).click();
+        await expect(page).toHaveTitle(/Astronomy Picture of the Day/);
         await expect(page).toHaveURL(/apod/);
     });
 
@@ -41,18 +39,18 @@ test.describe('Validate Routes', () => {
         await page.goto('http://localhost:3000/');
         await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
         await expect(page).toHaveTitle(/Mars Rover Photos/);
-        await expect(page).toHaveURL(/mars-rover-photos/);
+        await expect(page).toHaveURL(/mars-rover-photos\/spirit/);
 
         await page.getByRole('link', { name: 'curiosity' }).click();
-        await expect(page).toHaveTitle(/curiosity/);
+        await expect(page).toHaveTitle(/Curiosity/);
         await expect(page).toHaveURL(/curiosity/);
 
         await page.getByRole('link', { name: 'spirit' }).click();
-        await expect(page).toHaveTitle(/spirit/);
+        await expect(page).toHaveTitle(/Spirit/);
         await expect(page).toHaveURL(/spirit/);
 
         await page.getByRole('link', { name: 'opportunity' }).click();
-        await expect(page).toHaveTitle(/opportunity/);
+        await expect(page).toHaveTitle(/Opportunity/);
         await expect(page).toHaveURL(/opportunity/);
     });
 });

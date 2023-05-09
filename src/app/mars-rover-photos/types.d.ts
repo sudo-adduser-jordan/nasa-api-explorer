@@ -50,14 +50,15 @@ export interface Photo {
     cameras: string[];
 }
 
-// local
-export type Params = {
-    params: { slug: string };
-};
-
 export type Card = {
     id: number;
     href: string;
     date: string;
     sol: number;
+};
+
+export type Params = {
+    params: {
+        slug: string;
+    };
 };

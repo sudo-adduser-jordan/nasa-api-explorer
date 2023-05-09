@@ -7,6 +7,11 @@ async function getMore(page: string) {
 
     const items = data.collection.items;
 
+    let nextPage = '';
+    if (data.collection.links != undefined) {
+        nextPage = data.collection.links[1].href;
+    }
+
     const array: Card[] = [];
     for (let i = 0; i < items.length; i++) {
         array.push({
@@ -16,7 +21,10 @@ async function getMore(page: string) {
         });
     }
 
-    return array;
+    return {
+        nextPage,
+        array,
+    };
 }
 
 export default getMore;

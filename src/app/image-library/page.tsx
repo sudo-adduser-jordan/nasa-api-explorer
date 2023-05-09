@@ -14,7 +14,7 @@ function Page() {
     const [cards, setCards] = useState<Card[]>([]);
     const [page, setPage] = useState('');
 
-    // load state with server component
+    // load state with server component SSG
     useEffect(() => {
         const getArray = async () => {
             const props: Properties = await getImages();
@@ -25,7 +25,7 @@ function Page() {
         getArray().catch(console.error);
     }, []);
 
-    // load button & change on state
+    // load button & change on state SSR?
     useEffect(() => {
         if (page != '') {
             setShowButton(true);
@@ -34,7 +34,7 @@ function Page() {
         }
     }, [page]);
 
-    // get search input
+    // get search input SSG
     async function handleSubmit(e: any) {
         e.preventDefault();
         setPage('');
@@ -54,10 +54,14 @@ function Page() {
         }
     }
 
+    // SSR
     async function loadMoreCards() {
         // response data
-        const array = await getMore(page);
-        setCards(cards.concat(array));
+        const props: Properties = await getMore(page);
+        setCards(cards.concat(props.array));
+        if (props.nextPage != undefined) {
+            setPage(props.nextPage);
+        }
     }
 
     const content = (

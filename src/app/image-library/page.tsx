@@ -9,11 +9,6 @@ import { Card } from './types';
 import { useEffect, useState } from 'react';
 import { Properties } from '@/lib/types';
 
-export const metadata = {
-    title: 'Image Library',
-    description: 'Image Library Page',
-};
-
 function Page() {
     const [showButton, setShowButton] = useState(false);
     const [cards, setCards] = useState<Card[]>([]);

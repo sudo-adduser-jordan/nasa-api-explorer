@@ -1,10 +1,9 @@
 import { Root, Card } from './types';
 
-const defaultEndpoint =
-    'https://images-api.nasa.gov/search?q=star&media_type=image';
-
 async function getImages() {
-    const res = await fetch(defaultEndpoint);
+    const res = await fetch(
+        'https://images-api.nasa.gov/search?q=star&media_type=image'
+    );
     if (!res.ok) throw new Error('Failed to fetch Image Properties.');
     const data: Root = await res.json();
 

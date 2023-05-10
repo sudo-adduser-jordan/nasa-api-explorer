@@ -1,13 +1,12 @@
 'use client';
+import { useEffect, useState } from 'react';
+import getImages from '@/lib/image-library/getImages';
 import getVideos from '../../lib/video-library/getVideos';
-import getMore from '../../lib/search/getMoreSearch';
+import getMoreSearch from '../../lib/search/getMoreSearch';
 import getSearch from '../../lib/search/getSearch';
 import Search from './search/Search';
 import styles from './grid.module.css';
-import { useEffect, useState } from 'react';
 import Card from './card/Card';
-import getImages from '@/lib/image-library/getImages';
-import getRover from '@/lib/mars-rover-photos/getRover';
 
 type Properties = {
     nextPage: string;
@@ -80,7 +79,7 @@ function Grid({ media_type }: any) {
     }
 
     async function loadMoreCards() {
-        const props: Properties = await getMore(page);
+        const props: Properties = await getMoreSearch(page);
         setCards(cards.concat(props.array));
         setPage(props.nextPage);
     }

@@ -54,10 +54,3 @@ export interface Photo {
 export type Params = {
     params: { slug: string };
 };
-
-export type MarsCard = {
-    key: number;
-    href: string;
-    date: string;
-    sol: number;
-};

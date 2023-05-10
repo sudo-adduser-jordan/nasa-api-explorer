@@ -17,7 +17,7 @@ function VideoCard({ href, date, title }: Card) {
                 </div>
                 <div className={styles.date}>{date}</div>
                 <div className={styles.cardTitle}>{title}</div>
-                <Link className={styles.details} href={`/library/${title}`}>
+                <Link className={styles.details} href={`${title}`}>
                     Details &rarr;
                 </Link>
             </div>

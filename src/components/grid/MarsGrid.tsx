@@ -1,9 +1,9 @@
 'use client';
-import styles from './marsgrid.module.css';
 import { useEffect, useState } from 'react';
-import getRover from '@/lib/mars-rover-photos/getRover';
 import getManifest from '@/lib/mars-rover-photos/getManifest';
-import { ManifestRoot, PhotoRoot } from '../../lib/mars-rover-photos/types';
+import getRover from '@/lib/mars-rover-photos/getRover';
+import styles from './marsgrid.module.css';
+import { ManifestRoot } from '../../lib/mars-rover-photos/types';
 import MarsCard from './card/MarsCard';
 
 export type MarsCard = {
@@ -27,19 +27,8 @@ function MarsGrid({ rover_name }: any) {
             const max_sol = manifest?.photo_manifest.max_sol;
             setSol(max_sol);
 
-            const rover: PhotoRoot = await getRover(rover_name, max_sol);
-
-            const array: MarsCard[] = [];
-            for (let i = 0; i < rover.photos.length; i++) {
-                array.push({
-                    key: rover.photos[i].id,
-                    href: rover.photos[i].img_src,
-                    date: rover.photos[i].earth_date,
-                    sol: rover.photos[i].sol,
-                });
-            }
-
-            setRover(array);
+            const data = await getRover(rover_name, max_sol);
+            setRover(data.array);
         };
         // call the function
         loadState().catch(console.error);
@@ -79,12 +68,12 @@ function MarsGrid({ rover_name }: any) {
             </h5>
             <div className={styles.gridContainer}>
                 <div className={styles.grid}>
-                    {rover.map((card) => (
+                    {rover.map((rover, i) => (
                         <MarsCard
-                            key={card.key}
-                            href={card.href}
-                            date={card.date}
-                            sol={card.sol}
+                            key={i}
+                            href={rover.href}
+                            date={rover.date}
+                            sol={rover.sol}
                         />
                     ))}
                 </div>

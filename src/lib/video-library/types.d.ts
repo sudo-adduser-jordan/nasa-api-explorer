@@ -48,6 +48,7 @@ export interface Link2 {
 }
 
 export type Card = {
+    key: number;
     href: string;
     date: string;
     title: string;

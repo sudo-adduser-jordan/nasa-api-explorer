@@ -46,9 +46,3 @@ export interface Link2 {
     prompt: string;
     href: string;
 }
-
-export type Card = {
-    href: string;
-    date: string;
-    title: string;
-};

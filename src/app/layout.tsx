@@ -1,31 +1,35 @@
-'use client';
 import { useState } from 'react';
 import { Metadata } from 'next';
-import Sidebar from '../components/sidebar/Sidebar';
-import Topbar from '../components/topbar/Topbar';
+import Navigation from '../components/navigation/Navigation';
 import './globals.css';
+
+// export const metadata: Metadata = {
+//     title: {
+//         default: 'Nasa Api Explorer',
+//         template: '%s | Nasa Api Explorer',
+//     },
+// };
+
+// export const metadata: Metadata = {
+//     title: 'Nasa Api Explorer',
+//     // description: 'Welcome to Nasa Api Explorer',
+// };
+
+// export function generateMetadata(): Metadata {
+//     return {
+//         title: 'Next.js',
+//     };
+// }
 
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => {
-        setSidebar(!sidebar);
-    };
-    const hideSidebar = () => {
-        setSidebar(false);
-    };
-
     return (
         <html lang='en'>
             <body>
-                <Topbar showSidebar={showSidebar} />
-                <main onClick={hideSidebar}>
-                    <Sidebar sidebar={sidebar} />
-                    {children}
-                </main>
+                <Navigation>{children}</Navigation>
             </body>
         </html>
     );

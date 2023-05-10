@@ -13,6 +13,7 @@ async function getVideos() {
     const array: Card[] = [];
     for (let i = 0; i < items.length; i++) {
         array.push({
+            key: i,
             href: items[i].links[0].href,
             date: items[i].data[0].date_created.slice(0, 10),
             title: items[i].data[0].title,

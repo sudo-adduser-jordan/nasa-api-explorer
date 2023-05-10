@@ -74,7 +74,11 @@ test.describe('Validate Client Components', () => {
         });
     });
     test.describe('Test Topbar Component', () => {
-        test('Test Topbar Component', async ({ page }) => {});
+        test('Test Topbar Component', async ({ page }) => {
+            await page.getByRole('link', { name: 'Video Library' }).click();
+            await expect(page).toHaveTitle(/x x/);
+            await expect(page).toHaveURL(/x-x/);
+        });
     });
     test.describe('Test Marsbar Component', () => {
         test('Test Mars Rover Photos Link', async ({ page }) => {
@@ -82,22 +86,53 @@ test.describe('Validate Client Components', () => {
             await expect(page).toHaveTitle(/Spirit/);
             await expect(page).toHaveURL(/mars-rover-photos\/spirit/);
         });
+
         test('Test Curiosity Link', async ({ page }) => {
+            await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
             await page.getByRole('link', { name: 'curiosity' }).click();
             await expect(page).toHaveTitle(/Curiosity/);
             await expect(page).toHaveURL(/curiosity/);
         });
         test('Test Spirit Link', async ({ page }) => {
+            await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
             await page.getByRole('link', { name: 'spirit' }).click();
             await expect(page).toHaveTitle(/Spirit/);
             await expect(page).toHaveURL(/spirit/);
         });
         test('Test Opportunity Link', async ({ page }) => {
+            await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
             await page.getByRole('link', { name: 'opportunity' }).click();
+            await expect(page).toHaveTitle(/Opportunity/);
+            await expect(page).toHaveURL(/opportunity/);
+        });
+        test('Test Navigation Links', async ({ page }) => {
+            await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
+            await expect(page).toHaveTitle(/Spirit/);
+            await expect(page).toHaveURL(/mars-rover-photos\/spirit/);
+            await page.getByRole('link', { name: 'curiosity' }).click();
+            await expect(page).toHaveTitle(/Curiosity/);
+            await expect(page).toHaveURL(/curiosity/);
 
             await page.getByRole('link', { name: 'opportunity' }).click();
             await expect(page).toHaveTitle(/Opportunity/);
             await expect(page).toHaveURL(/opportunity/);
+
+            await page.getByRole('link', { name: 'spirit' }).click();
+            await expect(page).toHaveTitle(/Spirit/);
+            await expect(page).toHaveURL(/spirit/);
+
+            await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
+            await expect(page).toHaveTitle(/Spirit/);
+            await expect(page).toHaveURL(/mars-rover-photos\/spirit/);
+            await page.getByRole('link', { name: 'curiosity' }).click();
+            await expect(page).toHaveTitle(/Curiosity/);
+            await expect(page).toHaveURL(/curiosity/);
+            await page.getByRole('link', { name: 'opportunity' }).click();
+            await expect(page).toHaveTitle(/Opportunity/);
+            await expect(page).toHaveURL(/opportunity/);
+            await page.getByRole('link', { name: 'spirit' }).click();
+            await expect(page).toHaveTitle(/Spirit/);
+            await expect(page).toHaveURL(/spirit/);
         });
     });
 });

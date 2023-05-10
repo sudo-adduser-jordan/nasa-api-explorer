@@ -7,6 +7,7 @@ import styles from './grid.module.css';
 import { useEffect, useState } from 'react';
 import Card from './card/Card';
 import getImages from '@/lib/image-library/getImages';
+import getRover from '@/lib/mars-rover-photos/getRover';
 
 type Properties = {
     nextPage: string;

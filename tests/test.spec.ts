@@ -38,7 +38,7 @@ test.describe('Validate Routes', () => {
     test('Test Mars Rover Photos Pages', async ({ page }) => {
         await page.goto('http://localhost:3000/');
         await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
-        await expect(page).toHaveTitle(/Mars Rover Photos/);
+        await expect(page).toHaveTitle(/Spirit/);
         await expect(page).toHaveURL(/mars-rover-photos\/spirit/);
 
         await page.getByRole('link', { name: 'curiosity' }).click();

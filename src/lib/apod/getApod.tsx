@@ -1,7 +1,8 @@
-const defaultEndpoint = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY';
+// const defaultEndpoint = 'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY';
+const defaultEndpoint = `https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
 export default async function getApod() {
-    const res = await fetch(defaultEndpoint);
+    const res = await fetch(defaultEndpoint, { next: { revalidate: 10 } });
     if (!res.ok) throw new Error('Failed to fetch APOD Properties.');
     return res.json();
 }

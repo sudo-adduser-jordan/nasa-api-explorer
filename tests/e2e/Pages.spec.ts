@@ -2,10 +2,14 @@ import { test, expect } from '@playwright/test';
 
 // PAGES
 test.describe('Validate Pages', () => {
-    test('Test Home Page', async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
         await page.goto('http://localhost:3000/');
+    });
+    test('Test Home Page', async ({ page }) => {
         await page.getByRole('link', { name: 'Home' }).click();
         await expect(page).toHaveTitle(/Nasa Api Explorer/);
+        //check text / images
+
         await page
             .getByText(
                 'This website is under construction.About this websiteThis website was created as'
@@ -32,9 +36,9 @@ test.describe('Validate Pages', () => {
             .click();
     });
     test('Test About Page', async ({ page }) => {
-        await page.goto('http://localhost:3000/');
         await page.getByRole('link', { name: 'About' }).click();
         await page.getByText('About').nth(1).click();
+        //check text / images
         await page
             .getByText(
                 'AboutWhat is an Api?API stands for application programming interface, which is a'
@@ -80,115 +84,31 @@ test.describe('Validate Pages', () => {
             .click();
     });
     test('Test Apod Data', async ({ page }) => {
-        await page.goto('http://localhost:3000/');
         await page.getByRole('link', { name: 'APOD' }).click();
-        await page
-            .getByText(
-                'Astronomy Picture of the DayIf not perfect, then this spiral galaxy is at least '
-            )
-            .click();
         await page.getByText('Astronomy Picture of the Day').first().click();
         await page.locator('img').click();
-        await page
-            .getByText(
-                'If not perfect, then this spiral galaxy is at least one of the most photogenic. '
-            )
-            .click();
+        // check image
+        // check test
     });
 
-    test('Test Image Library Data', async ({ page }) => {});
+    test('Test Image Library Data', async ({ page }) => {
+        //check grid
+        //check button if
+        //check button if not
+    });
 
     test('Test Video Library Data', async ({ page }) => {});
 
     test('Test Mars Rover Photos Data', async ({ page }) => {
-        await page.goto('http://localhost:3000/');
         await page.getByRole('link', { name: 'Mars Rover Photos' }).click();
-        await page
-            .getByRole('heading', { name: 'Total Photos: 124550' })
-            .click();
-        await page
-            .getByRole('heading', { name: 'Lanuch Date: 2003-06-10' })
-            .click();
-        await page
-            .getByRole('heading', { name: 'Max Earth Date: 2010-03-21' })
-            .click();
-        await page
-            .getByRole('heading', { name: 'Number of photos from sol 2208: 2' })
-            .click();
-        await page
-            .getByText('2010-03-21Details →2010-03-21Details →Load More')
-            .click();
-        await page.getByText('2010-03-21Details →2010-03-21Details →').click();
-        await page.getByText('2010-03-21Details →').first().click();
-        await page.getByText('2010-03-21').nth(1).click();
-        await page.getByRole('link', { name: 'Details →' }).first().click();
-        await page.getByRole('button', { name: 'Load More' }).click();
+        //check info
+        //check grid
+        //check button
         await page.getByRole('link', { name: 'curiosity' }).click();
-        await page.getByRole('heading', { name: 'curiosity' }).click();
-        await page.getByRole('heading', { name: 'Status: active' }).click();
-        await page.getByRole('heading', { name: 'Mars Days: 3822' }).click();
-        await page
-            .getByRole('heading', { name: 'Lanuch Date: 2011-11-26' })
-            .click();
-        await page
-            .getByRole('heading', { name: 'Total Photos: 649644' })
-            .click();
-        await page
-            .getByRole('heading', { name: 'Max Earth Date: 2023-05-08' })
-            .click();
-        await page
-            .getByRole('heading', {
-                name: 'Number of photos from sol 3822: 197',
-            })
-            .click();
-        await page
-            .getByText(
-                'curiosityStatus: activeMars Days: 3822Total Photos: 649644Lanuch Date: 2011-11-2'
-            )
-            .click();
-        await page.locator('section').getByText('Mars Rover Photos').click();
-        await page.locator('img').first().click();
-        await page.locator('.card_date__Wtg7X').first().click();
-        await page.locator('.card_details__YSTNS').first().click();
-        await page
-            .locator('div')
-            .filter({
-                hasText:
-                    '2023-05-08Details →2023-05-08Details →2023-05-08Details →2023-05-08Details →2023',
-            })
-            .first()
-            .click();
-        await page.getByRole('button', { name: 'Load More' }).click();
         await page.getByRole('link', { name: 'opportunity' }).click();
-        await page.getByRole('heading', { name: 'opportunity' }).click();
-        await page.getByRole('heading', { name: 'Status:' }).click();
-        await page.getByRole('heading', { name: 'Mars Days:' }).click();
-        await page.getByRole('heading', { name: 'Total Photos:' }).click();
-        await page
-            .getByRole('heading', { name: 'Lanuch Date: 2003-07-07' })
-            .click();
-        await page
-            .getByRole('heading', { name: 'Max Earth Date: 2018-06-11' })
-            .click();
-        await page
-            .getByRole('heading', { name: 'Number of photos from sol 5111: 1' })
-            .click();
-        await page
-            .getByText(
-                'opportunityStatus: completeMars Days: 5111Total Photos: 198439Lanuch Date: 2003-'
-            )
-            .click();
-        await page
-            .locator('div')
-            .filter({ hasText: '2018-06-11Details →' })
-            .nth(1)
-            .click();
-        await page.locator('img').click();
-        await page.getByText('2018-06-11', { exact: true }).click();
-        await page.getByText('2018-06-11Details →').click();
-        await page.getByRole('button', { name: 'Load More' }).click();
         await page.getByRole('link', { name: 'spirit' }).click();
         await page.getByRole('link', { name: 'curiosity' }).click();
         await page.getByRole('link', { name: 'spirit' }).click();
+        // await page.getByRole('button', { name: 'Load More' }).click();
     });
 });

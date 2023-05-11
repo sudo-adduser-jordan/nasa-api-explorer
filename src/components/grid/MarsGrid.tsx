@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import styles from './marsgrid.module.css';
 import { ManifestRoot } from '../../lib/mars-rover-photos/types';
 import MarsCard from './card/MarsCard';
+import getRoverMore from '@/lib/mars-rover-photos/getRoverMore';
+import LoadButton from './button/LoadMore';
 
 type Card = {
     key: number;
@@ -11,12 +13,19 @@ type Card = {
     sol: number;
 };
 
-type Data = { data: { data: { array: Card[] }; manifest: ManifestRoot } };
+type Data = {
+    data: {
+        rover_data: {
+            array: Card[];
+        };
+        manifest: ManifestRoot;
+    };
+};
 
 function MarsGrid({ data }: Data) {
     const [showButton, setShowButton] = useState(false);
     const [manifest, setManifest] = useState<ManifestRoot>(data.manifest);
-    const [rover, setRover] = useState<Card[]>(data.data.array);
+    const [rover, setRover] = useState<Card[]>(data.rover_data.array);
     const [sol, setSol] = useState(data.manifest.photo_manifest.max_sol);
 
     useEffect(() => {
@@ -27,7 +36,14 @@ function MarsGrid({ data }: Data) {
         }
     }, [sol]);
 
-    async function loadMoreCards() {}
+    async function loadMoreCards() {
+        const res = await getRoverMore(
+            manifest.photo_manifest.name.toLowerCase(),
+            sol
+        );
+        setRover(rover.concat(res.array));
+        setSol(res.nextSol);
+    }
 
     const content = (
         <>
@@ -63,12 +79,10 @@ function MarsGrid({ data }: Data) {
                     ))}
                 </div>
                 {showButton && (
-                    <div className={styles.buttonContainer}>
-                        <button
-                            className={styles.load}
-                            onClick={loadMoreCards}
-                        />
-                    </div>
+                    <LoadButton
+                        className={styles.buttonContainer}
+                        loadMoreCards={loadMoreCards}
+                    />
                 )}
             </div>
         </>

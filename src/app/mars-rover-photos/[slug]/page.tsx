@@ -14,11 +14,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 async function Page({ params }: Params) {
     const manifest: ManifestRoot = await getManifest(params.slug);
     const max_sol = manifest.photo_manifest.max_sol;
-    const data = await getRover(params.slug, max_sol);
+    const rover_data = await getRover(params.slug, max_sol);
 
     const content = (
         <main className={styles.container}>
-            <MarsGrid data={{ data, manifest }} />
+            <MarsGrid data={{ rover_data, manifest }} />
         </main>
     );
 

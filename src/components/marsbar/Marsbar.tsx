@@ -22,7 +22,7 @@ export const Marsbar = () => {
                                     : `${styles.item}`
                             }
                         >
-                            {path}
+                            {path.charAt(0).toUpperCase() + path.slice(1)}
                         </Link>
                     );
                 })}

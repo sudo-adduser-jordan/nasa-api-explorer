@@ -1,4 +1,11 @@
-import { PhotoRoot, MarsCard } from './types';
+import { PhotoRoot } from './types';
+
+type Card = {
+    key: number;
+    href: string;
+    date: string;
+    sol: number;
+};
 
 async function getRover(slug: string, max_sol: number) {
     const res = await fetch(
@@ -8,7 +15,11 @@ async function getRover(slug: string, max_sol: number) {
     if (!res.ok) throw new Error('Failed to fetch Rover Properties.');
     const data: PhotoRoot = await res.json();
 
-    const array: MarsCard[] = [];
+    // to do next sol
+    let nextSol = 0;
+
+    // array
+    const array: Card[] = [];
     for (let i = 0; i < data.photos.length; i++) {
         array.push({
             key: data.photos[i].id,
@@ -17,10 +28,8 @@ async function getRover(slug: string, max_sol: number) {
             sol: data.photos[i].sol,
         });
     }
-    // to do next sol
-    let nextSold = 0;
 
-    return { array };
+    return { nextSol, array };
 }
 
 export default getRover;

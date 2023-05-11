@@ -1,3 +1,4 @@
+import getImages from '@/lib/image-library/getImages';
 import Grid from '@/components/grid/Grid';
 import styles from './image.module.css';
 import { Metadata } from 'next';
@@ -7,11 +8,12 @@ export const metadata: Metadata = {
     description: 'Image Library Page',
 };
 
-function Page() {
+async function Page() {
+    const data = await getImages();
     const content = (
         <section className={styles.container}>
             <div className={styles.title}>Image Library</div>
-            <Grid media_type='image' />
+            <Grid data={data} />
         </section>
     );
 

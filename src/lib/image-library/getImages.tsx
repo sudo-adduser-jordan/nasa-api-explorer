@@ -7,8 +7,17 @@ async function getImages() {
     if (!res.ok) throw new Error('Failed to fetch Image Properties.');
     const data: Root = await res.json();
 
-    const items = data.collection.items;
+    // media type
+    const media_type = 'image';
 
+    // next page href
+    let nextPage = '';
+    if (data.collection.links != undefined) {
+        nextPage = data.collection.links[0].href;
+    }
+
+    // array
+    const items = data.collection.items;
     const array: Card[] = [];
     for (let i = 0; i < items.length; i++) {
         array.push({
@@ -19,12 +28,8 @@ async function getImages() {
         });
     }
 
-    let nextPage = '';
-    if (data.collection.links != undefined) {
-        nextPage = data.collection.links[0].href;
-    }
-
     return {
+        media_type,
         nextPage,
         array,
     };

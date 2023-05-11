@@ -49,8 +49,3 @@ export interface Photo {
     total_photos: number;
     cameras: string[];
 }
-
-// local
-export type Params = {
-    params: { slug: string };
-};

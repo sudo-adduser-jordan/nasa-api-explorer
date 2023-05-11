@@ -1,50 +1,35 @@
 'use client';
 import { useEffect, useState } from 'react';
-import getImages from '@/lib/image-library/getImages';
-import getVideos from '../../lib/video-library/getVideos';
 import getMoreSearch from '../../lib/search/getMoreSearch';
 import getSearch from '../../lib/search/getSearch';
 import Search from './search/Search';
 import styles from './grid.module.css';
 import Card from './card/Card';
 
-type Properties = {
+type SearchData = {
     nextPage: string;
     array: Card[];
 };
 
-export type Card = {
+type Card = {
     key: number;
     href: string;
     date: string;
     title: string;
 };
 
-function Grid({ media_type }: any) {
-    const [showButton, setShowButton] = useState(false);
-    const [cards, setCards] = useState<Card[]>([]);
-    const [page, setPage] = useState('');
+type Data = {
+    data: {
+        media_type: string;
+        nextPage: string;
+        array: Card[];
+    };
+};
 
-    // load state with server component
-    useEffect(() => {
-        const getArray = async () => {
-            console.log('on mount media type: ' + media_type);
-            if (media_type === 'image') {
-                const data = await getImages();
-                setPage(data.nextPage);
-                setCards(data.array);
-                console.log('image');
-            }
-            if (media_type === 'video') {
-                const data = await getVideos();
-                setPage(data.nextPage);
-                setCards(data.array);
-                console.log('video');
-            }
-        };
-        // call the function
-        getArray().catch(console.error);
-    }, [media_type]);
+function Grid({ data }: Data) {
+    const [showButton, setShowButton] = useState(false);
+    const [cards, setCards] = useState<Card[]>(data.array);
+    const [page, setPage] = useState('');
 
     // load button & change on state
     useEffect(() => {
@@ -66,22 +51,22 @@ function Grid({ media_type }: any) {
         const formJson = Object.fromEntries(formData.entries());
 
         // response data
-        const props: Properties = await getSearch(
-            media_type,
+        const search_data: SearchData = await getSearch(
+            data.media_type,
             formJson['search']
         );
 
         // set state
-        setCards(props.array);
-        if (props.nextPage != undefined) {
-            setPage(props.nextPage);
+        setCards(search_data.array);
+        if (search_data.nextPage != undefined) {
+            setPage(search_data.nextPage);
         }
     }
 
     async function loadMoreCards() {
-        const props: Properties = await getMoreSearch(page);
-        setCards(cards.concat(props.array));
-        setPage(props.nextPage);
+        const search_data: SearchData = await getMoreSearch(page);
+        setCards(cards.concat(search_data.array));
+        setPage(search_data.nextPage);
     }
 
     const content = (

@@ -23,7 +23,8 @@
 }
 
 .load {
-    /* background-color: lightcoral; */
+    background-color: tomato;
+    border-color: tomato;
 }
 
 @media (max-width: 800px) {

@@ -1,38 +1,23 @@
 'use client';
 import { useEffect, useState } from 'react';
-import getManifest from '@/lib/mars-rover-photos/getManifest';
-import getRover from '@/lib/mars-rover-photos/getRover';
 import styles from './marsgrid.module.css';
 import { ManifestRoot } from '../../lib/mars-rover-photos/types';
 import MarsCard from './card/MarsCard';
 
-export type MarsCard = {
+type Card = {
     key: number;
     href: string;
     date: string;
     sol: number;
 };
 
-function MarsGrid({ rover_name }: any) {
+type Data = { data: { data: { array: Card[] }; manifest: ManifestRoot } };
+
+function MarsGrid({ data }: Data) {
     const [showButton, setShowButton] = useState(false);
-    const [manifest, setManifest] = useState<ManifestRoot>();
-    const [rover, setRover] = useState<MarsCard[]>([]);
-    const [sol, setSol] = useState(0);
-
-    useEffect(() => {
-        const loadState = async () => {
-            const manifest = await getManifest(rover_name);
-            setManifest(manifest);
-
-            const max_sol = manifest?.photo_manifest.max_sol;
-            setSol(max_sol);
-
-            const data = await getRover(rover_name, max_sol);
-            setRover(data.array);
-        };
-        // call the function
-        loadState().catch(console.error);
-    }, [rover_name]);
+    const [manifest, setManifest] = useState<ManifestRoot>(data.manifest);
+    const [rover, setRover] = useState<Card[]>(data.data.array);
+    const [sol, setSol] = useState(data.manifest.photo_manifest.max_sol);
 
     useEffect(() => {
         if (sol != 0) {
@@ -46,7 +31,7 @@ function MarsGrid({ rover_name }: any) {
 
     const content = (
         <>
-            <h1 className={styles.title}>{rover_name}</h1>
+            <h1 className={styles.title}>{}</h1>
             <h5 className={styles.status}>
                 Status: {manifest?.photo_manifest.status}
             </h5>

@@ -87,7 +87,8 @@ function Grid({ data }: Data) {
                     <div className={styles.buttonContainer}>
                         <button
                             className={styles.load}
-                            onTouchStart={loadMoreCards}
+                            // onTouchStart={loadMoreCards}
+                            onFocus={loadMoreCards}
                             onClick={loadMoreCards}
                         >
                             Load More

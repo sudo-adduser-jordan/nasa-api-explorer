@@ -69,6 +69,7 @@
     height: 20vh;
     width: 100%;
     border-top: solid white 1px;
+    border-bottom: solid white 1px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

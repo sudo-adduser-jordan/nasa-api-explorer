@@ -2,9 +2,9 @@ import styles from './loadmore.module.css';
 
 function LoadButton({ loadMoreCards }: any) {
     return (
-        <div className={styles.buttonContainer}>
+        <div className={styles.container}>
             <button
-                className={styles.load}
+                className={styles.button}
                 onTouchStart={loadMoreCards}
                 onClick={loadMoreCards}
             >

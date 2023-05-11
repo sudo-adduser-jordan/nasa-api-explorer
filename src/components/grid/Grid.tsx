@@ -5,6 +5,7 @@ import getSearch from '../../lib/search/getSearch';
 import Search from './search/Search';
 import styles from './grid.module.css';
 import Card from './card/Card';
+import LoadButton from './button/LoadMore';
 
 type SearchData = {
     nextPage: string;
@@ -29,7 +30,16 @@ type Data = {
 function Grid({ data }: Data) {
     const [showButton, setShowButton] = useState(false);
     const [cards, setCards] = useState<Card[]>(data.array);
-    const [page, setPage] = useState('');
+    const [page, setPage] = useState(data.nextPage);
+
+    // init button
+    useEffect(() => {
+        if (page != '') {
+            setShowButton(true);
+        } else {
+            setShowButton(false);
+        }
+    }, []);
 
     // load button change on state
     useEffect(() => {
@@ -83,7 +93,7 @@ function Grid({ data }: Data) {
                         />
                     ))}
                 </div>
-                {showButton && (
+                {/* {showButton && (
                     <div className={styles.buttonContainer}>
                         <button
                             className={styles.load}
@@ -94,6 +104,12 @@ function Grid({ data }: Data) {
                             Load More
                         </button>
                     </div>
+                )} */}
+                {showButton && (
+                    <LoadButton
+                        className={styles.buttonContainer}
+                        loadMoreCards={loadMoreCards}
+                    />
                 )}
             </div>
         </>

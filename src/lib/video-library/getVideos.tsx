@@ -8,7 +8,7 @@ async function getVideos() {
     const data: Root = await res.json();
 
     // media type
-    const media_type = 'image';
+    const media_type = 'video';
 
     // next page href
     let nextPage = '';

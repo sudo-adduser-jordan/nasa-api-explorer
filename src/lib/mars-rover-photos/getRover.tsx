@@ -1,11 +1,4 @@
-import { PhotoRoot } from './types';
-
-type Card = {
-    key: number;
-    href: string;
-    date: string;
-    sol: number;
-};
+import { PhotoRoot, Card } from './types';
 
 async function getRover(slug: string, max_sol: number) {
     const res = await fetch(

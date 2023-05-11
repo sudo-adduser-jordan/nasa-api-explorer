@@ -49,3 +49,9 @@ export interface Photo {
     total_photos: number;
     cameras: string[];
 }
+export type Card = {
+    key: number;
+    href: string;
+    date: string;
+    sol: number;
+};

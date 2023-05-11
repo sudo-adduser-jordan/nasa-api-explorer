@@ -53,8 +53,3 @@ export type Card = {
     date: string;
     title: string;
 };
-
-export type Properties = {
-    nextPage: string;
-    array: Card[];
-};

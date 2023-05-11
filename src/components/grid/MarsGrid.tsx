@@ -64,8 +64,10 @@ function MarsGrid({ data }: Data) {
                 </div>
                 {showButton && (
                     <div className={styles.buttonContainer}>
-                        {/* <button className={styles.load} onClick={loadMoreCards}> */}
-                        <button className={styles.load}>Load More</button>
+                        <button
+                            className={styles.load}
+                            onClick={loadMoreCards}
+                        />
                     </div>
                 )}
             </div>

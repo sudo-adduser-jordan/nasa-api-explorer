@@ -31,7 +31,7 @@ function Grid({ data }: Data) {
     const [cards, setCards] = useState<Card[]>(data.array);
     const [page, setPage] = useState('');
 
-    // load button & change on state
+    // load button change on state
     useEffect(() => {
         if (page != '') {
             setShowButton(true);
@@ -91,7 +91,6 @@ function Grid({ data }: Data) {
                     </div>
                 )}
             </div>
-            ;
         </>
     );
     return content;

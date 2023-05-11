@@ -1,5 +1,3 @@
-import { ManifestRoot } from './types';
-
 async function getManifest(slug: string) {
     const res = await fetch(
         `https://api.nasa.gov/mars-photos/api/v1/manifests/${slug}?api_key=${process.env.API_KEY}`

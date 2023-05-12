@@ -4,7 +4,7 @@
     /* position: fixed; */
     left: 0%;
     height: 100%;
-    width: 20%;
+    width: 20vw;
     border-right: solid white 1px;
     z-index: 9;
 }
@@ -22,6 +22,16 @@
 }
 
 .title {
+    font-size: 1.25rem;
+    background: rgb(62, 58, 180);
+    background: -webkit-linear-gradient(
+        184deg,
+        rgba(62, 58, 180, 1) 11%,
+        rgba(253, 62, 29, 1) 67%,
+        rgba(29, 64, 253, 1) 94%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     /* color: mediumslateblue; */
     /* color: tomato; */
     height: 10vh;

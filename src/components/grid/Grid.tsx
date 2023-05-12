@@ -90,6 +90,7 @@ function Grid({ data }: Data) {
                             href={card.href}
                             date={card.date.slice(0, 10)}
                             title={card.title}
+                            media_type={data.media_type}
                         />
                     ))}
                 </div>

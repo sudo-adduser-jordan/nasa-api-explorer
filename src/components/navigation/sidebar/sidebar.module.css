@@ -81,13 +81,13 @@
         position: fixed;
         width: 75%;
         left: -100%;
-        transition: left 1s;
+        transition: 0.75s;
     }
     .activeContainer {
         position: fixed;
         width: 75%;
         left: 0;
-        transition: left 1s;
+        transition: 0.75s;
     }
     .nav {
         height: 80vh;

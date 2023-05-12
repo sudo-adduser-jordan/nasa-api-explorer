@@ -1,7 +1,6 @@
 .container {
     background-color: black;
     color: white;
-    /* position: fixed; */
     left: 0%;
     height: 100%;
     width: 20vw;
@@ -12,7 +11,6 @@
 .activeContainer {
     background-color: black;
     color: white;
-
     position: relative;
     left: 0%;
     height: 100%;
@@ -22,18 +20,6 @@
 }
 
 .title {
-    font-size: 1.25rem;
-    background: rgb(62, 58, 180);
-    background: -webkit-linear-gradient(
-        184deg,
-        rgba(62, 58, 180, 1) 11%,
-        rgba(253, 62, 29, 1) 67%,
-        rgba(29, 64, 253, 1) 94%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /* color: mediumslateblue; */
-    /* color: tomato; */
     height: 10vh;
     width: 100%;
     padding-left: 2rem;
@@ -43,7 +29,6 @@
 }
 
 .nav {
-    /* background-color: green; */
     height: 70vh;
     width: 100%;
     display: flex;
@@ -67,7 +52,6 @@
 }
 
 .activeItem {
-    /* color: mediumslateblue; */
     width: 95%;
     padding: 1rem;
     border: solid tomato 1px;
@@ -75,16 +59,13 @@
 }
 
 .footer {
-    /* background-color: darkcyan; */
     height: 20vh;
     width: 100%;
     border-top: solid white 1px;
-    border-bottom: solid white 1px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 1rem;
-    /* color: mediumslateblue; */
 }
 
 .work:hover {
@@ -97,14 +78,12 @@
 
 @media screen and (max-width: 800px) {
     .container {
-        /* background-color: lightgreen; */
         position: fixed;
         width: 75%;
         left: -100%;
         transition: left 1s;
     }
     .activeContainer {
-        /* background-color: lightgreen; */
         position: fixed;
         width: 75%;
         left: 0;

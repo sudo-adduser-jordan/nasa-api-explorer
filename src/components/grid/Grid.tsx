@@ -39,7 +39,7 @@ function Grid({ data }: Data) {
         } else {
             setShowButton(false);
         }
-    }, []);
+    }, [page]);
 
     // load button change on state
     useEffect(() => {

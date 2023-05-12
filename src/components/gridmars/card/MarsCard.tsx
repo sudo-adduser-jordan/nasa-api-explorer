@@ -17,9 +17,6 @@ function MarsCard({ href, date, sol }: MarsCard) {
                 </div>
                 <div className={styles.date}>Date: {date}</div>
                 <div className={styles.sol}>Sol: {sol}</div>
-                <Link className={styles.details} href={`/`}>
-                    Details &rarr;
-                </Link>
             </div>
         </>
     );

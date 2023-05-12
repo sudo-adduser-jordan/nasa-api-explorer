@@ -1,9 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { Metadata } from 'next';
 import Sidebar from './sidebar/Sidebar';
 import Topbar from './topbar/Topbar';
-import './navigation.module.css';
 
 function Navigation({ children }: { children: React.ReactNode }) {
     const [sidebar, setSidebar] = useState(false);

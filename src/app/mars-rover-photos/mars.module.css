@@ -1,24 +1,18 @@
 .layout {
-    height: 80%;
-    width: 80%;
     display: flex;
     flex-direction: column;
+    width: 80%;
 }
 
 .container {
-    /* background-color: lightgreen; */
     color: white;
     height: 78vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 .title {
-    /* background-color: lightcoral; */
     width: 100%;
     height: 4rem;
     display: flex;
@@ -27,24 +21,19 @@
 }
 
 .gridContainer {
-    /* background-color: red; */
     height: 100%;
     width: 100%;
     overflow-y: scroll;
 }
 
 .grid {
-    /* background-color: purple; */
     display: grid;
-    justify-items: center;
-    align-items: center;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin: 1.5rem;
 }
 
 .card {
-    /* background-color: aqua; */
     height: 20rem;
     width: 100%;
     display: flex;
@@ -54,24 +43,15 @@
 }
 
 .image {
-    /* background-color: lightcoral; */
     width: 100%;
     height: 50%;
 }
 
-.image img {
-    /* background-color: lightcoral; */
-    width: 100%;
-    height: 100%;
-}
-
 .date {
-    /* background-color: blueviolet; */
     margin-top: 1rem;
 }
 
 .cardTitle {
-    /* background-color: mediumslateblue; */
     width: 100%;
     height: 4rem;
     margin-top: 1rem;

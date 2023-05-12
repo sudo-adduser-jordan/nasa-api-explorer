@@ -1,8 +1,6 @@
 .container {
-    /* background-color: brown; */
     color: white;
     width: 80vw;
-    /* width: 80%; */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -14,45 +12,24 @@
     color: red;
 }
 
-.heading {
-    /* background-color: aqua; */
-    width: 100%;
-    padding: 1rem;
-}
-
-.about {
-    /* background-color: lightblue; */
-    width: 100%;
-    padding: 1rem;
-}
-.details {
-    /* background-color: lightcyan; */
-    width: 100%;
-    padding: 1rem;
-}
+.heading,
+.about,
+.details,
 .tech {
-    /* background-color: lightsalmon; */
     padding: 1rem;
     width: 100%;
 }
 
-.heading h1 {
-    color: mediumslateblue;
-}
-
-.about h1 {
-    color: mediumslateblue;
-}
-.details h1 {
-    color: mediumslateblue;
-}
+.heading h1,
+.about h1,
+.details h1,
 .tech h1 {
     color: mediumslateblue;
 }
 
 @media (max-width: 800px) {
     .container {
-        margin-top: 10vh;
+        margin-top: 4rem;
         width: 100%;
     }
 }

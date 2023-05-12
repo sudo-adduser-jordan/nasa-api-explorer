@@ -1,4 +1,4 @@
-import styles from './card.module.css';
+import styles from './marscard.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 

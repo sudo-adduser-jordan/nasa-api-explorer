@@ -21,22 +21,21 @@ export const metadata: Metadata = {
 async function Page() {
     const data: Root = await getApod();
     const content = (
-        <>
-            <main className={styles.container}>
-                <div className={styles.title}>Astronomy Picture of the Day</div>
-                <div className={styles.image}>
-                    <Image
-                        src={data.hdurl}
-                        // src='https://apod.nasa.gov/apod/image/2305/FlatMars_CuriosityThompson_2713.jpg'
-                        fill
-                        style={{ objectFit: 'contain' }}
-                        alt=''
-                    />
-                </div>
+        <main className={styles.container}>
+            <div className={styles.title}>Astronomy Picture of the Day</div>
+            <div className={styles.image}>
+                <Image
+                    src={data.hdurl}
+                    // fill
+                    style={{ objectFit: 'contain' }}
+                    width={250}
+                    height={250}
+                    alt=''
+                />
+            </div>
 
-                <div className={styles.description}>{data.explanation}</div>
-            </main>
-        </>
+            <div className={styles.description}>{data.explanation}</div>
+        </main>
     );
     return content;
 }

@@ -1,12 +1,10 @@
 .gridContainer {
-    /* background-color: red; */
-    height: 79vh;
+    height: 80vh;
     width: 100%;
     overflow-y: scroll;
 }
 
 .grid {
-    /* background-color: purple; */
     display: grid;
     justify-items: center;
     align-items: center;
@@ -20,7 +18,6 @@
         overflow-y: unset;
     }
     .grid {
-        /* background-color: purple; */
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -30,7 +27,6 @@
         overflow-y: unset;
     }
     .grid {
-        /* background-color: purple; */
         grid-template-columns: repeat(1, 1fr);
     }
 }

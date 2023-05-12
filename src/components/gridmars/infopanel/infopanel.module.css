@@ -1,3 +1,23 @@
 .container {
     margin: 1rem;
+    border: solid red 1px;
+    padding: 1rem;
+}
+
+.active {
+    margin: 1rem;
+    border: solid lime 1px;
+    padding: 1rem;
+}
+
+.purple {
+    color: mediumslateblue;
+}
+
+.green {
+    color: lime;
+}
+
+.red {
+    color: red;
 }

@@ -9,7 +9,7 @@
 .button {
     /* get onlick to fire on ios */
     cursor: pointer;
-    /* content: ''; */
+    content: '';
     /* 
     border: solid 1px mediumslateblue;
     border-radius: 5px;

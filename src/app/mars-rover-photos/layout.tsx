@@ -1,9 +1,8 @@
-// 'use client';
 import { Marsbar } from '../../components/marsbar/Marsbar';
 import styles from './mars.module.css';
 
 export default function MarsLayout({
-    children, // will be a page or nested layout
+    children,
 }: {
     children: React.ReactNode;
 }) {

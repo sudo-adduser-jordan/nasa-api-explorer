@@ -23,11 +23,8 @@ type Data = {
     };
 };
 
-type Info = {};
-
 function MarsGrid({ data }: Data) {
-    const { name, max_sol, status, max_date, total_photos, launch_date } =
-        data.manifest.photo_manifest;
+    const { name, max_sol } = data.manifest.photo_manifest;
 
     const [showButton, setShowButton] = useState(false);
     const [rover, setRover] = useState<Card[]>(data.rover_data.array);
@@ -48,7 +45,7 @@ function MarsGrid({ data }: Data) {
     }
 
     const content = (
-        <section className={styles.gridContainer}>
+        <div className={styles.gridContainer}>
             <InfoPanel data={data} />
             <div className={styles.grid}>
                 {rover.map((rover, i) => (
@@ -61,7 +58,7 @@ function MarsGrid({ data }: Data) {
                 ))}
             </div>
             {showButton && <LoadButton loadMoreCards={loadMoreCards} />}
-        </section>
+        </div>
     );
     return content;
 }

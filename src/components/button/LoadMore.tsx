@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 import styles from './loadmore.module.css';
 
 function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {
@@ -6,7 +6,7 @@ function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {
         <div className={styles.container}>
             <button
                 className={styles.button}
-                // onTouchStart={loadMoreCards}
+                onTouchStart={loadMoreCards}
                 // onFocus={loadMoreCards}
                 // onTouchStartCapture={loadMoreCards}
                 // onChange={loadMoreCards}

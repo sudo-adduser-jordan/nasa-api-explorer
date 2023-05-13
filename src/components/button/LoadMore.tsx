@@ -1,3 +1,4 @@
+'use client';
 import styles from './loadmore.module.css';
 
 function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {

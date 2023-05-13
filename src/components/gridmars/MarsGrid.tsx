@@ -60,12 +60,7 @@ function MarsGrid({ data }: Data) {
                     />
                 ))}
             </div>
-            {showButton && (
-                <LoadButton
-                    className={styles.buttonContainer}
-                    loadMoreCards={loadMoreCards}
-                />
-            )}
+            {showButton && <LoadButton loadMoreCards={loadMoreCards} />}
         </section>
     );
     return content;

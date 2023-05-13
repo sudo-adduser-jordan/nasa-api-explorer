@@ -4,7 +4,6 @@ import MarsGrid from '@/components/gridmars/MarsGrid';
 import { Params, ManifestRoot } from '../types';
 import styles from '../mars.module.css';
 import { Metadata } from 'next';
-import getRoverMore from '@/lib/mars-rover-photos/getRoverMore';
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
     return {

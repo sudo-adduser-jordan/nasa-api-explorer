@@ -1,6 +1,6 @@
 import styles from './loadmore.module.css';
 
-function LoadButton({ loadMoreCards }: any) {
+function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {
     return (
         <div className={styles.container}>
             <button

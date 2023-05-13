@@ -41,15 +41,6 @@ function Grid({ data }: Data) {
         }
     }, [page]);
 
-    // load button change on state
-    useEffect(() => {
-        if (page != '') {
-            setShowButton(true);
-        } else {
-            setShowButton(false);
-        }
-    }, [page]);
-
     // get search input
     async function handleSubmit(e: any) {
         e.preventDefault();
@@ -94,12 +85,7 @@ function Grid({ data }: Data) {
                         />
                     ))}
                 </div>
-                {showButton && (
-                    <LoadButton
-                        className={styles.buttonContainer}
-                        loadMoreCards={loadMoreCards}
-                    />
-                )}
+                {showButton && <LoadButton loadMoreCards={loadMoreCards} />}
             </div>
         </>
     );

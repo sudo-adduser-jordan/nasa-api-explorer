@@ -29,7 +29,8 @@
 
 @media (max-width: 800px) {
     .container {
-        margin-top: 4rem;
+        margin-top: 8rem;
+        /* margin-top: 4rem; */
         width: 100%;
     }
 }

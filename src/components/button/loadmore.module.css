@@ -14,6 +14,8 @@
     padding: 1rem;
     padding-right: 2rem;
     padding-left: 2rem;
+    /* get onlick to fire on ios */
+    cursor: pointer;
 }
 .button:hover {
     border: solid 1px tomato;

@@ -5,7 +5,7 @@ import getSearch from '../../lib/search/getSearch';
 import Search from './search/Search';
 import styles from './grid.module.css';
 import Card from './card/Card';
-// import LoadButton from '../button/LoadMore';
+import LoadButton from '../button/LoadMore';
 
 type SearchData = {
     nextPage: string;
@@ -90,30 +90,6 @@ function Grid({ data }: Data) {
         </>
     );
     return content;
-}
-
-// function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {
-function LoadButton({ loadMoreCards }: any) {
-    return (
-        <div className={styles.container}>
-            <button
-                className={styles.button}
-                onClick={loadMoreCards}
-                // onTouchStart={loadMoreCards}
-                // onFocus={loadMoreCards}
-                // onTouchStartCapture={loadMoreCards}
-                // onChange={loadMoreCards}
-                // onClickCapture={loadMoreCards}
-                // onFocusCapture={loadMoreCards}
-                // onInput={loadMoreCards}
-                // onSubmit={loadMoreCards}
-                // onSelect={loadMoreCards}
-                // onTouchEnd={loadMoreCards}
-            >
-                Load More
-            </button>
-        </div>
-    );
 }
 
 export default Grid;

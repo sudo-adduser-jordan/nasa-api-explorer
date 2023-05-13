@@ -5,7 +5,7 @@ function LoadButton({ loadMoreCards }: any) {
         <div className={styles.container}>
             <button
                 className={styles.button}
-                onTouchStart={loadMoreCards}
+                // onTouchStart={loadMoreCards}
                 onClick={loadMoreCards}
             >
                 Load More

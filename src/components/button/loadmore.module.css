@@ -7,6 +7,8 @@
 }
 
 .button {
+    /* get onlick to fire on ios */
+    cursor: pointer;
     border: solid 1px mediumslateblue;
     border-radius: 5px;
     background-color: black;
@@ -14,13 +16,10 @@
     padding: 1rem;
     padding-right: 2rem;
     padding-left: 2rem;
-    /* get onlick to fire on ios */
-    cursor: pointer;
 }
+/* 
 .button:hover {
     border: solid 1px tomato;
     border-radius: 5px;
     background-color: black;
-    /* color: tomato; */
-    /* color: lime; */
-}
+} */

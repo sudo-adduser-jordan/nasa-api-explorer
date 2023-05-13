@@ -6,6 +6,7 @@ function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {
         <div className={styles.container}>
             <button
                 className={styles.button}
+                onClick={loadMoreCards}
                 onTouchStart={loadMoreCards}
                 // onFocus={loadMoreCards}
                 // onTouchStartCapture={loadMoreCards}
@@ -16,7 +17,6 @@ function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {
                 // onSubmit={loadMoreCards}
                 // onSelect={loadMoreCards}
                 // onTouchEnd={loadMoreCards}
-                onClick={loadMoreCards}
             >
                 Load More
             </button>

@@ -6,19 +6,20 @@
     align-items: center;
 }
 
-/* .button {
-    get onlick to fire on ios
+.button {
+    /* get onlick to fire on ios */
     cursor: pointer;
-    content: '';
-
+    /* content: ''; */
+    /* 
     border: solid 1px mediumslateblue;
     border-radius: 5px;
     background-color: black;
     color: white;
     padding: 1rem;
     padding-right: 2rem;
-    padding-left: 2rem;
-} */
+    padding-left: 2rem; */
+}
+
 /* 
 .button:hover {
     border: solid 1px tomato;

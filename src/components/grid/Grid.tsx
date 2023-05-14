@@ -60,6 +60,7 @@ function Grid({ data }: Data) {
     }
 
     async function loadMoreCards(page: string) {
+        // e.preventDefault();
         const data = await getMoreSearch(page);
         setCards(cards.concat(data.array));
         setPage(data.nextPage);
@@ -80,19 +81,16 @@ function Grid({ data }: Data) {
                         />
                     ))}
                 </div>
-                {
-                    showButton && (
+                {showButton && (
+                    <div>
                         <button
-                            type='button'
-                            // onClick={loadMoreCards}
-                            onClick={() => loadMoreCards(page)}
                             className={styles.button}
+                            onClick={(e) => loadMoreCards(page)}
                         >
                             Load More
                         </button>
-                    )
-                    // <LoadButton loadMoreCards={loadMoreCards}
-                }
+                    </div>
+                )}
             </div>
         </>
     );

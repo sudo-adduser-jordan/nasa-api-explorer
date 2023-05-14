@@ -7,6 +7,7 @@ function LoadButton({ loadMoreCards }: any) {
         <div className={styles.container}>
             <button
                 className={styles.button}
+                type="button"
                 onClick={loadMoreCards}
                 // onTouchStart={loadMoreCards}
                 // onFocus={loadMoreCards}

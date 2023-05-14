@@ -68,7 +68,7 @@ function Grid({ data }: Data) {
     const content = (
         <>
             <Search handleSubmit={handleSubmit} />
-            <div className={styles.gridContainer}>
+            <div className={styles.container}>
                 <div className={styles.grid}>
                     {cards.map((card, i) => (
                         <Card
@@ -80,7 +80,12 @@ function Grid({ data }: Data) {
                         />
                     ))}
                 </div>
-                {showButton && <LoadButton loadMoreCards={loadMoreCards} />}
+                {
+                    showButton && (
+                        <button onClick={loadMoreCards}>Load More</button>
+                    )
+                    // <LoadButton loadMoreCards={loadMoreCards}
+                }
             </div>
         </>
     );

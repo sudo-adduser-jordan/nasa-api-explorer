@@ -10,9 +10,7 @@ function LoadButton({ loadMoreCards }: { loadMoreCards: () => Promise<void> }) {
                 onClick={loadMoreCards}
                 onTouchStart={loadMoreCards}
                 // onFocus={loadMoreCards}
-                // onTouchStartCapture={loadMoreCards}
                 // onChange={loadMoreCards}
-                // onClickCapture={loadMoreCards}
                 // onSubmit={loadMoreCards}
                 // onSelect={loadMoreCards}
             >

@@ -24,6 +24,7 @@
     padding: 1rem;
     padding-right: 2rem;
     padding-left: 2rem;
+    cursor: pointer;
 }
 
 .button:hover {

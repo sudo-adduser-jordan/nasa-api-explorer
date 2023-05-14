@@ -1,6 +1,6 @@
 import { Root, Card } from './types';
 
-async function getMoreSearch(page: string) {
+async function getMore(page: string) {
     const res = await fetch(page);
     if (!res.ok) throw new Error('Failed to fetch More Properties.');
     const data: Root = await res.json();
@@ -28,4 +28,4 @@ async function getMoreSearch(page: string) {
     };
 }
 
-export default getMoreSearch;
+export default getMore;

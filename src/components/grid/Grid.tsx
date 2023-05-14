@@ -1,6 +1,6 @@
 'use client';
 import { SyntheticEvent, useEffect, useState } from 'react';
-import getMoreSearch from '../../lib/search/getMoreSearch';
+import getMore from '../../lib/search/getMore';
 import getSearch from '../../lib/search/getSearch';
 import Search from './search/Search';
 import styles from './grid.module.css';
@@ -60,7 +60,7 @@ function Grid({ data }: Data) {
     }
 
     async function loadMoreCards() {
-        const data = await getMoreSearch(page);
+        const data = await getMore(page);
         setCards(cards.concat(data.array));
         setPage(data.nextPage);
     }

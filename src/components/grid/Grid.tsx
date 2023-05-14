@@ -59,7 +59,7 @@ function Grid({ data }: Data) {
         }
     }
 
-    async function loadMoreCards() {
+    async function loadMoreCards(page: string) {
         const data = await getMore(page);
         setCards(cards.concat(data.array));
         setPage(data.nextPage);
@@ -83,7 +83,7 @@ function Grid({ data }: Data) {
                 {showButton && (
                     <button
                         className={styles.button}
-                        onClick={(e) => loadMoreCards()}
+                        onClick={(e) => loadMoreCards(page)}
                     >
                         Load More
                     </button>

@@ -87,7 +87,12 @@ function Grid({ data }: Data) {
                             // onClick={loadMoreCards}
                             className={styles.button}
                         >
-                            <span onClick={loadMoreCards}>Load More</span>
+                            <span
+                                style={{ cursor: 'pointer' }}
+                                onClick={loadMoreCards}
+                            >
+                                Load More
+                            </span>
                         </button>
                     )
                     // <LoadButton loadMoreCards={loadMoreCards}

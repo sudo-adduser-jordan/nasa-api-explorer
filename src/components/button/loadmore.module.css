@@ -8,8 +8,8 @@
 
 .button {
     /* get onlick to fire on ios */
-    /* cursor: pointer;
-    content: ''; */
+    cursor: pointer;
+    
     /* 
     border: solid 1px mediumslateblue;
     border-radius: 5px;

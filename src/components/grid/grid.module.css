@@ -16,10 +16,6 @@
     margin: 1.5rem;
 }
 
-.button{
-    cursor: pointer;
-}
-
 @media (max-width: 1400px) {
     .gridContainer {
         overflow-y: scroll;

@@ -1,14 +1,16 @@
-.gridContainer {
+.container {
     width: 100%;
 }
 
 .grid {
     display: grid;
-    justify-items: center;
-    align-items: center;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin: 1.5rem;
+}
+.button {
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 1400px) {
@@ -21,7 +23,7 @@
 }
 
 @media (max-width: 800px) {
-    .gridContainer {
+    .container {
         overflow-y: unset;
     }
     .grid {

@@ -5,7 +5,7 @@ import getSearch from '../../lib/search/getSearch';
 import Search from './search/Search';
 import styles from './grid.module.css';
 import Card from './card/Card';
-import LoadButton from '../button/LoadMore';
+// import LoadButton from '../button/LoadMore';
 
 type Card = {
     key: number;
@@ -59,8 +59,7 @@ function Grid({ data }: Data) {
         }
     }
 
-    async function loadMoreCards(page: string) {
-        // e.preventDefault();
+    async function loadMoreCards() {
         const data = await getMoreSearch(page);
         setCards(cards.concat(data.array));
         setPage(data.nextPage);
@@ -82,15 +81,7 @@ function Grid({ data }: Data) {
                     ))}
                 </div>
                 {showButton && (
-                    <div>
-                        <button
-                            type='button'
-                            className={styles.button}
-                            onClick={(e) => loadMoreCards(page)}
-                        >
-                            Load More
-                        </button>
-                    </div>
+                    <button onClick={(e) => loadMoreCards()}>Load More</button>
                 )}
             </div>
         </>

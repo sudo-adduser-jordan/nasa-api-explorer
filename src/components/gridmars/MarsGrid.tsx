@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { ManifestRoot } from '../../lib/mars-rover-photos/types';
 import getRoverMore from '@/lib/mars-rover-photos/getRoverMore';
 import InfoPanel from '../gridmars/infopanel/InfoPanel';
-import LoadButton from '../button/LoadMore';
 import MarsCard from './card/MarsCard';
 import styles from './marsgrid.module.css';
 
@@ -45,7 +44,7 @@ function MarsGrid({ data }: Data) {
     }
 
     const content = (
-        <div className={styles.gridContainer}>
+        <div className={styles.container}>
             <InfoPanel data={data} />
             <div className={styles.grid}>
                 {rover.map((rover, i) => (
@@ -57,7 +56,9 @@ function MarsGrid({ data }: Data) {
                     />
                 ))}
             </div>
-            {showButton && <LoadButton loadMoreCards={loadMoreCards} />}
+            <div className={styles.button}>
+                <button onClick={(e) => loadMoreCards()}>Load More</button>
+            </div>
         </div>
     );
     return content;

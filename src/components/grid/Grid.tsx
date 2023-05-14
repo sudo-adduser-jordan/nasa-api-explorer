@@ -109,15 +109,14 @@ function Grid({ data }: Data) {
                     ))}
                 </div>
                 {showButton && (
-                    <button
-                        type='button'
-                        // style={{ cursor: 'pointer' }}
-                        // className={styles.button}
-                        onClick={(e) => loadMoreCards()}
-                        onTouchStart={(e) => loadMoreCards()}
-                    >
-                        Load More
-                    </button>
+                    <div className={styles.buttonContainer}>
+                        <button
+                            className={styles.button}
+                            onClick={(e) => loadMoreCards()}
+                        >
+                            Load More
+                        </button>
+                    </div>
                 )}
             </div>
         </>

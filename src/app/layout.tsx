@@ -8,7 +8,8 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
-            <body>
+            {/* ios safari click event fix, affects bubbling */}
+            <body onClick={void 0}>
                 <Navigation>{children}</Navigation>
             </body>
         </html>

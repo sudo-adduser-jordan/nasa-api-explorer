@@ -82,7 +82,7 @@ function Grid({ data }: Data) {
                 </div>
                 {
                     showButton && (
-                        <button onClick={loadMoreCards}>Load More</button>
+                        <button type="button" onClick={loadMoreCards}>Load More</button>
                     )
                     // <LoadButton loadMoreCards={loadMoreCards}
                 }

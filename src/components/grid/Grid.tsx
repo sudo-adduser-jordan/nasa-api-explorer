@@ -60,36 +60,38 @@ function Grid({ data }: Data) {
         }
     }
 
-    // async function loadMoreCards() {
-    //     const data = await getMore(page);
-    //     setCards(cards.concat(data.array));
-    //     setPage(data.nextPage);
-    // }
     async function loadMoreCards() {
-        const res = await fetch(page);
-        if (!res.ok) throw new Error('Failed to fetch More Properties.');
-        const root: Root = await res.json();
-
-        const items = root.collection.items;
-
-        let nextPage = '';
-        if (root.collection.links != undefined) {
-            nextPage = root.collection.links[1].href;
-        }
-
-        const array: Card[] = [];
-        for (let i = 0; i < items.length; i++) {
-            array.push({
-                key: i,
-                href: items[i].links[0].href,
-                date: items[i].data[0].date_created.slice(0, 10),
-                title: items[i].data[0].title,
-            });
-        }
-
-        setCards(cards.concat(array));
-        setPage(nextPage);
+        const data = await getMore(page);
+        setCards(cards.concat(data.array));
+        setPage(data.nextPage);
     }
+
+    // async function loadMoreCards() {
+    //     console.log(page);
+    //     const res = await fetch(page);
+    //     if (!res.ok) throw new Error('Failed to fetch More Properties.');
+    //     const root: Root = await res.json();
+
+    //     const items = root.collection.items;
+
+    //     let nextPage = '';
+    //     if (root.collection.links != undefined) {
+    //         nextPage = root.collection.links[1].href;
+    //     }
+
+    //     const array: Card[] = [];
+    //     for (let i = 0; i < items.length; i++) {
+    //         array.push({
+    //             key: i,
+    //             href: items[i].links[0].href,
+    //             date: items[i].data[0].date_created.slice(0, 10),
+    //             title: items[i].data[0].title,
+    //         });
+    //     }
+
+    //     setCards(cards.concat(array));
+    //     setPage(nextPage);
+    // }
 
     const content = (
         <>
@@ -108,7 +110,9 @@ function Grid({ data }: Data) {
                 </div>
                 {showButton && (
                     <button
-                        className={styles.button}
+                        type='button'
+                        style={{ cursor: 'pointer' }}
+                        // className={styles.button}
                         onClick={(e) => loadMoreCards()}
                     >
                         Load More

@@ -7,11 +7,6 @@ import styles from './grid.module.css';
 import Card from './card/Card';
 import LoadButton from '../button/LoadMore';
 
-type SearchData = {
-    nextPage: string;
-    array: Card[];
-};
-
 type Card = {
     key: number;
     href: string;
@@ -52,7 +47,7 @@ function Grid({ data }: Data) {
         const formJson = Object.fromEntries(formData.entries());
 
         // response data
-        const search_data: SearchData = await getSearch(
+        const search_data = await getSearch(
             data.media_type,
             formJson['search']
         );
@@ -65,9 +60,9 @@ function Grid({ data }: Data) {
     }
 
     async function loadMoreCards() {
-        const search_data: SearchData = await getMoreSearch(page);
-        setCards(cards.concat(search_data.array));
-        setPage(search_data.nextPage);
+        const data = await getMoreSearch(page);
+        setCards(cards.concat(data.array));
+        setPage(data.nextPage);
     }
 
     const content = (

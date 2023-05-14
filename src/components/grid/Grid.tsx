@@ -84,6 +84,7 @@ function Grid({ data }: Data) {
                 {showButton && (
                     <div>
                         <button
+                            type='button'
                             className={styles.button}
                             onClick={(e) => loadMoreCards(page)}
                         >

@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import getMoreSearch from '../../lib/search/getMoreSearch';
 import getSearch from '../../lib/search/getSearch';
 import Search from './search/Search';
@@ -59,7 +59,7 @@ function Grid({ data }: Data) {
         }
     }
 
-    async function loadMoreCards() {
+    async function loadMoreCards(page: string) {
         const data = await getMoreSearch(page);
         setCards(cards.concat(data.array));
         setPage(data.nextPage);
@@ -85,14 +85,10 @@ function Grid({ data }: Data) {
                         <button
                             type='button'
                             // onClick={loadMoreCards}
+                            onClick={() => loadMoreCards(page)}
                             className={styles.button}
                         >
-                            <span
-                                style={{ cursor: 'pointer' }}
-                                onClick={loadMoreCards}
-                            >
-                                Load More
-                            </span>
+                            Load More
                         </button>
                     )
                     // <LoadButton loadMoreCards={loadMoreCards}

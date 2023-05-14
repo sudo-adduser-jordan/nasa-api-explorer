@@ -8,9 +8,26 @@
     gap: 1.5rem;
     margin: 1.5rem;
 }
-.button {
+.buttonContainer {
     display: flex;
     justify-content: center;
+}
+
+.button {
+    border: solid 1px mediumslateblue;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.button:hover {
+    border: solid 1px tomato;
+    border-radius: 5px;
+    background-color: black;
+    cursor: pointer;
 }
 
 @media (max-width: 1400px) {

@@ -7,7 +7,7 @@ export const Marsbar = () => {
     const [active, setActive] = useState('spirit');
     const paths = ['curiosity', 'spirit', 'opportunity'];
     const content = (
-        <section className={styles.container}>
+        <div className={styles.container}>
             <div className={styles.title}>Mars Rover Photos</div>
             <nav className={styles.nav}>
                 {paths.map((path, i) => {
@@ -27,7 +27,7 @@ export const Marsbar = () => {
                     );
                 })}
             </nav>
-        </section>
+        </div>
     );
     return content;
 };

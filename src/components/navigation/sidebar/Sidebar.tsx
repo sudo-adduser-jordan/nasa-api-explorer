@@ -32,53 +32,51 @@ const Sidebar = ({ sidebar }: any) => {
     };
 
     const content = (
-        <>
-            <div
-                className={
-                    sidebar === true
-                        ? `${styles.activeContainer}`
-                        : `${styles.container}`
-                }
-            >
-                <div className={styles.title}>Nasa Api Explorer</div>
-                <div className={styles.nav}>
-                    {paths.map((path, i) => {
-                        return (
-                            <Link
-                                key={i}
-                                href={path}
-                                onClick={() => setActive(path)}
-                                className={
-                                    active === path
-                                        ? `${styles.activeItem}`
-                                        : `${styles.item}`
-                                }
-                            >
-                                {handleText(path)}
-                            </Link>
-                        );
-                    })}
-                </div>
-                <div className={styles.footer}>
-                    <Link
-                        target='_blank'
-                        href={
-                            'https://github.com/sudo-adduser-jordan/Nasa-Api-Explorer'
-                        }
-                        className={styles.work}
-                    >
-                        Github
-                    </Link>
-                    <Link
-                        target='_blank'
-                        href={'https://github.com/sudo-adduser-jordan'}
-                        className={styles.name}
-                    >
-                        @sudo-adduser-jordan
-                    </Link>
-                </div>
+        <div
+            className={
+                sidebar === true
+                    ? `${styles.activeContainer}`
+                    : `${styles.container}`
+            }
+        >
+            <div className={styles.title}>Nasa Api Explorer</div>
+            <div className={styles.nav}>
+                {paths.map((path, i) => {
+                    return (
+                        <Link
+                            key={i}
+                            href={path}
+                            onClick={() => setActive(path)}
+                            className={
+                                active === path
+                                    ? `${styles.activeItem}`
+                                    : `${styles.item}`
+                            }
+                        >
+                            {handleText(path)}
+                        </Link>
+                    );
+                })}
             </div>
-        </>
+            <div className={styles.footer}>
+                <Link
+                    target='_blank'
+                    href={
+                        'https://github.com/sudo-adduser-jordan/Nasa-Api-Explorer'
+                    }
+                    className={styles.work}
+                >
+                    Github
+                </Link>
+                <Link
+                    target='_blank'
+                    href={'https://github.com/sudo-adduser-jordan'}
+                    className={styles.name}
+                >
+                    @sudo-adduser-jordan
+                </Link>
+            </div>
+        </div>
     );
     return content;
 };

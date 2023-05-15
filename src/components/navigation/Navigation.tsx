@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Sidebar from './sidebar/Sidebar';
 import Topbar from './topbar/Topbar';
+import styles from './navigation.module.css';
 
 function Navigation({ children }: { children: React.ReactNode }) {
     const [sidebar, setSidebar] = useState(false);
@@ -16,10 +17,10 @@ function Navigation({ children }: { children: React.ReactNode }) {
     return (
         <>
             <Topbar showSidebar={showSidebar} />
-            <main onClick={hideSidebar}>
+            <div className={styles.container} onClick={hideSidebar}>
                 <Sidebar sidebar={sidebar} />
                 {children}
-            </main>
+            </div>
         </>
     );
 }

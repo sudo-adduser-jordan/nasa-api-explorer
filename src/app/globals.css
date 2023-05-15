@@ -25,13 +25,6 @@ a {
     color: inherit;
 }
 
-main {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
-}
-
 /* Jetbrains Fonts */
 /* jsDelivr */
 /* https://gist.github.com/Albert221/753d7f8955eeb6f5e50486fce048e39f */

@@ -10,15 +10,13 @@ export type MarsCard = {
 
 function MarsCard({ href, date, sol }: MarsCard) {
     return (
-        <>
-            <div className={styles.card}>
-                <div className={styles.image}>
-                    <Image src={href} width={250} height={250} alt='' />
-                </div>
-                <div className={styles.date}>Date: {date}</div>
-                <div className={styles.sol}>Sol: {sol}</div>
+        <div className={styles.card}>
+            <div className={styles.image}>
+                <Image src={href} width={250} height={250} alt='' />
             </div>
-        </>
+            <div className={styles.date}>Date: {date}</div>
+            <div className={styles.sol}>Sol: {sol}</div>
+        </div>
     );
 }
 

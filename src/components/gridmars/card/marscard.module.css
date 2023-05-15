@@ -3,7 +3,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    border: solid 1px white;
+    border: solid 1px mediumslateblue;
+    border-radius: 0.5rem;
     color: white;
 }
 
@@ -13,27 +14,24 @@
 }
 
 .image img {
+    border-radius: 0.5rem 0.5rem 0 0;
     width: 100%;
     height: 100%;
 }
 
 .date {
-    margin-top: 1rem;
+    padding: 0.5rem;
 }
 
-.cardTitle {
-    width: 100%;
-    height: 4rem;
-    margin-top: 1rem;
-    word-break: break-all;
+.sol {
+    padding: 0.5rem;
 }
 
 .details {
     margin-top: auto;
+    padding: 0.5rem;
 }
 
-.buttonContainer {
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
+.details:hover {
+    color: lime;
 }

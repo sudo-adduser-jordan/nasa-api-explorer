@@ -28,8 +28,8 @@ async function Page() {
                     src={data.hdurl}
                     // fill
                     style={{ objectFit: 'contain' }}
-                    width={250}
-                    height={250}
+                    width={300}
+                    height={300}
                     alt=''
                 />
             </div>

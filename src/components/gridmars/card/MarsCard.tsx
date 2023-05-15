@@ -14,8 +14,16 @@ function MarsCard({ href, date, sol }: MarsCard) {
             <div className={styles.image}>
                 <Image src={href} width={250} height={250} alt='' />
             </div>
-            <div className={styles.date}>Date: {date}</div>
-            <div className={styles.sol}>Sol: {sol}</div>
+            <div className={styles.date}>
+                <span style={{ color: 'tomato' }}>Date: </span>
+                {date}
+            </div>
+            <div className={styles.sol}>
+                <span style={{ color: 'tomato' }}>Sol: </span> {sol}
+            </div>
+            <Link className={styles.details} href={`/`}>
+                Details &rarr;
+            </Link>
         </div>
     );
 }

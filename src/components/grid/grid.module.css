@@ -28,7 +28,7 @@
 }
 
 .button:hover {
-    border: solid 1px tomato;
+    border: solid 1px lime;
     border-radius: 5px;
     background-color: black;
     cursor: pointer;

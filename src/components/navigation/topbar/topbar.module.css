@@ -45,7 +45,7 @@
 }
 
 .button:hover {
-    border-color: tomato;
+    border-color: lime;
 }
 
 @media screen and (max-width: 800px) {

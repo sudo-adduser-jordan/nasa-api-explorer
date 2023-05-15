@@ -2,14 +2,15 @@ import styles from './card.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export type Card = {
+export type Data = {
     href: string;
     date: string;
     title: string;
+    nasa_id: string;
     media_type: string;
 };
 
-function VideoCard({ href, date, title, media_type }: Card) {
+function VideoCard({ href, date, title, nasa_id, media_type }: Data) {
     return (
         <div className={styles.card}>
             <div className={styles.image}>
@@ -19,7 +20,8 @@ function VideoCard({ href, date, title, media_type }: Card) {
             <div className={styles.title}>{title}</div>
             <Link
                 className={styles.details}
-                href={`${media_type}-library/${title}`}
+                // href={`${media_type}-library/${title}`}
+                href={`${media_type}-library/${title}/${nasa_id}`}
             >
                 Details &rarr;
             </Link>

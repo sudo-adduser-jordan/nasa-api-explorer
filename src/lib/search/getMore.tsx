@@ -22,6 +22,7 @@ async function getMore(page: string) {
             href: items[i].links[0].href,
             date: items[i].data[0].date_created.slice(0, 10),
             title: items[i].data[0].title,
+            nasa_id: items[i].data[0].nasa_id,
         });
     }
 

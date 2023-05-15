@@ -11,6 +11,7 @@ type Card = {
     href: string;
     date: string;
     title: string;
+    nasa_id: string;
 };
 
 type Data = {
@@ -75,6 +76,7 @@ function Grid({ data }: Data) {
                             href={card.href}
                             date={card.date.slice(0, 10)}
                             title={card.title}
+                            nasa_id={card.nasa_id}
                             media_type={data.media_type}
                         />
                     ))}

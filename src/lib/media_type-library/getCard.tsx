@@ -7,7 +7,6 @@ export interface Collection {
     href: string;
     items: Item[];
     metadata: Metadata;
-    links: Link2[];
 }
 
 export interface Item {
@@ -19,16 +18,13 @@ export interface Item {
 export interface Daum {
     center: string;
     title: string;
-    keywords?: string[];
-    location?: string;
+    keywords: string[];
     nasa_id: string;
     date_created: string;
     media_type: string;
-    description_508?: string;
-    description?: string;
-    album?: string[];
-    photographer?: string;
-    secondary_creator?: string;
+    description_508: string;
+    secondary_creator: string;
+    description: string;
 }
 
 export interface Link {
@@ -41,15 +37,15 @@ export interface Metadata {
     total_hits: number;
 }
 
-export interface Link2 {
-    rel: string;
-    prompt: string;
-    href: string;
+async function getCard(nasa_id: string) {
+    const res = await fetch(`https://images-api.nasa.gov/search?q=${nasa_id}`);
+    if (!res.ok) throw new Error('Failed to fetch Card Properties.');
+    const data: Root = await res.json();
+
+    return {
+        href: data.collection.items[0].links[0].href,
+        description: data.collection.items[0].data[0].description,
+    };
 }
 
-export type Card = {
-    key: number;
-    href: string;
-    date: string;
-    title: string;
-};
+export default getCard;

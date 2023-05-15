@@ -52,4 +52,5 @@ export type Card = {
     href: string;
     date: string;
     title: string;
+    nasa_id: string;
 };

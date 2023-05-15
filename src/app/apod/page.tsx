@@ -26,14 +26,11 @@ async function Page() {
             <div className={styles.image}>
                 <Image
                     src={data.hdurl}
-                    // fill
+                    fill
                     style={{ objectFit: 'contain' }}
-                    width={300}
-                    height={300}
                     alt=''
                 />
             </div>
-
             <div className={styles.description}>{data.explanation}</div>
         </main>
     );

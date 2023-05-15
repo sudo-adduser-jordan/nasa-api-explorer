@@ -1,4 +1,4 @@
-import getImages from '@/lib/image-library/getImages';
+import getImages from '@/lib/media_type-library/getImages';
 import Grid from '@/components/grid/Grid';
 import styles from './image.module.css';
 import { Metadata } from 'next';

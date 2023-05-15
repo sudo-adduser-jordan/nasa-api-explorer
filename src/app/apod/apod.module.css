@@ -12,7 +12,6 @@
     background-color: black;
     color: white;
     min-height: 4rem;
-
     width: 100%;
     display: flex;
     justify-content: center;
@@ -21,13 +20,14 @@
 }
 
 .image {
-    /* position: relative; */
-    width: 50%;
+    position: relative;
+    min-width: 50%;
+    min-height: 50%;
     display: flex;
     justify-content: center;
     align-content: center;
     border: solid mediumslateblue 1px;
-    margin: auto;
+    margin: 1rem;
 }
 
 .description {
@@ -35,17 +35,17 @@
     padding: 2rem;
     word-break: break-all;
     border: solid mediumslateblue 1px;
-    margin: auto;
+    margin: 1rem;
 }
 
 @media (max-width: 800px) {
     .container {
         margin-top: 4rem;
         width: 100%;
+        overflow-y: unset;
     }
     .image {
-        /* position: unset; */
-        width: 75%;
+        width: 85%;
         margin: 1rem;
     }
 }

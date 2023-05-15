@@ -11,21 +11,19 @@ export type Card = {
 
 function VideoCard({ href, date, title, media_type }: Card) {
     return (
-        <>
-            <div className={styles.card}>
-                <div className={styles.image}>
-                    <Image src={href} width={250} height={250} alt='' />
-                </div>
-                <div className={styles.date}>{date}</div>
-                <div className={styles.cardTitle}>{title}</div>
-                <Link
-                    className={styles.details}
-                    href={`${media_type}-library/${title}`}
-                >
-                    Details &rarr;
-                </Link>
+        <div className={styles.card}>
+            <div className={styles.image}>
+                <Image src={href} width={250} height={250} alt='' />
             </div>
-        </>
+            <div className={styles.date}>{date}</div>
+            <div className={styles.cardTitle}>{title}</div>
+            <Link
+                className={styles.details}
+                href={`${media_type}-library/${title}`}
+            >
+                Details &rarr;
+            </Link>
+        </div>
     );
 }
 

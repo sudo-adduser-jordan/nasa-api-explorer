@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 async function Page() {
     const data = await getImages();
     const content = (
-        <section className={styles.container}>
+        <div className={styles.container}>
             <div className={styles.title}>Image Library</div>
             <Grid data={data} />
-        </section>
+        </div>
     );
 
     return content;

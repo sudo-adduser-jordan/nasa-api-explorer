@@ -83,6 +83,7 @@ function Grid({ data }: Data) {
                     <button
                         className={styles.button}
                         onClick={(e) => loadMoreCards()}
+                        onPointerEnter={(e) => loadMoreCards()}
                     >
                         Load More
                     </button>

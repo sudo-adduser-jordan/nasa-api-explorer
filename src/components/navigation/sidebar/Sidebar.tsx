@@ -66,14 +66,14 @@ const Sidebar = ({ sidebar }: any) => {
                     }
                     className={styles.work}
                 >
-                    Github
+                    Github &rarr;
                 </Link>
                 <Link
                     target='_blank'
                     href={'https://github.com/sudo-adduser-jordan'}
                     className={styles.name}
                 >
-                    @sudo-adduser-jordan
+                    @sudo-adduser-jordan &rarr;
                 </Link>
             </div>
         </div>

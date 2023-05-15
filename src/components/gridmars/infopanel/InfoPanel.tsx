@@ -19,7 +19,7 @@ type Data = {
 };
 
 function InfoPanel({ data }: Data) {
-    const { name, max_sol, status, max_date, total_photos, launch_date } =
+    const { max_sol, status, max_date, total_photos, launch_date } =
         data.manifest.photo_manifest;
 
     return (

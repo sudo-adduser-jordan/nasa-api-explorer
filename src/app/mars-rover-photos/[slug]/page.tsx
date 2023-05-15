@@ -17,9 +17,9 @@ async function Page({ params }: Params) {
     const rover_data = await getRover(params.slug, max_sol);
 
     const content = (
-        <main className={styles.container}>
+        <div className={styles.container}>
             <MarsGrid data={{ rover_data, manifest }} />
-        </main>
+        </div>
     );
 
     return content;

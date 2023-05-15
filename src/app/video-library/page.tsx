@@ -1,5 +1,5 @@
 import getVideos from '@/lib/video-library/getVideos';
-import Grid from '@/components/grid/Grid';
+import Grid from '../../components/grid/Grid';
 import styles from './video.module.css';
 import { Metadata } from 'next';
 

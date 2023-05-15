@@ -16,7 +16,7 @@ function VideoCard({ href, date, title, media_type }: Card) {
                 <Image src={href} width={250} height={250} alt='' />
             </div>
             <div className={styles.date}>{date}</div>
-            <div className={styles.cardTitle}>{title}</div>
+            <div className={styles.title}>{title}</div>
             <Link
                 className={styles.details}
                 href={`${media_type}-library/${title}`}

@@ -8,7 +8,10 @@ async function getMore(page: string) {
     const items = data.collection.items;
 
     let nextPage = '';
-    if (data.collection.links != undefined) {
+    if (
+        data.collection.links != undefined &&
+        data.collection.links[1] != undefined
+    ) {
         nextPage = data.collection.links[1].href;
     }
 

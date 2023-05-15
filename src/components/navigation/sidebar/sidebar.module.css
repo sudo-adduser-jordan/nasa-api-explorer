@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     border-bottom: solid white 1px;
+    color: lime;
 }
 
 .nav {
@@ -46,16 +47,17 @@
 }
 
 .item:hover {
-    color: tomato;
+    /* color: tomato; */
+    color: white;
 
-    border: solid mediumslateblue 1px;
+    border: solid tomato 1px;
     border-radius: 5px;
 }
 
 .activeItem {
     width: 95%;
     padding: 1rem;
-    border: solid tomato 1px;
+    border: solid lime 1px;
     border-radius: 5px;
 }
 
@@ -70,11 +72,11 @@
 }
 
 .work:hover {
-    color: tomato;
+    color: lime;
 }
 
 .name:hover {
-    color: tomato;
+    color: lime;
 }
 
 @media screen and (max-width: 800px) {

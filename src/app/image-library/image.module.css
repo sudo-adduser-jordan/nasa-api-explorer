@@ -10,16 +10,20 @@
     background-color: black;
     color: white;
     width: 100%;
-    min-height: 4rem;
+    min-height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: solid tomato 1px;
+    border-radius: 5px;
 }
 
 @media (max-width: 800px) {
     .container {
         margin-top: 4rem;
         width: 100%;
+    }
+    .title {
+        min-height: 50px;
     }
 }

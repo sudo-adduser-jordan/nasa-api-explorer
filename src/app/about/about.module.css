@@ -11,7 +11,8 @@
     justify-content: center;
     align-items: center;
     border: solid tomato 1px;
-    min-height: 4rem;
+    min-height: 70px;
+    border-radius: 5px;
 }
 
 .explanation,
@@ -39,5 +40,8 @@
     .container {
         margin-top: 4rem;
         width: 100%;
+    }
+    .title {
+        min-height: 50px;
     }
 }

@@ -11,12 +11,13 @@
 .title {
     background-color: black;
     color: white;
-    min-height: 4rem;
+    min-height: 70px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     border: solid tomato 1px;
+    border-radius: 5px;
 }
 
 .image {
@@ -43,6 +44,10 @@
         margin-top: 4rem;
         width: 100%;
         overflow-y: unset;
+    }
+
+    .title {
+        min-height: 50px;
     }
     .image {
         width: 85%;

@@ -34,7 +34,7 @@ export default function Page() {
                 <h1>Video Library</h1>{' '}
                 <h5>Search NASAs official video database.</h5>
             </div>
-            <div className={styles.epic}>
+            {/* <div className={styles.epic}>
                 <h1>EPIC</h1>
                 <h5>
                     The EPIC API provides information on the daily imagery
@@ -46,7 +46,7 @@ export default function Page() {
                     (Charge Coupled Device) detector coupled to a 30-cm aperture
                     Cassegrain telescope.
                 </h5>
-            </div>
+            </div> */}
             <div className={styles.mars}>
                 <h1>Mars Rover Photos</h1>{' '}
                 <h5>

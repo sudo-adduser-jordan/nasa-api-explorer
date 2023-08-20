@@ -1,40 +1,40 @@
 .container {
-    margin: 1rem;
+  margin: 1rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 
 .search {
-    position: sticky;
-    height: 2.5rem;
-    width: 100%;
-    display: flex;
-    border: solid 1px;
-    border-color: white;
+  position: sticky;
+  height: 2.5rem;
+  display: flex;
 }
 
 .entry {
-    background-color: black;
-    color: white;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    padding-left: 2rem;
-    border-right: solid 1px;
+  margin-right: 1rem;
+  background-color: black;
+  color: white;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  border-right: solid 1px;
 }
 
 .button {
-    color: white;
-    background-color: black;
-    padding: 0.5rem;
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: white;
+  background-color: black;
+  padding: 0.5rem;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:hover {
-    border-color: limegreen;
+  border-color: limegreen;
 }
 
 .button:active {
-    border-color: mediumslateblue;
+  border-color: mediumslateblue;
 }

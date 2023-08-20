@@ -1,16 +1,17 @@
-import Navigation from '../components/navigation/Navigation';
-import './globals.css';
+import Navigation from "../components/navigation/Navigation";
+import "./globals.css";
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang='en'>
-            <body>
-                <Navigation>{children}</Navigation>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className="container">
+        <Navigation />
+        {children}
+      </body>
+    </html>
+  );
 }

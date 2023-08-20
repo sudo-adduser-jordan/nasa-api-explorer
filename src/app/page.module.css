@@ -1,36 +1,46 @@
 .container {
-    color: white;
-    width: 80vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
 }
 
-.temp {
-    color: red;
+.title {
+  margin: 1rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
 }
 
-.heading,
-.about,
-.details,
+.explanation,
+.apod,
+.image,
+.video,
+.epic,
+.mars,
 .tech {
-    padding: 1rem;
-    width: 100%;
+  padding: 0.5rem;
+  text-align: left;
 }
 
-.heading h1,
-.about h1,
-.details h1,
+.explanation h1,
+.apod h1,
+.image h1,
+.video h1,
+.epic h1,
+.mars h1,
 .tech h1 {
-    color: mediumslateblue;
+  color: mediumslateblue;
 }
 
-@media (max-width: 800px) {
-    .container {
-        margin-top: 10rem;
-        /* margin-top: 4rem; */
-        width: 100%;
-    }
+@media screen and (max-width: 800px) {
+  .container {
+    margin-top: 4rem;
+    width: 100%;
+  }
+  .title {
+    min-height: 50px;
+  }
 }

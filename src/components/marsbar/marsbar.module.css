@@ -37,13 +37,17 @@
 }
 
 .item:hover {
-  border: solid mediumslateblue 1px;
-  color: tomato;
+  /* border: solid mediumslateblue 1px; */
+  color: lime;
+  background-color: grey;
   border-radius: 5px;
 }
 
 .activeItem {
-  border: solid tomato 1px;
+  background-color: rgb(40, 42, 40);
+
+  /* border: solid tomato 1px; */
+  color: lime;
   padding: 1rem;
   width: 100%;
   text-align: center;

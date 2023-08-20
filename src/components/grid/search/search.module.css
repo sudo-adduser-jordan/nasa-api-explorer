@@ -24,7 +24,8 @@
 
 .button {
   color: white;
-  background-color: gray;
+  background-color: rgb(40, 42, 40);
+
   padding: 0.5rem;
   width: 20%;
   display: flex;
@@ -35,12 +36,13 @@
 }
 
 .button:hover {
-  border-color: limegreen;
-  background-color: limegreen;
+  background-color: gray;
   cursor: pointer;
+  color: lime;
 }
 
 .button:active {
   border-color: mediumslateblue;
   background-color: mediumslateblue;
+  color: white;
 }

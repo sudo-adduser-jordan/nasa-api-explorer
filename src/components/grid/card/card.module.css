@@ -1,18 +1,17 @@
 .card {
-  height: 20rem;
+  height: 25rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   border: solid 1px mediumslateblue;
   border-radius: 0.5rem;
   color: white;
-  /* background-color: gray; */
 }
 
 .image {
   width: 100%;
   height: 50%;
-  /* border-bottom: solid 1px white; */
+  border-bottom: solid 1px white;
 }
 
 .image img {
@@ -34,10 +33,13 @@
   word-break: break-all;
 }
 
-.details {
+.button {
+  margin: 0.5rem;
   margin-top: auto;
-  padding: 0.5rem;
+  padding: 0.1rem;
+  width: 25%;
 }
-.details:hover {
-  color: lime;
+.button:hover {
+  /* color: lime; */
+  cursor: pointer;
 }

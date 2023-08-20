@@ -14,13 +14,20 @@
   min-height: 70px;
 }
 
+.tech {
+  text-align: center;
+}
+
+.icon {
+  margin: 1rem;
+}
+
 .explanation,
 .apod,
 .image,
 .video,
 .epic,
-.mars,
-.tech {
+.mars {
   padding: 0.5rem;
   text-align: left;
 }
@@ -30,8 +37,7 @@
 .image h1,
 .video h1,
 .epic h1,
-.mars h1,
-.tech h1 {
+.mars h1 {
   color: mediumslateblue;
 }
 

@@ -18,23 +18,31 @@
   display: flex;
   align-items: center;
   padding-left: 2rem;
-  border-right: solid 1px;
+  border: solid 1px;
+  border-radius: 5px;
 }
 
 .button {
   color: white;
-  background-color: black;
+  background-color: rgb(40, 42, 40);
+
   padding: 0.5rem;
   width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  border: none;
 }
 
 .button:hover {
-  border-color: limegreen;
+  background-color: gray;
+  cursor: pointer;
+  color: lime;
 }
 
 .button:active {
   border-color: mediumslateblue;
+  background-color: mediumslateblue;
+  color: white;
 }

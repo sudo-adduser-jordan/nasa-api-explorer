@@ -2,7 +2,8 @@
   color: white;
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
+  margin-top: 50px;
+  padding: 1rem;
 }
 
 .title {
@@ -14,24 +15,31 @@
   min-height: 70px;
 }
 
+.tech {
+  text-align: center;
+}
+
+.icon {
+  margin: 1rem;
+}
+
 .explanation,
 .apod,
 .image,
 .video,
 .epic,
-.mars,
-.tech {
+.mars {
   padding: 0.5rem;
   text-align: left;
 }
 
-.explanation h1,
-.apod h1,
-.image h1,
-.video h1,
-.epic h1,
-.mars h1,
-.tech h1 {
+.explanation h2,
+.apod h2,
+.image h2,
+.video h2,
+.epic h2,
+.mars h2,
+.tech h2 {
   color: mediumslateblue;
 }
 

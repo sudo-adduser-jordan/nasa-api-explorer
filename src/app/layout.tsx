@@ -10,9 +10,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className="container">
-        {/* <Navigation /> */}
+        {/* <Menu /> */}
+        <Navigation />
         {/* {children} */}
-        <Menu />
       </body>
     </html>
   );

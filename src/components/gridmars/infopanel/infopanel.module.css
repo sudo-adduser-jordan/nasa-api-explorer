@@ -1,12 +1,14 @@
 .container {
   margin: 2.5rem;
   border: solid red 1px;
+  border-radius: 5px;
   padding: 1rem;
 }
 
 .active {
   margin: 1rem;
   border: solid lime 1px;
+  border-radius: 5px;
   padding: 1rem;
 }
 

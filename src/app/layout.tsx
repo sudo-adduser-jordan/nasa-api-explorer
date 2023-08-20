@@ -12,7 +12,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="container">
         {/* <Menu /> */}
         <Navigation />
-        {/* {children} */}
+        {children}
       </body>
     </html>
   );

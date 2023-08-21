@@ -56,6 +56,7 @@ export default function Navigation() {
         <Link
           href={"https://github.com/sudo-adduser-jordan/Nasa-Api-Explorer"}
           className={styles.github}
+          target="_blank"
         >
           <VscGithubInverted size={30} />
         </Link>

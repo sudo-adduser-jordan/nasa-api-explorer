@@ -18,20 +18,13 @@
 }
 
 .button {
-  border: solid 1px tomato;
-  border-radius: 5px;
-  background-color: black;
-  color: white;
-  padding: 1rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
-  cursor: pointer;
+  margin: 0.5rem;
+  margin-top: auto;
+  padding: 0.1rem;
+  width: 10%;
 }
-
 .button:hover {
-  border: solid 1px lime;
-  border-radius: 5px;
-  background-color: black;
+  /* color: lime; */
   cursor: pointer;
 }
 

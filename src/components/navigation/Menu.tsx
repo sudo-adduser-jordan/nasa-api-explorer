@@ -24,10 +24,7 @@ export default function Menu({ active, setActive }: MenuProps) {
       <button className={styles.button} onClick={() => setActive(!active)}>
         <GrClose className={styles.icon} />
       </button>
-      <Link
-        href={"/"}
-        className={tab === "/" ? styles.linkActive : styles.link}
-      >
+      <Link href={"/"} className={tab === "" ? styles.linkActive : styles.link}>
         Home
       </Link>
       <Link

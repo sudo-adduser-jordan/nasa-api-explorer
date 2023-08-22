@@ -25,7 +25,9 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: gray;
+  /* background-color: gray; */
+  border: solid mediumslateblue 1px;
+
   border-radius: 5px;
   margin: 1rem;
   padding: 1rem;

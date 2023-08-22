@@ -27,7 +27,6 @@
 }
 
 .item {
-    /* border: solid mediumslateblue 1px; */
     color: mediumslateblue;
     padding: 1rem;
     width: 100%;
@@ -36,7 +35,6 @@
 }
 
 .item:hover {
-    /* border: solid mediumslateblue 1px; */
     color: lime;
     background-color: grey;
     border-radius: 5px;
@@ -44,8 +42,6 @@
 
 .activeItem {
     background-color: rgb(40, 42, 40);
-
-    /* border: solid tomato 1px; */
     color: lime;
     padding: 1rem;
     width: 100%;

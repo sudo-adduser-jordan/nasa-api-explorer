@@ -21,7 +21,6 @@
     width: 10%;
 }
 .button:hover {
-    /* color: lime; */
     cursor: pointer;
 }
 

@@ -1,20 +1,20 @@
-import { Root, Card } from './types';
+import { Root, Card } from "./types"
 
 async function getSearch(type: string, input: FormDataEntryValue) {
     const res = await fetch(
         `https://images-api.nasa.gov/search?q=${input}&media_type=${type}`
-    );
-    if (!res.ok) throw new Error('Failed to fetch Search Properties.');
-    const data: Root = await res.json();
+    )
+    if (!res.ok) throw new Error("Failed to fetch Search Properties.")
+    const data: Root = await res.json()
 
-    const items = data.collection.items;
+    const items = data.collection.items
 
-    let nextPage = '';
+    let nextPage = ""
     if (data.collection.links != undefined) {
-        nextPage = data.collection.links[0].href;
+        nextPage = data.collection.links[0].href
     }
 
-    const array: Card[] = [];
+    const array: Card[] = []
     for (let i = 0; i < items.length; i++) {
         array.push({
             key: i,
@@ -22,13 +22,13 @@ async function getSearch(type: string, input: FormDataEntryValue) {
             date: items[i].data[0].date_created.slice(0, 10),
             title: items[i].data[0].title,
             nasa_id: items[i].data[0].nasa_id,
-        });
+        })
     }
 
     return {
         nextPage,
         array,
-    };
+    }
 }
 
-export default getSearch;
+export default getSearch

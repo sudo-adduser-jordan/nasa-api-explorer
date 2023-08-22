@@ -1,36 +1,36 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: "JetBrains Mono";
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "JetBrains Mono";
 }
 
 html {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 body {
-  background-color: black;
-  color: white;
-  display: flex;
-  /* flex-direction: row; */
-  height: 100%;
-  width: 100%;
-  /* overflow-y: hidden; */
-  overflow-x: hidden;
+    background-color: black;
+    color: white;
+    display: flex;
+    /* flex-direction: row; */
+    height: 100%;
+    width: 100%;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Jetbrains Fonts */
@@ -38,18 +38,19 @@ a {
 /* https://gist.github.com/Albert221/753d7f8955eeb6f5e50486fce048e39f */
 
 @font-face {
-  font-family: "JetBrains Mono";
-  src: url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff")
-      format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "JetBrains Mono";
+    src:
+        url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2")
+            format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff")
+            format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @media (max-width: 800px) {
-  body {
-    overflow-y: unset;
-  }
+    body {
+        overflow-y: unset;
+    }
 }

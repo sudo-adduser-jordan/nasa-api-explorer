@@ -1,26 +1,26 @@
 .container {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 1rem;
 }
 
 .title {
-  margin: 1rem;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 70px;
+    margin: 1rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
 }
 
 .tech {
-  text-align: center;
+    text-align: center;
 }
 
 .icon {
-  margin: 1rem;
+    margin: 1rem;
 }
 
 .explanation,
@@ -29,8 +29,8 @@
 .video,
 .epic,
 .mars {
-  padding: 0.5rem;
-  text-align: left;
+    padding: 0.5rem;
+    text-align: left;
 }
 
 .explanation h2,
@@ -40,15 +40,15 @@
 .epic h2,
 .mars h2,
 .tech h2 {
-  color: mediumslateblue;
+    color: mediumslateblue;
 }
 
 @media screen and (max-width: 800px) {
-  .container {
-    margin-top: 4rem;
-    width: 100%;
-  }
-  .title {
-    min-height: 50px;
-  }
+    .container {
+        margin-top: 4rem;
+        width: 100%;
+    }
+    .title {
+        min-height: 50px;
+    }
 }

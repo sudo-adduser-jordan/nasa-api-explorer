@@ -1,96 +1,96 @@
 .container {
-  display: flex;
-  flex-direction: row;
-  height: 50px;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1rem;
 }
 
 .linkContainer {
-  display: flex;
-  height: 100%;
-  width: 100%;
+    display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 .left {
-  display: flex;
-  height: 100%;
-  width: 35%;
+    display: flex;
+    height: 100%;
+    width: 35%;
 }
 
 .right {
-  display: flex;
-  height: 100%;
-  width: 100%;
+    display: flex;
+    height: 100%;
+    width: 100%;
 }
 
 .title {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
 }
 
 .logo {
-  margin: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.link {
-  background-color: rgb(40, 42, 40);
-  margin: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-}
-
-.linkActive {
-  background-color: rgb(40, 42, 40);
-  margin: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  color: lime;
-}
-.link:hover {
-  background-color: gray;
-}
-
-.github {
-  margin: 1rem;
-  padding: 2rem;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.toggleMenu {
-  display: none;
-}
-@media screen and (max-width: 800px) {
-  .linkContainer {
-    display: none;
-  }
-  .toggleMenu {
     margin: 1rem;
-    height: 2rem;
-    width: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    height: 100%;
+    width: 100%;
+}
+
+.link {
+    background-color: rgb(40, 42, 40);
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.linkActive {
+    background-color: rgb(40, 42, 40);
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    color: lime;
+}
+.link:hover {
+    background-color: gray;
+}
+
+.github {
+    margin: 1rem;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.toggleMenu {
+    display: none;
+}
+@media screen and (max-width: 800px) {
+    .linkContainer {
+        display: none;
+    }
+    .toggleMenu {
+        margin: 1rem;
+        height: 2rem;
+        width: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

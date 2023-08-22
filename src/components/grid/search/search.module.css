@@ -1,48 +1,48 @@
 .container {
-  margin: 1rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+    margin: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 
 .search {
-  position: sticky;
-  height: 2.5rem;
-  display: flex;
+    position: sticky;
+    height: 2.5rem;
+    display: flex;
 }
 
 .entry {
-  margin-right: 1rem;
-  background-color: black;
-  color: white;
-  width: 90%;
-  display: flex;
-  align-items: center;
-  padding-left: 2rem;
-  border: solid 1px;
-  border-radius: 5px;
+    margin-right: 1rem;
+    background-color: black;
+    color: white;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    border: solid 1px;
+    border-radius: 5px;
 }
 
 .button {
-  color: white;
-  background-color: rgb(40, 42, 40);
+    color: white;
+    background-color: rgb(40, 42, 40);
 
-  padding: 0.5rem;
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  border: none;
+    padding: 0.5rem;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
 }
 
 .button:hover {
-  background-color: gray;
-  cursor: pointer;
-  color: lime;
+    background-color: gray;
+    cursor: pointer;
+    color: lime;
 }
 
 .button:active {
-  border-color: mediumslateblue;
-  background-color: mediumslateblue;
-  color: white;
+    border-color: mediumslateblue;
+    background-color: mediumslateblue;
+    color: white;
 }

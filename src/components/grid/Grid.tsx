@@ -1,71 +1,62 @@
-'use client';
-import { useEffect, useState } from 'react';
-import getMore from '../../lib/search/getMore';
-import getSearch from '../../lib/search/getSearch';
-import Search from './search/Search';
-import styles from './grid.module.css';
-import Card from './card/Card';
+"use client"
+import { useEffect, useState } from "react"
+import getMore from "../../lib/search/getMore"
+import getSearch from "../../lib/search/getSearch"
+import Search from "./search/Search"
+import styles from "./grid.module.css"
+import Card from "./card/Card"
 
 type Card = {
-    key: number;
-    href: string;
-    date: string;
-    title: string;
-    nasa_id: string;
-};
+    key: number
+    href: string
+    date: string
+    title: string
+    nasa_id: string
+}
 
 type Data = {
     data: {
-        media_type: string;
-        nextPage: string;
-        array: Card[];
-    };
-};
+        media_type: string
+        nextPage: string
+        array: Card[]
+    }
+}
 
-function Grid({ data }: Data) {
-    const [showButton, setShowButton] = useState(false);
-    const [cards, setCards] = useState<Card[]>(data.array);
-    const [page, setPage] = useState(data.nextPage);
+export default function Grid({ data }: Data) {
+    const [showButton, setShowButton] = useState(false)
+    const [cards, setCards] = useState<Card[]>(data.array)
+    const [page, setPage] = useState(data.nextPage)
 
-    // init button
     useEffect(() => {
-        if (page != '') {
-            setShowButton(true);
+        if (page != "") {
+            setShowButton(true)
         } else {
-            setShowButton(false);
+            setShowButton(false)
         }
-    }, [page]);
+    }, [page])
 
-    // get search input
     async function handleSubmit(e: any) {
-        e.preventDefault();
-        setPage('');
+        e.preventDefault()
+        setPage("")
 
-        // search data
-        const form = e.target;
-        const formData = new FormData(form);
-        const formJson = Object.fromEntries(formData.entries());
+        const form = e.target
+        const formData = new FormData(form)
+        const formJson = Object.fromEntries(formData.entries())
+        const search_data = await getSearch(data.media_type, formJson["search"])
 
-        // response data
-        const search_data = await getSearch(
-            data.media_type,
-            formJson['search']
-        );
-
-        // set state
-        setCards(search_data.array);
+        setCards(search_data.array)
         if (search_data.nextPage != undefined) {
-            setPage(search_data.nextPage);
+            setPage(search_data.nextPage)
         }
     }
 
     async function loadMoreCards() {
-        const data = await getMore(page);
-        setCards(cards.concat(data.array));
-        setPage(data.nextPage);
+        const data = await getMore(page)
+        setCards(cards.concat(data.array))
+        setPage(data.nextPage)
     }
 
-    const content = (
+    return (
         <>
             <Search handleSubmit={handleSubmit} />
             <div className={styles.container}>
@@ -84,15 +75,12 @@ function Grid({ data }: Data) {
                 {showButton && (
                     <button
                         className={styles.button}
-                        onClick={(e) => loadMoreCards()}
+                        onClick={() => loadMoreCards()}
                     >
                         Load More
                     </button>
                 )}
             </div>
         </>
-    );
-    return content;
+    )
 }
-
-export default Grid;

@@ -1,38 +1,38 @@
-import React from 'react';
-import styles from './infopanel.module.css';
-import { ManifestRoot } from '../../../lib/mars-rover-photos/types';
+import React from "react"
+import styles from "./infopanel.module.css"
+import { ManifestRoot } from "../../../lib/mars-rover-photos/types"
 
 type Card = {
-    key: number;
-    href: string;
-    date: string;
-    sol: number;
-};
+    key: number
+    href: string
+    date: string
+    sol: number
+}
 
 type Data = {
     data: {
         rover_data: {
-            array: Card[];
-        };
-        manifest: ManifestRoot;
-    };
-};
+            array: Card[]
+        }
+        manifest: ManifestRoot
+    }
+}
 
 function InfoPanel({ data }: Data) {
     const { max_sol, status, max_date, total_photos, launch_date } =
-        data.manifest.photo_manifest;
+        data.manifest.photo_manifest
 
     return (
         <div
             className={
-                status === 'active' ? `${styles.active}` : `${styles.container}`
+                status === "active" ? `${styles.active}` : `${styles.container}`
             }
         >
             <h5 className={styles.info}>
                 <span className={styles.purple}>Status: </span>
                 <span
                     className={
-                        status === 'active'
+                        status === "active"
                             ? `${styles.green}`
                             : `${styles.red}`
                     }
@@ -56,7 +56,7 @@ function InfoPanel({ data }: Data) {
                 {total_photos}
             </h5>
         </div>
-    );
+    )
 }
 
-export default InfoPanel;
+export default InfoPanel

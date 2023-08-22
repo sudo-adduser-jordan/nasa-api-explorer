@@ -1,67 +1,67 @@
 .container {
-  background-color: black;
-  color: white;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 50px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .title {
-  /* margin: 1rem; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    /* margin: 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav {
-  border-bottom: solid white 1px;
-  color: white;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+    border-bottom: solid white 1px;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .item {
-  /* border: solid mediumslateblue 1px; */
-  color: mediumslateblue;
-  padding: 1rem;
-  width: 100%;
-  text-align: center;
-  margin: 1rem;
+    /* border: solid mediumslateblue 1px; */
+    color: mediumslateblue;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    margin: 1rem;
 }
 
 .item:hover {
-  /* border: solid mediumslateblue 1px; */
-  color: lime;
-  background-color: grey;
-  border-radius: 5px;
+    /* border: solid mediumslateblue 1px; */
+    color: lime;
+    background-color: grey;
+    border-radius: 5px;
 }
 
 .activeItem {
-  background-color: rgb(40, 42, 40);
+    background-color: rgb(40, 42, 40);
 
-  /* border: solid tomato 1px; */
-  color: lime;
-  padding: 1rem;
-  width: 100%;
-  text-align: center;
-  margin: 1rem;
-  border-radius: 5px;
+    /* border: solid tomato 1px; */
+    color: lime;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 800px) {
-  .container {
-    width: 100vw;
-    margin-top: 10vh;
-  }
+    .container {
+        width: 100vw;
+        margin-top: 10vh;
+    }
 
-  .title {
-    height: 50px;
-  }
+    .title {
+        height: 50px;
+    }
 }

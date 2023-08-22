@@ -1,25 +1,25 @@
-'use client';
-import styles from './search.module.css';
+"use client"
+import styles from "./search.module.css"
 
 export default function Search({ handleSubmit }: any) {
     const content = (
         <section className={styles.container}>
             <form
                 className={styles.search}
-                method='post'
+                method="post"
                 onSubmit={handleSubmit}
             >
                 <input
                     className={styles.entry}
-                    name='search'
-                    defaultValue='star'
+                    name="search"
+                    defaultValue="star"
                 />
 
-                <button className={styles.button} type='submit'>
+                <button className={styles.button} type="submit">
                     Search
                 </button>
             </form>
         </section>
-    );
-    return content;
+    )
+    return content
 }

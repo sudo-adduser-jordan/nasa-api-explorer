@@ -1,11 +1,11 @@
-'use client';
-import { useState } from 'react';
-import Link from 'next/link';
-import styles from './marsbar.module.css';
+"use client"
+import { useState } from "react"
+import Link from "next/link"
+import styles from "./marsbar.module.css"
 
 export const Marsbar = () => {
-    const [active, setActive] = useState('spirit');
-    const paths = ['curiosity', 'spirit', 'opportunity'];
+    const [active, setActive] = useState("spirit")
+    const paths = ["curiosity", "spirit", "opportunity"]
     const content = (
         <div className={styles.container}>
             <div className={styles.title}>Mars Rover Photos</div>
@@ -24,10 +24,10 @@ export const Marsbar = () => {
                         >
                             {path.charAt(0).toUpperCase() + path.slice(1)}
                         </Link>
-                    );
+                    )
                 })}
             </nav>
         </div>
-    );
-    return content;
-};
+    )
+    return content
+}

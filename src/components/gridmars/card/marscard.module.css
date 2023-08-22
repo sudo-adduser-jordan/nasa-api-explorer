@@ -1,48 +1,48 @@
 .card {
-  height: 20rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  border: solid 1px mediumslateblue;
-  border-radius: 0.5rem;
-  color: white;
+    height: 20rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px mediumslateblue;
+    border-radius: 0.5rem;
+    color: white;
 }
 
 .image {
-  width: 100%;
-  height: 50%;
+    width: 100%;
+    height: 50%;
 }
 
 .image img {
-  border-radius: 0.5rem 0.5rem 0 0;
-  width: 100%;
-  height: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 100%;
+    height: 100%;
 }
 
 .date {
-  padding: 0.5rem;
+    padding: 0.5rem;
 }
 
 .sol {
-  padding: 0.5rem;
+    padding: 0.5rem;
 }
 
 .details {
-  margin-top: auto;
-  padding: 0.5rem;
+    margin-top: auto;
+    padding: 0.5rem;
 }
 
 .details:hover {
-  color: lime;
+    color: lime;
 }
 
 .button {
-  margin: 0.5rem;
-  margin-top: auto;
-  padding: 0.1rem;
-  width: 25%;
+    margin: 0.5rem;
+    margin-top: auto;
+    padding: 0.1rem;
+    width: 25%;
 }
 .button:hover {
-  /* color: lime; */
-  cursor: pointer;
+    /* color: lime; */
+    cursor: pointer;
 }

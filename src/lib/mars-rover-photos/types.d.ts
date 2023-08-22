@@ -1,57 +1,57 @@
 // photos
 export interface PhotoRoot {
-    photos: Photo[];
+    photos: Photo[]
 }
 
 export interface Photo {
-    id: number;
-    sol: number;
-    camera: Camera;
-    img_src: string;
-    earth_date: string;
-    rover: Rover;
+    id: number
+    sol: number
+    camera: Camera
+    img_src: string
+    earth_date: string
+    rover: Rover
 }
 
 export interface Camera {
-    id: number;
-    name: string;
-    rover_id: number;
-    full_name: string;
+    id: number
+    name: string
+    rover_id: number
+    full_name: string
 }
 
 export interface Rover {
-    id: number;
-    name: string;
-    landing_date: string;
-    launch_date: string;
-    status: string;
+    id: number
+    name: string
+    landing_date: string
+    launch_date: string
+    status: string
 }
 
 // photo_manifest
 export interface ManifestRoot {
-    photo_manifest: PhotoManifest;
+    photo_manifest: PhotoManifest
 }
 
 export interface PhotoManifest {
-    name: string;
-    landing_date: string;
-    launch_date: string;
-    status: string;
-    max_sol: number;
-    max_date: string;
-    total_photos: number;
-    photos: Photo[];
+    name: string
+    landing_date: string
+    launch_date: string
+    status: string
+    max_sol: number
+    max_date: string
+    total_photos: number
+    photos: Photo[]
 }
 
 export interface Photo {
-    sol: number;
-    earth_date: string;
-    total_photos: number;
-    cameras: string[];
+    sol: number
+    earth_date: string
+    total_photos: number
+    cameras: string[]
 }
 export type Card = {
-    key: number;
-    href: string;
-    date: string;
-    sol: number;
-};
+    key: number
+    href: string
+    date: string
+    sol: number
+}

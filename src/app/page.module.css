@@ -2,45 +2,28 @@
     color: white;
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
-    padding: 1rem;
-}
-
-.title {
-    margin: 1rem;
-    color: white;
-    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70px;
+    margin-top: 50px;
+    padding: 1rem;
+    text-align: center;
 }
 
+.section {
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.section h2,
+.tech h2 {
+    color: mediumslateblue;
+}
 .tech {
     text-align: center;
 }
 
 .icon {
     margin: 1rem;
-}
-
-.explanation,
-.apod,
-.image,
-.video,
-.epic,
-.mars {
-    padding: 0.5rem;
-    text-align: left;
-}
-
-.explanation h2,
-.apod h2,
-.image h2,
-.video h2,
-.epic h2,
-.mars h2,
-.tech h2 {
-    color: mediumslateblue;
 }
 
 @media screen and (max-width: 800px) {

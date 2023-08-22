@@ -10,7 +10,7 @@
   background-color: black;
   color: white;
   display: flex;
-  margin: 1rem;
+  /* margin: 1rem; */
   justify-content: center;
   align-items: center;
   border-radius: 5px;

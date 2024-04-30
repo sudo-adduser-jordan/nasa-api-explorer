@@ -51,10 +51,18 @@ export default function Navigation() {
                     >
                         Videos
                     </Link>
-                    <Link
+                    {/* <Link
                         href={"/mars-rover-photos/spirit"}
                         className={
                             tab === "spirit" ? styles.linkActive : styles.link
+                        }
+                    >
+                        Mars
+                    </Link> */}
+                    <Link
+                        href={"/mars-rover-photos/curiosity"}
+                        className={
+                            tab === "curiosity" ? styles.linkActive : styles.link
                         }
                     >
                         Mars

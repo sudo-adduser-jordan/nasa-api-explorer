@@ -4,8 +4,10 @@ import Link from "next/link"
 import styles from "./marsbar.module.css"
 
 export const Marsbar = () => {
-    const [active, setActive] = useState("spirit")
-    const paths = ["curiosity", "spirit", "opportunity"]
+    // const [active, setActive] = useState("spirit")
+    // const paths = ["curiosity", "spirit", "opportunity"] // needs to be updated - nasa changed there api for completed missions
+    const [active, setActive] = useState("curiosity")
+    const paths = ["curiosity"]
     const content = (
         <div className={styles.container}>
             <div className={styles.title}>Mars Rover Photos</div>
